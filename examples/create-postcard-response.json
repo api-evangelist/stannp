@@ -1,0 +1,11 @@
+{
+  "success": true,
+  "data": {
+    "id": 98765,
+    "pdf": "https://api-us1.stannp.com/v1/postcards/proof/98765.pdf",
+    "created": "2024-04-10T14:30:00Z",
+    "format": "4x6",
+    "cost": "0.99",
+    "status": "created"
+  }
+}

@@ -47,6 +47,18 @@ apis:
         url: https://www.stannp.com/us/direct-mail-api/guide
       - type: OpenAPI
         url: https://www.stannp.com/us/direct-mail-api
+      - type: OpenAPI
+        url: openapi/stannp-direct-mail-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/recipient.json
+      - type: JSONSchema
+        url: json-schema/mailpiece.json
+      - type: JSONSchema
+        url: json-schema/campaign.json
+      - type: Vocabulary
+        url: vocabulary/stannp-vocabulary.yml
+      - type: JSONLDContext
+        url: json-ld/stannp-context.jsonld
 common:
   - type: Website
     url: https://www.stannp.com

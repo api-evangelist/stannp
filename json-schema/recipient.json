@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/stannp/main/json-schema/recipient.json",
+  "title": "Recipient",
+  "description": "A contact record representing a physical mail recipient.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique recipient identifier"
+    },
+    "account_id": {
+      "type": "integer",
+      "description": "Owning account identifier"
+    },
+    "title": {
+      "type": "string",
+      "description": "Honorific title (Mr, Mrs, Dr, etc.)"
+    },
+    "firstname": {
+      "type": "string",
+      "description": "Given name"
+    },
+    "lastname": {
+      "type": "string",
+      "description": "Family name"
+    },
+    "company": {
+      "type": "string",
+      "description": "Company or organisation name"
+    },
+    "job_title": {
+      "type": "string",
+      "description": "Job title"
+    },
+    "address1": {
+      "type": "string",
+      "description": "First line of postal address"
+    },
+    "address2": {
+      "type": "string",
+      "description": "Second line of postal address"
+    },
+    "address3": {
+      "type": "string",
+      "description": "Third line of postal address"
+    },
+    "city": {
+      "type": "string",
+      "description": "City or town"
+    },
+    "county": {
+      "type": "string",
+      "description": "State, county, or province"
+    },
+    "postcode": {
+      "type": "string",
+      "description": "Postcode or ZIP code"
+    },
+    "zipcode": {
+      "type": "string",
+      "description": "ZIP code (US alternative to postcode)"
+    },
+    "country": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 2,
+      "description": "ISO 3166-1 Alpha-2 country code",
+      "examples": ["US", "GB", "CA"]
+    },
+    "dps": {
+      "type": "string",
+      "description": "Delivery Point Suffix (UK)"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address"
+    },
+    "phone_number": {
+      "type": "string",
+      "description": "Phone number"
+    },
+    "ref_id": {
+      "type": "string",
+      "description": "External reference identifier for deduplication"
+    },
+    "blacklist": {
+      "type": "boolean",
+      "description": "Whether the recipient is on the suppression block list"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last updated timestamp"
+    }
+  },
+  "examples": [
+    {
+      "id": 12345,
+      "firstname": "Jane",
+      "lastname": "Smith",
+      "address1": "123 Main St",
+      "city": "Austin",
+      "county": "TX",
+      "zipcode": "78701",
+      "country": "US",
+      "blacklist": false,
+      "created": "2024-03-01T10:00:00Z"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "size": "4x6",
+  "test": true,
+  "recipient": {
+    "firstname": "Jane",
+    "lastname": "Smith",
+    "address1": "123 Main St",
+    "city": "Austin",
+    "county": "TX",
+    "zipcode": "78701",
+    "country": "US"
+  },
+  "front": "https://example.com/designs/spring-front.jpg",
+  "back": "https://example.com/designs/spring-back.jpg",
+  "message": "Hello Jane, enjoy our spring offer!",
+  "tags": "spring2024,us-west",
+  "return_address": "Acme Corp, 456 Business Blvd, Austin TX 78702"
+}

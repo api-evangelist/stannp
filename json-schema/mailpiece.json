@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/stannp/main/json-schema/mailpiece.json",
+  "title": "Mailpiece",
+  "description": "A single dispatched physical mail item (postcard or letter).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique mailpiece identifier"
+    },
+    "pdf": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the proof or production PDF"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "format": {
+      "type": "string",
+      "description": "Mail piece format or size (e.g. 4x6, US-LETTER)"
+    },
+    "cost": {
+      "type": "string",
+      "description": "Per-item cost as a decimal string",
+      "examples": ["0.99", "1.49"]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "created",
+        "printing",
+        "dispatched",
+        "local_delivery",
+        "delivered",
+        "returned",
+        "cancelled"
+      ],
+      "description": "Current mailpiece status"
+    },
+    "tracking_reference": {
+      "type": "string",
+      "description": "Carrier tracking reference number"
+    },
+    "dispatched": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the item was dispatched"
+    }
+  },
+  "examples": [
+    {
+      "id": 98765,
+      "pdf": "https://api-us1.stannp.com/v1/postcards/proof/98765.pdf",
+      "created": "2024-04-10T14:30:00Z",
+      "format": "4x6",
+      "cost": "0.99",
+      "status": "dispatched",
+      "tracking_reference": "9400111899223387624110",
+      "dispatched": "2024-04-12T08:00:00Z"
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+vocabulary:
+  - term: postcard
+    definition: >
+      A physical mail piece printed on card stock and dispatched via postal
+      services. Stannp supports sizes 4x6, 6x9, and 6x11 inches for US
+      mailings, and A6/A5 for UK/EU mailings.
+    tags:
+      - Postcards
+      - Direct Mail
+
+  - term: letter
+    definition: >
+      A physical letter enclosed in an envelope, created from an HTML template,
+      PDF, or DOC file. Stannp supports US-LETTER and US-LETTER-XL-WINDOW
+      sizes, with optional duplex printing.
+    tags:
+      - Letters
+      - Direct Mail
+
+  - term: recipient
+    definition: >
+      An individual contact record containing name, address, and optional
+      metadata fields. Recipients can be standalone or organised into groups
+      for campaign targeting.
+    tags:
+      - Recipients
+
+  - term: group
+    definition: >
+      A named collection of recipients used as a targeting list for batch
+      campaigns. Groups track valid, invalid, and international address counts.
+    tags:
+      - Groups
+      - Recipients
+
+  - term: campaign
+    definition: >
+      A batch direct mail job targeting a recipient group. Campaigns follow a
+      lifecycle of create → approve → cost → book → dispatch.
+    tags:
+      - Campaigns
+
+  - term: mailpiece
+    definition: >
+      A single dispatched physical mail item (postcard or letter) with a
+      unique ID, status, cost, and optional tracking reference.
+    tags:
+      - Postcards
+      - Letters
+
+  - term: test mode
+    definition: >
+      A flag (test=true) on postcard and letter creation endpoints that
+      generates a preview PDF without dispatching the item or incurring charges.
+    tags:
+      - Postcards
+      - Letters
+      - Campaigns
+
+  - term: idempotency key
+    definition: >
+      A caller-supplied unique string that prevents duplicate mailpieces from
+      being created if the same request is retried (e.g. after a network
+      failure).
+    tags:
+      - Postcards
+      - Letters
+
+  - term: addon
+    definition: >
+      An upgrade code applied to a mail piece or campaign to enable premium
+      delivery services. Supported values include FIRST_CLASS and CONFIDENTIAL.
+    tags:
+      - Postcards
+      - Letters
+      - Campaigns
+
+  - term: webhook
+    definition: >
+      An HTTP callback registered in account settings that receives real-time
+      notifications for mailpiece status changes (printing, dispatched,
+      delivered, returned), campaign status changes, or new recipient events.
+    tags:
+      - Webhooks
+
+  - term: recipient event
+    definition: >
+      An engagement or conversion signal recorded against a recipient, such as
+      PURCHASE, SIGNUP, PAGE_VIEW, PRODUCT_VIEW, or PRODUCT_TO_BASKET. Events
+      can trigger automated mail campaigns.
+    tags:
+      - Events
+
+  - term: block list
+    definition: >
+      A suppression list preventing a recipient from receiving mail. Recipients
+      on the block list are excluded from campaign sends.
+    tags:
+      - Recipients
+
+  - term: address validation
+    definition: >
+      The process of verifying a recipient's postal address against postal
+      authority databases. Stannp supports validation for UK, US, and Canadian
+      addresses.
+    tags:
+      - Recipients
+      - Addresses
+
+  - term: template
+    definition: >
+      A reusable design saved in the Stannp platform that can be referenced
+      by ID when creating mail pieces or campaigns, supporting mail merge
+      variable substitution.
+    tags:
+      - Postcards
+      - Letters
+      - Campaigns
+
+  - term: duplex
+    definition: >
+      Double-sided printing for letters, enabling content on both front and
+      back pages.
+    tags:
+      - Letters
+
+  - term: rate limit
+    definition: >
+      The maximum number of API requests allowed per minute. Stannp enforces
+      approximately 300 requests per minute, communicating remaining quota via
+      X-RateLimit-Limit, X-RateLimit-Remaining, and X-RateLimit-Reset response
+      headers.
+    tags:
+      - API
+
+  - term: basic auth
+    definition: >
+      The authentication mechanism used by the Stannp API. The caller's API
+      key is supplied as the HTTP Basic Auth username with an empty password
+      over HTTPS.
+    tags:
+      - API
+      - Authentication

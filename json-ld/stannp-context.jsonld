@@ -1,0 +1,95 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "stannp": "https://www.stannp.com/ns/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "DirectMailAPI": "stannp:DirectMailAPI",
+    "Postcard": "stannp:Postcard",
+    "Letter": "stannp:Letter",
+    "Recipient": "stannp:Recipient",
+    "RecipientGroup": "stannp:RecipientGroup",
+    "Campaign": "stannp:Campaign",
+    "RecipientEvent": "stannp:RecipientEvent",
+    "Webhook": "stannp:Webhook",
+    "MailpieceStatus": "stannp:MailpieceStatus",
+
+    "id": "@id",
+    "type": "@type",
+
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "email": "schema:email",
+    "telephone": "schema:telephone",
+
+    "firstname": "schema:givenName",
+    "lastname": "schema:familyName",
+    "title": "schema:honorificPrefix",
+    "company": "schema:Organization",
+    "job_title": "schema:jobTitle",
+
+    "address1": "schema:streetAddress",
+    "city": "schema:addressLocality",
+    "county": "schema:addressRegion",
+    "postcode": "schema:postalCode",
+    "zipcode": "schema:postalCode",
+    "country": "schema:addressCountry",
+
+    "cost": {
+      "@id": "schema:price",
+      "@type": "xsd:string"
+    },
+    "balance": {
+      "@id": "schema:amount",
+      "@type": "xsd:string"
+    },
+    "status": "schema:status",
+    "created": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updated": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "dispatched": {
+      "@id": "stannp:dispatched",
+      "@type": "xsd:dateTime"
+    },
+    "tracking_reference": "stannp:trackingReference",
+    "pdf": {
+      "@id": "schema:contentUrl",
+      "@type": "@id"
+    },
+    "format": "stannp:format",
+    "size": "stannp:size",
+    "test": "stannp:testMode",
+    "blacklist": "stannp:onBlockList",
+    "ref_id": "stannp:externalReferenceId",
+    "idempotency_key": "stannp:idempotencyKey",
+    "conversion": "stannp:isConversion",
+    "value": "schema:value",
+    "recipients": "stannp:recipientCount",
+    "valid": "stannp:validCount",
+    "international": "stannp:internationalCount",
+    "group_id": {
+      "@id": "stannp:group",
+      "@type": "@id"
+    },
+    "template": {
+      "@id": "stannp:template",
+      "@type": "@id"
+    },
+    "addons": "stannp:addons",
+    "tags": "schema:keywords",
+    "send_date": {
+      "@id": "stannp:sendDate",
+      "@type": "xsd:date"
+    },
+    "duplex": "stannp:duplexPrinting",
+    "success": "stannp:success",
+    "error": "schema:error"
+  }
+}

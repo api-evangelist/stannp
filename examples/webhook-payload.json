@@ -1,0 +1,14 @@
+{
+  "webhook_id": 42,
+  "event": "mailpiece_status",
+  "created": "2024-04-12 08:00:00",
+  "retries": 0,
+  "mailpieces": [
+    {
+      "id": 98765,
+      "status": "dispatched",
+      "tracking_reference": "9400111899223387624110",
+      "dispatched": "2024-04-12 08:00:00"
+    }
+  ]
+}
