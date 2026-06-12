@@ -1,0 +1,65 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+provider: Stannp
+providerId: stannp
+created: '2026-06-12'
+modified: '2026-06-12'
+description: >
+  Stannp enforces per-minute request rate limits that vary by subscription plan.
+  The baseline for most API endpoints is 300 requests per minute. Exceeding the
+  limit results in a 429 Too Many Requests response. Response headers indicate
+  remaining quota. An idempotency key header is supported for safe retries of
+  POST requests.
+retryAfter:
+  header: Retry-After
+  description: >
+    When a 429 is returned, the Retry-After header indicates how many seconds
+    to wait before retrying the request.
+throttled:
+  statusCode: 429
+  description: Too Many Requests — rate limit exceeded for the current window
+limits:
+  - scope: account
+    metric: api_requests
+    limit: 300
+    timeFrame: minute
+    description: >
+      Default rate limit for all API endpoints on the Free and Starter plans.
+      Applies to the majority of API operations.
+    plans:
+      - Free
+      - Starter
+  - scope: account
+    metric: api_requests
+    limit: 600
+    timeFrame: minute
+    description: Elevated rate limit for Growth plan subscribers.
+    plans:
+      - Growth
+  - scope: account
+    metric: api_requests
+    limit: 2000
+    timeFrame: minute
+    description: >
+      High-throughput rate limit for Premium plan subscribers and Growth
+      subscribers with the rate limit add-on.
+    plans:
+      - Premium
+  - scope: account
+    metric: api_requests
+    limit: 3000
+    timeFrame: minute
+    description: Enterprise-tier maximum rate limit for large-volume senders.
+    plans:
+      - Enterprise
+headers:
+  - name: X-RateLimit-Remaining
+    description: Number of requests remaining in the current rate limit window
+  - name: Retry-After
+    description: Seconds to wait before making another request after a 429 response
+idempotency:
+  supported: true
+  header: Idempotency-Key
+  description: >
+    Pass a unique Idempotency-Key header on POST requests to safely retry
+    without risk of duplicate mail pieces being dispatched.

@@ -1,0 +1,73 @@
+aid: stannp
+name: Stannp
+description: >
+  Stannp is a direct mail platform that enables businesses to send physical
+  postcards and letters programmatically via a REST API. The platform lets
+  developers create campaigns, upload recipient lists, trigger individual mail
+  pieces in real time, and track print and delivery status through webhooks and
+  event endpoints. Authentication uses API key-based HTTP Basic Auth over HTTPS,
+  and the API follows a simple JSON response envelope with success/data or
+  success/error fields. Stannp serves businesses across the UK, US, and Canada
+  with per-item pricing for letters and postcards at scale, and supports no-code
+  integrations through Zapier and Make as well as official SDKs for PHP, Go, and
+  C#.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Direct Mail
+  - Postcards
+  - Letters
+  - Print
+  - Physical Mail
+  - Marketing Automation
+  - Campaigns
+url: https://raw.githubusercontent.com/api-evangelist/stannp/refs/heads/main/apis.yml
+created: '2026-06-12'
+modified: '2026-06-12'
+specificationVersion: '0.19'
+apis:
+  - aid: stannp:direct-mail-api
+    name: Stannp Direct Mail API
+    description: >
+      REST API for programmatically sending physical letters and postcards,
+      managing recipient groups, configuring campaigns, triggering individual
+      mail pieces, and tracking delivery status through webhooks and event
+      callbacks.
+    humanURL: https://www.stannp.com/us/direct-mail-api
+    baseURL: https://api-eu1.stannp.com/v1/
+    tags:
+      - Direct Mail
+      - Letters
+      - Postcards
+      - Campaigns
+      - Recipients
+      - Webhooks
+    properties:
+      - type: Documentation
+        url: https://www.stannp.com/us/direct-mail-api/guide
+      - type: OpenAPI
+        url: https://www.stannp.com/us/direct-mail-api
+common:
+  - type: Website
+    url: https://www.stannp.com
+  - type: Documentation
+    url: https://www.stannp.com/us/direct-mail-api/guide
+  - type: GitHubOrganization
+    url: https://github.com/Stannp
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/stannp-com-postcard-bulk-mailer
+  - type: X
+    url: https://twitter.com/stannpdm
+  - type: Blog
+    url: https://go.stannp.com/blogs
+  - type: Pricing
+    url: https://www.stannp.com/us/pricing-tiers
+  - type: Plans
+    url: plans/stannp-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/stannp-rate-limits.yml
+  - type: FinOps
+    url: finops/stannp-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

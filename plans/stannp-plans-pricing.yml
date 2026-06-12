@@ -1,0 +1,215 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+provider: Stannp
+providerId: stannp
+created: '2026-06-12'
+modified: '2026-06-12'
+reconciled: true
+type: freemium
+description: >
+  Stannp offers a freemium tiered subscription model. The Free plan allows
+  entry-level access with limited rate limits and virtual print items. Paid
+  plans (Starter, Growth, Premium) scale up API rate limits, users, templates,
+  contacts, webhooks, and reduce per-item send costs. Enterprise plans are
+  bespoke with contracted volumes and custom pricing. Per-item pricing for
+  letters and postcards is volume-tiered on top of the subscription fee.
+plans:
+  - name: Free
+    type: free
+    price: 0
+    currency: GBP
+    billingPeriod: monthly
+    description: Entry-level plan for new users or one-off campaigns
+    quotas:
+      - metric: api_requests_per_minute
+        type: quota
+        limit: 300
+        timeFrame: minute
+      - metric: users
+        type: quota
+        limit: 1
+        timeFrame: account
+      - metric: templates
+        type: quota
+        limit: 1
+        timeFrame: account
+      - metric: contacts
+        type: quota
+        limit: 50000
+        timeFrame: account
+      - metric: virtual_printer_items
+        type: quota
+        limit: 20
+        timeFrame: account
+      - metric: webhooks
+        type: quota
+        limit: 0
+        timeFrame: account
+  - name: Starter
+    type: paid
+    price: 12
+    annualPrice: 9.60
+    currency: GBP
+    billingPeriod: monthly
+    description: Small business plan for getting started with direct mail API
+    quotas:
+      - metric: api_requests_per_minute
+        type: quota
+        limit: 300
+        timeFrame: minute
+      - metric: users
+        type: quota
+        limit: 1
+        timeFrame: account
+      - metric: templates
+        type: quota
+        limit: 10
+        timeFrame: account
+      - metric: contacts
+        type: quota
+        limit: 50000
+        timeFrame: account
+      - metric: virtual_printer_items
+        type: quota
+        limit: 100
+        timeFrame: account
+      - metric: webhooks
+        type: quota
+        limit: 0
+        timeFrame: account
+  - name: Growth
+    type: paid
+    price: 48
+    annualPrice: 38.40
+    currency: GBP
+    billingPeriod: monthly
+    description: Best for growing companies with higher API throughput needs
+    quotas:
+      - metric: api_requests_per_minute
+        type: quota
+        limit: 600
+        timeFrame: minute
+      - metric: users
+        type: quota
+        limit: 5
+        timeFrame: account
+      - metric: templates
+        type: quota
+        limit: 25
+        timeFrame: account
+      - metric: contacts
+        type: quota
+        limit: 50000
+        timeFrame: account
+      - metric: virtual_printer_items
+        type: quota
+        limit: 2500
+        timeFrame: account
+      - metric: webhooks
+        type: quota
+        limit: 2
+        timeFrame: account
+      - metric: customer_journeys
+        type: quota
+        limit: 2
+        timeFrame: account
+  - name: Premium
+    type: paid
+    price: 315
+    annualPrice: 252
+    currency: GBP
+    billingPeriod: monthly
+    description: High-volume plan with expanded users, contacts, and webhooks
+    quotas:
+      - metric: api_requests_per_minute
+        type: quota
+        limit: 2000
+        timeFrame: minute
+      - metric: users
+        type: quota
+        limit: 15
+        timeFrame: account
+      - metric: templates
+        type: quota
+        limit: 100
+        timeFrame: account
+      - metric: contacts
+        type: quota
+        limit: 100000
+        timeFrame: account
+      - metric: virtual_printer_items
+        type: quota
+        limit: -1
+        timeFrame: account
+        description: Unlimited
+      - metric: webhooks
+        type: quota
+        limit: 4
+        timeFrame: account
+      - metric: customer_journeys
+        type: quota
+        limit: 4
+        timeFrame: account
+  - name: Enterprise
+    type: enterprise
+    price: 0
+    currency: GBP
+    billingPeriod: custom
+    description: Bespoke contracted plans for large send volumes, 1yr/3yr/5yr contracts
+    quotas:
+      - metric: api_requests_per_minute
+        type: quota
+        limit: 3000
+        timeFrame: minute
+      - metric: users
+        type: quota
+        limit: -1
+        timeFrame: account
+        description: Custom
+      - metric: contacts
+        type: quota
+        limit: 250000
+        timeFrame: account
+      - metric: virtual_printer_items
+        type: quota
+        limit: -1
+        timeFrame: account
+        description: Unlimited
+      - metric: webhooks
+        type: quota
+        limit: -1
+        timeFrame: account
+        description: Unlimited
+      - metric: customer_journeys
+        type: quota
+        limit: 10
+        timeFrame: account
+perItemPricing:
+  description: >
+    Per-item send costs for letters (UK pricing). Lower per-item prices are
+    available on paid plans vs the Free plan. Postcards are priced separately.
+  letters:
+    currency: GBP
+    tiers:
+      - volumeMin: 1
+        volumeMax: 2500
+        freePrice: 0.88
+        paidPrice: 0.82
+      - volumeMin: 2501
+        volumeMax: 9999
+        freePrice: 0.88
+        paidPrice: 0.48
+      - volumeMin: 10000
+        volumeMax: 49999
+        freePrice: 0.88
+        paidPrice: 0.44
+      - volumeMin: 50000
+        volumeMax: -1
+        freePrice: 0.88
+        paidPrice: 0.38
+addOns:
+  - name: API Rate Limit Increase to 2000/min
+    price: 75
+    currency: USD
+    billingPeriod: monthly
+    description: Add-on to increase API rate limit to 2000 requests per minute

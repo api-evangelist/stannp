@@ -1,0 +1,82 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+provider: Stannp
+providerId: stannp
+created: '2026-06-12'
+modified: '2026-06-12'
+description: >
+  Stannp follows a hybrid billing model combining a recurring subscription fee
+  (platform access, rate limits, user seats) with per-item metered charges for
+  each physical mail piece dispatched. Cost optimization requires balancing
+  subscription tier against actual send volume and API throughput requirements.
+billingModel:
+  type: hybrid
+  description: >
+    Monthly or annual subscription for platform access plus per-item metered
+    charges per letter or postcard dispatched. Annual billing provides a 20%
+    discount on subscription fees.
+  components:
+    - name: Platform Subscription
+      type: recurring
+      billingPeriod: monthly
+      description: Fixed monthly fee for plan tier covering users, templates, rate limits, and contacts
+    - name: Per-Item Dispatch
+      type: metered
+      unit: mail_piece
+      description: >
+        Variable cost per physical letter or postcard dispatched. Price per
+        item decreases at higher volume tiers and is lower on paid plans vs
+        the Free plan.
+focusColumns:
+  - ChargeType: Usage
+  - ServiceName: Stannp Direct Mail API
+  - ServiceCategory: Marketing / Physical Mail
+  - ResourceType: MailPiece
+  - Region: EU (api-eu1.stannp.com)
+  - BilledCurrency: GBP
+  - ListUnitPrice: variable by volume tier and plan
+  - ConsumedQuantity: count of letters/postcards dispatched
+meters:
+  - name: api_requests
+    unit: request
+    description: API calls made against any Stannp API endpoint per minute window
+    granularity: per-minute
+    rateLimitEnforced: true
+  - name: mail_pieces_dispatched
+    unit: piece
+    description: Physical letters or postcards queued for print and delivery
+    granularity: per-item
+    billedOn: dispatch
+  - name: contacts_stored
+    unit: contact
+    description: Recipient records stored in the platform across groups
+    granularity: account-total
+    limitEnforced: true
+  - name: webhooks_active
+    unit: webhook
+    description: Active webhook endpoints registered for event delivery
+    granularity: account-total
+    limitEnforced: true
+principles:
+  Visibility:
+    description: >
+      Account balance and spend are accessible via GET /accounts/balance.
+      Webhook events provide real-time tracking of mail piece status and
+      delivery, enabling cost attribution per campaign or recipient group.
+    endpoints:
+      - GET /accounts/balance
+      - GET /campaigns/list
+      - GET /reporting/summary
+  Optimization:
+    description: >
+      Annual billing reduces subscription cost by 20%. Volume-based per-item
+      pricing rewards higher send volumes with lower unit costs. Selecting the
+      appropriate plan tier avoids overpaying for unused rate limit headroom.
+      Using idempotency keys prevents duplicate dispatches that would incur
+      unnecessary per-item charges.
+    recommendations:
+      - Switch to annual billing for a 20% subscription discount
+      - Match plan tier to actual API throughput requirements
+      - Use volume batching to reach lower per-item price tiers
+      - Implement idempotency keys on all POST dispatch calls
+      - Monitor account balance via API to prevent service interruption
