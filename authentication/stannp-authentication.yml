@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/stannp-direct-mail-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: Use your API key as the username and leave the password blank.
+  sources:
+  - openapi/stannp-direct-mail-api-openapi.yml

@@ -60,6 +60,12 @@ apis:
       - type: JSONLDContext
         url: json-ld/stannp-context.jsonld
 common:
+  - type: TrustCenter
+    url: security/stannp-trust-center.yml
+  - type: DomainSecurity
+    url: security/stannp-domain-security.yml
+  - type: Authentication
+    url: authentication/stannp-authentication.yml
   - type: Website
     url: https://www.stannp.com
   - type: Documentation
