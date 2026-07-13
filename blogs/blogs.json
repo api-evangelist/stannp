@@ -2,11 +2,11 @@
   "repo": "stannp",
   "feeds": [
     {
-      "source": "https://go.stannp.com/blogs",
+      "source": "https://go.stannp.com/blogs/rss.xml",
       "feed_url": "https://go.stannp.com/blogs/rss.xml",
       "title": "",
       "saved": 0,
-      "method": "discovered"
+      "method": "feed"
     },
     {
       "source": "https://twitter.com/stannpdm",
@@ -16,6 +16,6 @@
       "method": "none"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-27T12:03:07Z"
+  "post_count": 10,
+  "fetched": "2026-07-11T11:50:51Z"
 }
