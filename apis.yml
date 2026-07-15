@@ -60,6 +60,8 @@ apis:
       - type: JSONLDContext
         url: json-ld/stannp-context.jsonld
 common:
+  - type: AgenticAccess
+    url: agentic-access/stannp-agentic-access.yml
   - type: TrustCenter
     url: security/stannp-trust-center.yml
   - type: DomainSecurity
