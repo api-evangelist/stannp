@@ -1,0 +1,26 @@
+{
+  "provider": "stannp",
+  "sources": [
+    "stannp-account-api-openapi.yml",
+    "stannp-campaigns-api-openapi.yml",
+    "stannp-events-api-openapi.yml",
+    "stannp-groups-api-openapi.yml",
+    "stannp-letters-api-openapi.yml",
+    "stannp-postcards-api-openapi.yml",
+    "stannp-recipients-api-openapi.yml"
+  ],
+  "outputs": [
+    "stannp-account-api-openapi.yml",
+    "stannp-campaigns-api-openapi.yml",
+    "stannp-events-api-openapi.yml",
+    "stannp-groups-api-openapi.yml",
+    "stannp-letters-api-openapi.yml",
+    "stannp-postcards-api-openapi.yml",
+    "stannp-recipients-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
