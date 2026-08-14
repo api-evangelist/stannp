@@ -34,9 +34,14 @@ tags:
   - Physical Mail
   - Marketing Automation
   - Campaigns
+  - Address Verification
+  - SMS
+  - Webhooks
+  - Mailing Lists
+  - Fulfillment
 url: https://raw.githubusercontent.com/api-evangelist/stannp/refs/heads/main/apis.yml
 created: '2026-06-12'
-modified: '2026-06-12'
+modified: '2026-08-13'
 specificationVersion: '0.19'
 apis:
 - aid: stannp:stannp-account-api
@@ -49,6 +54,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/stannp-account-api-openapi.yml
+  - type: Overlay
+    url: overlays/stannp-account-api-overlay.yaml
   - type: Documentation
     url: https://www.stannp.com/us/direct-mail-api/guide
   - type: JSONSchema
@@ -71,6 +78,10 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/stannp-campaigns-api-openapi.yml
+  - type: Overlay
+    url: overlays/stannp-campaigns-api-overlay.yaml
+  - type: AgentSkill
+    url: skills/stannp-build-and-book-a-campaign.md
   - type: Documentation
     url: https://www.stannp.com/us/direct-mail-api/guide
   - type: JSONSchema
@@ -93,6 +104,10 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/stannp-events-api-openapi.yml
+  - type: Overlay
+    url: overlays/stannp-events-api-overlay.yaml
+  - type: Webhooks
+    url: asyncapi/stannp-webhooks.yml
   - type: Documentation
     url: https://www.stannp.com/us/direct-mail-api/guide
   - type: JSONSchema
@@ -115,6 +130,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/stannp-groups-api-openapi.yml
+  - type: Overlay
+    url: overlays/stannp-groups-api-overlay.yaml
   - type: Documentation
     url: https://www.stannp.com/us/direct-mail-api/guide
   - type: JSONSchema
@@ -137,6 +154,10 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/stannp-letters-api-openapi.yml
+  - type: Overlay
+    url: overlays/stannp-letters-api-overlay.yaml
+  - type: AgentSkill
+    url: skills/stannp-send-a-transactional-letter.md
   - type: Documentation
     url: https://www.stannp.com/us/direct-mail-api/guide
   - type: JSONSchema
@@ -159,6 +180,10 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/stannp-postcards-api-openapi.yml
+  - type: Overlay
+    url: overlays/stannp-postcards-api-overlay.yaml
+  - type: AgentSkill
+    url: skills/stannp-send-a-single-postcard.md
   - type: Documentation
     url: https://www.stannp.com/us/direct-mail-api/guide
   - type: JSONSchema
@@ -181,6 +206,10 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/stannp-recipients-api-openapi.yml
+  - type: Overlay
+    url: overlays/stannp-recipients-api-overlay.yaml
+  - type: AgentSkill
+    url: skills/stannp-sync-recipients-and-track-engagement.md
   - type: Documentation
     url: https://www.stannp.com/us/direct-mail-api/guide
   - type: JSONSchema
@@ -198,14 +227,60 @@ common:
     url: agentic-access/stannp-agentic-access.yml
   - type: TrustCenter
     url: security/stannp-trust-center.yml
+  - type: Compliance
+    url: https://www.stannp.com/us/accreditations
   - type: DomainSecurity
     url: security/stannp-domain-security.yml
+  - type: VulnerabilityDisclosure
+    url: security/stannp-vulnerability-disclosure.yml
+  - type: Security
+    url: https://www.stannp.com/us/trust
   - type: Authentication
     url: authentication/stannp-authentication.yml
+  - type: Conventions
+    url: conventions/stannp-conventions.yml
+  - type: Idempotency
+    url: conventions/stannp-conventions.yml
+  - type: ErrorCatalog
+    url: errors/stannp-problem-types.yml
+  - type: DataModel
+    url: data-model/stannp-data-model.yml
+  - type: Conformance
+    url: conformance/stannp-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/stannp-lifecycle.yml
+  - type: StatusPage
+    url: https://status.stannp.com/
+  - type: Sandbox
+    url: sandbox/stannp-sandbox.yml
+  - type: Webhooks
+    url: asyncapi/stannp-webhooks.yml
+  - type: Packages
+    url: packages/stannp-packages.yml
+  - type: SDKs
+    url: packages/stannp-packages.yml
+  - type: MCPServer
+    url: mcp/stannp-mcp.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: LLMsTxt
+    url: llms/stannp-llms.txt
   - type: Website
     url: https://www.stannp.com
+  - type: DeveloperPortal
+    url: https://www.stannp.com/us/developer-tools
   - type: Documentation
     url: https://www.stannp.com/us/direct-mail-api/guide
+  - type: APIReference
+    url: https://www.stannp.com/us/direct-mail-api/postcards
+  - type: GettingStarted
+    url: https://www.stannp.com/us/direct-mail-api/guide#introduction
+  - type: Support
+    url: https://www.stannp.com/us/support
+  - type: HelpCenter
+    url: https://knowledge.stannp.com/us
+  - type: Integrations
+    url: https://www.stannp.com/us/integrations
   - type: GitHubOrganization
     url: https://github.com/Stannp
   - type: LinkedIn
@@ -213,11 +288,19 @@ common:
   - type: X
     url: https://twitter.com/stannpdm
   - type: Blog
-    url: https://go.stannp.com/blogs
+    url: https://go.stannp.com/en-us/blogs
   - type: Pricing
-    url: https://www.stannp.com/us/pricing-tiers
+    url: https://www.stannp.com/us/pricing
   - type: Plans
     url: plans/stannp-plans-pricing.yml
+  - type: SignUp
+    url: https://app-us1.stannp.com/register
+  - type: Login
+    url: https://app-us1.stannp.com/login
+  - type: TermsOfService
+    url: https://www.stannp.com/us/terms-of-service
+  - type: PrivacyPolicy
+    url: https://www.stannp.com/us/privacy-policy
   - type: RateLimits
     url: rate-limits/stannp-rate-limits.yml
   - type: FinOps
@@ -225,3 +308,8 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 25
+  pass: local-v1
