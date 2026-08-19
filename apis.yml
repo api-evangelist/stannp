@@ -42,7 +42,7 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/stannp/refs/heads/main/apis.yml
 created: '2026-06-12'
 modified: '2026-08-13'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: stannp:stannp-account-api
   name: Stannp Account API
