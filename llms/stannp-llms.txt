@@ -1,0 +1,87 @@
+# Stannp
+
+> Stannp is a direct mail platform that prints and posts physical postcards,
+> letters and self-mailers programmatically over a JSON REST API, with regional
+> API hosts for the EU/UK (api-eu1.stannp.com) and the US/CA
+> (api-us1.stannp.com). It also sends SMS, validates postal addresses, records
+> recipient engagement events and pushes signed webhooks for mailpiece and
+> campaign status.
+
+Provenance: Stannp does NOT serve /llms.txt — https://www.stannp.com/llms.txt
+returns HTTP 404 (probed 2026-08-13), as does https://go.stannp.com/llms.txt.
+Stannp DOES publish its own LLM-optimised API reference at
+https://www.stannp.com/stannp-api-llm.md (HTTP 200, linked from the API guide as
+"Download API spec for LLMs"); that document is saved verbatim in this repo at
+llms/stannp-api-llm.md and is the authoritative source for everything below.
+This file is the llms.txt-format index API Evangelist generated over it.
+
+Authentication: every request needs the account API key, sent either as HTTP
+Basic auth with the key as the username and an empty password (`-u {API_KEY}:`)
+or as an `api_key` query parameter. HTTPS is mandatory; plain HTTP requests fail
+and may suspend the key. Base path is `/v1/` on either regional host.
+
+## Provider
+
+- [Stannp](https://www.stannp.com): Company website
+- [Developer tools](https://www.stannp.com/us/developer-tools): Developer landing page
+- [API guide](https://www.stannp.com/us/direct-mail-api/guide): Quick guides — introduction, authentication, responses, first mailing, rate limits, idempotency keys
+- [Pricing](https://www.stannp.com/us/detailed-pricing): Subscription tiers, volume item pricing, per-plan API rate limits and webhook allowances
+- [Service status](https://status.stannp.com/): Live uptime and incident history
+- [Trust center](https://www.stannp.com/us/trust): Security, compliance and data-protection posture
+- [Accreditations](https://www.stannp.com/us/accreditations): Royal Mail PAF, Royal Mail Mail Made Easy, USPS CASS, ICO registration ZA134992, HIPAA
+- [Integrations](https://www.stannp.com/us/integrations): Zapier, Make.com, HubSpot, Klaviyo, REST API
+
+## API reference
+
+- [LLM API reference (verbatim)](https://www.stannp.com/stannp-api-llm.md): Provider-published, machine-readable, complete
+- [Postcards](https://www.stannp.com/us/direct-mail-api/postcards): create, get, cancel
+- [Letters](https://www.stannp.com/us/direct-mail-api/letters): create, post (pre-merged PDF with OCR address extraction), get, cancel
+- [Recipients](https://www.stannp.com/us/direct-mail-api/recipients): list, get, new, delete, import
+- [Groups](https://www.stannp.com/us/direct-mail-api/groups): list, new, add, remove, purge, calculate, delete
+- [Campaigns](https://www.stannp.com/us/direct-mail-api/campaigns): list, get, create, sample, approve, cost, availableDates, book, delete
+- [Events](https://www.stannp.com/us/direct-mail-api/events): recipientEvents/create
+- [Selections](https://www.stannp.com/us/direct-mail-api/selections): auto-filter selections over a group
+- [Account](https://www.stannp.com/us/direct-mail-api/account): balance, topup
+- [Addresses](https://www.stannp.com/us/direct-mail-api/addresses): validate (UK, US, CA)
+- [Reporting](https://www.stannp.com/us/direct-mail-api/reporting): summary and list by date range, status and tag
+- [Files](https://www.stannp.com/us/direct-mail-api/files): upload, createFolder, folders
+- [SMS](https://www.stannp.com/us/direct-mail-api/sms): sms/create
+- [Tools](https://www.stannp.com/us/direct-mail-api/tools): qrcode/create, pdf/merge, templates/list
+- [Objects](https://www.stannp.com/us/direct-mail-api/objects): Mailpiece, Campaign and Recipient object models
+- [Webhooks](https://www.stannp.com/us/direct-mail-api/webhooks): campaign_status, mailpiece_status, recipient_events
+- [Rate limits](https://www.stannp.com/us/direct-mail-api/rate-limit): 300 req/min baseline, X-RateLimit-* response headers
+- [Idempotency keys](https://www.stannp.com/us/direct-mail-api/idempotency-keys): optional idempotency_key, replay returns the original body with HTTP 409
+
+## Specs and artifacts (API Evangelist)
+
+- [Account API OpenAPI](openapi/stannp-account-api-openapi.yml)
+- [Postcards API OpenAPI](openapi/stannp-postcards-api-openapi.yml)
+- [Letters API OpenAPI](openapi/stannp-letters-api-openapi.yml)
+- [Recipients API OpenAPI](openapi/stannp-recipients-api-openapi.yml)
+- [Groups API OpenAPI](openapi/stannp-groups-api-openapi.yml)
+- [Campaigns API OpenAPI](openapi/stannp-campaigns-api-openapi.yml)
+- [Events API OpenAPI](openapi/stannp-events-api-openapi.yml)
+- [Conventions](conventions/stannp-conventions.yml): auth, idempotency, pagination, error envelope, rate-limit signalling
+- [Authentication](authentication/stannp-authentication.yml)
+- [Error catalog](errors/stannp-problem-types.yml)
+- [Webhook catalog](asyncapi/stannp-webhooks.yml)
+- [Sandbox / test mode](sandbox/stannp-sandbox.yml)
+- [Data model](data-model/stannp-data-model.yml)
+- [Lifecycle](lifecycle/stannp-lifecycle.yml)
+- [Conformance](conformance/stannp-conformance.yml)
+- [Packages / SDKs](packages/stannp-packages.yml)
+- [Agent skills](skills/_index.yml)
+
+## SDKs
+
+- [PHP SDK](https://github.com/Stannp/stannp-php): first-party, Packagist `stannp/stannp-php`, v0.1.5 (2022-03-09)
+- [Go SDK](https://github.com/Stannp/stannp-go): first-party, untagged, last commit 2017-02-16
+- [C# SDK](https://github.com/Stannp/stannp-c-sharp): first-party, source only, no NuGet package
+
+## Optional
+
+- [Knowledge base](https://knowledge.stannp.com/us)
+- [Support](https://www.stannp.com/us/support)
+- [Blog](https://go.stannp.com/en-us/blogs)
+- [Terms of service](https://www.stannp.com/us/terms-of-service)
+- [Privacy policy](https://www.stannp.com/us/privacy-policy)

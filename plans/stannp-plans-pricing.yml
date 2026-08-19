@@ -2,9 +2,32 @@ specification: API Commons Plans
 specificationVersion: '0.1'
 provider: Stannp
 providerId: stannp
+generated: '2026-08-13'
+method: searched
+source: https://www.stannp.com/uk/detailed-pricing
+docs:
+  uk: https://www.stannp.com/uk/detailed-pricing
+  us: https://www.stannp.com/us/detailed-pricing
+  calculator: https://www.stannp.com/us/pricing
 created: '2026-06-12'
-modified: '2026-06-12'
+modified: '2026-08-13'
 reconciled: true
+plan_count: 5
+currency_note: >-
+  The subscription tiers below are the UK/GBP price card. Stannp publishes the
+  same five tiers in USD on https://www.stannp.com/us/detailed-pricing at $0 /
+  $12 / $48 / $315 / custom per month, with identical entitlements (users,
+  templates, contacts, virtual-printer items, webhooks, customer journeys and
+  API rate limit) — the per-item send prices differ by market and postal
+  carrier. Annual billing saves 20% in both markets.
+verified: '2026-08-13'
+verified_note: >-
+  Tier names, monthly prices, per-plan API rate limits (300 / 300 / 600 / 2,000 /
+  3,000 per minute), webhook allowances (0 / 0 / 2 / 4 / unlimited), users,
+  templates, contacts and virtual-printer items re-confirmed against the live
+  plan-comparison table on 2026-08-13. NOTE: the previous apis.yml `Pricing`
+  pointer, https://www.stannp.com/us/pricing-tiers, now returns HTTP 404 and has
+  been repointed at https://www.stannp.com/us/pricing.
 type: freemium
 description: >
   Stannp offers a freemium tiered subscription model. The Free plan allows

@@ -1,0 +1,143 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.stannp.com/us/direct-mail-api/webhooks
+also: https://www.stannp.com/stannp-api-llm.md
+spec_type: Webhooks
+asyncapi_published: false
+asyncapi_note: >-
+  Stannp publishes NO AsyncAPI document. Probed /asyncapi.yaml and the
+  /.well-known/ surface on www.stannp.com, api-eu1.stannp.com and
+  api-us1.stannp.com on 2026-08-13 — nothing served. This artifact is the
+  webhook catalog captured verbatim from Stannp's own webhook reference; no
+  AsyncAPI is fabricated here.
+surface: webhooks
+transport: HTTP POST to a subscriber-configured URL
+management: >-
+  Webhooks are created and managed in the Stannp account settings UI. There is
+  no documented API operation to create, list or delete a webhook subscription —
+  the event surface is configured by a human, not by an agent.
+subscription_limits:
+  note: Webhook allowance is a plan entitlement, not a rate limit.
+  by_plan:
+    Free: 0
+    Starter: 0
+    Growth: 2
+    Premium: 4
+    Enterprise: unlimited
+  source: https://www.stannp.com/us/detailed-pricing
+registration_handshake:
+  description: >-
+    On creation Stannp sends a validation POST to the target URL and requires an
+    HTTP 200 response. If 200 is not returned, the webhook is not created.
+  payload:
+    webhook_id: 0
+    event: test_url
+    created: 'YYYY-MM-DD HH:MM:SS'
+    retries: 0
+envelope:
+  description: >-
+    Every delivery carries the same four scalar fields plus ONE array whose key
+    name varies by event type. The array is always present even for a single
+    object.
+  fields:
+    - name: webhook_id
+      type: integer
+      description: The subscription that produced this delivery.
+    - name: event
+      type: string
+      description: The event type name.
+    - name: created
+      type: string
+      description: Delivery timestamp, "YYYY-MM-DD HH:MM:SS".
+    - name: retries
+      type: integer
+      description: Current retry attempt number for this delivery.
+    - name: <event key>
+      type: array
+      description: >-
+        `mailpieces`, `campaigns` or `events` depending on the event type. A
+        consumer must key off `event` to know which array to read.
+events:
+  - name: mailpiece_status
+    array_key: mailpieces
+    payload_object: Mailpiece
+    payload_object_ref: data-model/stannp-data-model.yml
+    description: Fires when a mailpiece status changes.
+    statuses:
+      - printing
+      - dispatched
+      - cancelled
+      - local_delivery
+      - delivered
+      - returned
+    example:
+      webhook_id: 1234
+      event: mailpiece_status
+      created: '2024-01-15 10:30:00'
+      retries: 0
+      mailpieces:
+        - '[mailpiece object]'
+  - name: campaign_status
+    array_key: campaigns
+    payload_object: Campaign
+    payload_object_ref: data-model/stannp-data-model.yml
+    description: Fires when a campaign status changes.
+    statuses:
+      - printing
+      - dispatched
+      - cancelled
+    example:
+      webhook_id: 1234
+      event: campaign_status
+      created: '2024-01-15 10:30:00'
+      retries: 0
+      campaigns:
+        - '[campaign object]'
+  - name: recipient_events
+    array_key: events
+    payload_object: RecipientEvent
+    description: >-
+      Fires when a new recipient event is recorded — including events the caller
+      itself posts through /v1/recipientEvents/create, which closes the
+      engagement loop back to the subscriber.
+    related_operation: openapi/stannp-events-api-openapi.yml#createRecipientEvent
+    example:
+      webhook_id: 1234
+      event: recipient_events
+      created: '2024-01-15 10:30:00'
+      retries: 0
+      events:
+        - '[event object]'
+security:
+  signed: true
+  header: X-Stannp-Signature
+  algorithm: HMAC-SHA256
+  signed_payload: the raw request body
+  secret: set by the subscriber when creating the webhook
+  verification: >-
+    Recompute the HMAC-SHA256 digest of the raw body against the stored secret
+    and compare with the X-Stannp-Signature header. Stannp explicitly instructs
+    using a constant-time comparator (it cites PHP's `hash_equals()`) rather
+    than `==`.
+  timestamp_in_signature: false
+  replay_protection: >-
+    Not documented. The signature covers the body only; `created` is inside the
+    body but Stannp documents no freshness window, so a consumer should
+    de-duplicate on the object IDs in the array.
+delivery:
+  chunking:
+    threshold: 50
+    description: >-
+      An event affecting more than 50 objects is split across multiple webhook
+      calls of up to 50 objects each. A consumer must not assume one delivery
+      equals one logical event.
+  retries:
+    attempts: 3
+    backoff: fixed 30 seconds between attempts
+    counter_field: retries
+  auto_pause:
+    threshold: 5 failures within 24 hours
+    effect: >-
+      The subscription is automatically paused and must be manually
+      re-subscribed through the Stannp platform. There is no API to resume it,
+      so a sustained endpoint outage silently ends event delivery.

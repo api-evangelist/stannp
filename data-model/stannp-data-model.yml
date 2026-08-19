@@ -1,0 +1,221 @@
+generated: '2026-08-13'
+method: derived
+source:
+  - openapi/stannp-account-api-openapi.yml
+  - openapi/stannp-campaigns-api-openapi.yml
+  - openapi/stannp-events-api-openapi.yml
+  - openapi/stannp-groups-api-openapi.yml
+  - openapi/stannp-letters-api-openapi.yml
+  - openapi/stannp-postcards-api-openapi.yml
+  - openapi/stannp-recipients-api-openapi.yml
+enriched_from: https://www.stannp.com/us/direct-mail-api/objects
+summary: >-
+  Derived from OpenAPI `$ref` links plus the id-reference fields the provider
+  documents on its Objects page. Stannp's core is a small, flat graph: an
+  Account owns Groups of Recipients; a Campaign binds one Group to one Template
+  and fans out into Mailpieces; a single-send Postcard or Letter is a Mailpiece
+  created without a Campaign. Identifiers are plain incrementing integers with
+  NO type prefix, so an ID carries no information about which entity it belongs
+  to and cannot be routed by inspection.
+id_convention:
+  style: opaque incrementing integer
+  prefixes: none
+  serialization: >-
+    Inconsistent — IDs come back as JSON strings in some responses ("id": "1943"
+    on a recipient, "id": "266" on a created campaign) and as JSON numbers in
+    others ("id": 16818211 on a mailpiece). Clients must coerce.
+  caller_owned_alternate:
+    field: ref_id
+    on: Recipient
+    description: >-
+      A caller-supplied external reference. `recipientEvents/create` accepts
+      either a Stannp recipient_id or a ref_id, which is the documented seam for
+      joining Stannp to a CRM.
+entities:
+  - name: Account
+    schema: null
+    description: >-
+      The billing and tenancy root. Not a fetchable resource — it is exposed only
+      through /v1/accounts/balance, /v1/accounts/topup and /v1/users/me, and
+      appears as an `account_id` foreign key on Recipient, Group, Campaign and
+      Mailpiece.
+    operations:
+      - openapi/stannp-account-api-openapi.yml#getAccountBalance
+      - openapi/stannp-account-api-openapi.yml#topUpBalance
+      - openapi/stannp-account-api-openapi.yml#getCurrentUser
+  - name: Recipient
+    schema: components.schemas.Recipient
+    input_schema: components.schemas.RecipientInput
+    json_schema: json-schema/recipient.json
+    description: >-
+      A postal addressee. Carries name, company, job_title, address1-3, city,
+      county, country, postcode/zipcode, dps (Delivery Point Suffix), email,
+      phone_number, ref_id, blacklist, created, updated. Custom fields are
+      permitted and become mail-merge variables.
+    operations:
+      - openapi/stannp-recipients-api-openapi.yml#listRecipients
+      - openapi/stannp-recipients-api-openapi.yml#getRecipient
+      - openapi/stannp-recipients-api-openapi.yml#createRecipient
+      - openapi/stannp-recipients-api-openapi.yml#deleteRecipient
+      - openapi/stannp-recipients-api-openapi.yml#importRecipients
+  - name: Group
+    schema: components.schemas.Group
+    description: >-
+      A mailing list. Carries derived counters maintained by Stannp —
+      recipients, valid, international, skipped, status, import_progress,
+      is_seeds — which are refreshed by recalculateGroup rather than on write.
+    operations:
+      - openapi/stannp-groups-api-openapi.yml#listGroups
+      - openapi/stannp-groups-api-openapi.yml#createGroup
+      - openapi/stannp-groups-api-openapi.yml#addRecipientsToGroup
+      - openapi/stannp-groups-api-openapi.yml#removeRecipientsFromGroup
+      - openapi/stannp-groups-api-openapi.yml#purgeGroup
+      - openapi/stannp-groups-api-openapi.yml#recalculateGroup
+      - openapi/stannp-groups-api-openapi.yml#deleteGroup
+  - name: Campaign
+    schema: components.schemas.Campaign
+    json_schema: json-schema/campaign.json
+    description: >-
+      A batch send. Binds one Group and one Template to a format
+      (a6-postcard / a5-postcard / letter) and a send_date. Lifecycle: draft ->
+      approved -> provisioned -> scheduled -> running -> complete (also paused,
+      cancelled).
+    operations:
+      - openapi/stannp-campaigns-api-openapi.yml#listCampaigns
+      - openapi/stannp-campaigns-api-openapi.yml#getCampaign
+      - openapi/stannp-campaigns-api-openapi.yml#createCampaign
+      - openapi/stannp-campaigns-api-openapi.yml#getCampaignSample
+      - openapi/stannp-campaigns-api-openapi.yml#approveCampaign
+      - openapi/stannp-campaigns-api-openapi.yml#getCampaignCost
+      - openapi/stannp-campaigns-api-openapi.yml#getCampaignAvailableDates
+      - openapi/stannp-campaigns-api-openapi.yml#bookCampaign
+      - openapi/stannp-campaigns-api-openapi.yml#deleteCampaign
+  - name: Mailpiece
+    schema: components.schemas.MailpieceResponse.data
+    json_schema: json-schema/mailpiece.json
+    description: >-
+      The unit of physical output — a postcard, letter, self-mailer or greeting
+      card. Carries id, timestamp, status, type, format, pdf_file, dispatched,
+      country, cost, addons, tags, template_id, campaign_id, recipient_id,
+      tracking_ref, production_ref, transactional, class, updated and a
+      `tracking` array. Status ladder: received -> producing/printing ->
+      handed_over -> local_delivery -> delivered, plus returned and cancelled.
+    operations:
+      - openapi/stannp-postcards-api-openapi.yml#createPostcard
+      - openapi/stannp-postcards-api-openapi.yml#getPostcard
+      - openapi/stannp-postcards-api-openapi.yml#cancelPostcard
+      - openapi/stannp-letters-api-openapi.yml#createLetter
+      - openapi/stannp-letters-api-openapi.yml#postLetter
+      - openapi/stannp-letters-api-openapi.yml#getLetter
+      - openapi/stannp-letters-api-openapi.yml#cancelLetter
+  - name: RecipientEvent
+    schema: null
+    description: >-
+      An engagement or conversion signal attached to a Recipient (PURCHASE,
+      SIGNUP, PAGE_VIEW, PRODUCT_VIEW, PRODUCT_TO_BASKET), optionally referencing
+      the Campaign or Mailpiece that drove it via `ref`. Write-only over the
+      API — there is no documented read operation.
+    operations:
+      - openapi/stannp-events-api-openapi.yml#createRecipientEvent
+  - name: Template
+    schema: null
+    documented_only: true
+    description: >-
+      A stored design. Referenced as `template` / `template_id` on postcards,
+      letters and campaigns. Listable via /v1/templates/list
+      (https://www.stannp.com/us/direct-mail-api/tools); not covered by any
+      OpenAPI in this repo.
+  - name: Selection
+    schema: null
+    documented_only: true
+    description: >-
+      A saved auto-filter over a Group, created with /v1/selections/new
+      (https://www.stannp.com/us/direct-mail-api/selections). Not covered by any
+      OpenAPI in this repo.
+relationships:
+  - from: Account
+    to: Group
+    kind: has_many
+    via: account_id
+  - from: Account
+    to: Recipient
+    kind: has_many
+    via: account_id
+  - from: Account
+    to: Campaign
+    kind: has_many
+    via: account_id
+  - from: Account
+    to: Mailpiece
+    kind: has_many
+    via: account_id
+  - from: Group
+    to: Recipient
+    kind: has_many
+    via: group_id
+    note: >-
+      Many-to-many in practice — addRecipientsToGroup / removeRecipientsFromGroup
+      attach an existing Recipient to additional Groups, and removing from a
+      Group does not delete the Recipient. purgeGroup and deleteGroup take a
+      `delete_recipients` flag that escalates the operation to a destructive
+      cross-group delete.
+  - from: Recipient
+    to: Group
+    kind: belongs_to
+    via: group_id
+  - from: Campaign
+    to: Group
+    kind: has_one
+    via: group_id
+    note: exposed on read as `recipients_group`
+  - from: Campaign
+    to: Template
+    kind: has_one
+    via: template_id
+  - from: Campaign
+    to: Mailpiece
+    kind: has_many
+    via: campaign_id
+  - from: Mailpiece
+    to: Campaign
+    kind: belongs_to
+    via: campaign_id
+    note: 0 for a single-send postcard or letter created outside a campaign
+  - from: Mailpiece
+    to: Recipient
+    kind: belongs_to
+    via: recipient_id
+    note: >-
+      0 when the create call supplied an inline `recipient[...]` object rather
+      than an existing recipient ID — an inline recipient is not persisted as a
+      Recipient record.
+  - from: Mailpiece
+    to: Template
+    kind: has_one
+    via: template_id
+  - from: RecipientEvent
+    to: Recipient
+    kind: belongs_to
+    via: recipient_id
+    note: accepts the Recipient `ref_id` in place of the Stannp id
+  - from: RecipientEvent
+    to: Campaign
+    kind: belongs_to
+    via: ref
+    note: >-
+      `ref` is a campaign OR mailpiece reference; when omitted Stannp attributes
+      the event to the recipient's most recent communication.
+  - from: Selection
+    to: Group
+    kind: belongs_to
+    via: group_id
+polymorphic_notes:
+  - >-
+    `recipient` on createPostcard/createLetter is a oneOf — an existing Recipient
+    integer id, or an inline recipient object. Only the first form creates a
+    durable Recipient relationship.
+  - >-
+    The `data` field of the response envelope is polymorphic across the whole
+    API (object, array, integer or string). See
+    conventions/stannp-conventions.yml.
+render: null

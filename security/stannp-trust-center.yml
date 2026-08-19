@@ -1,10 +1,96 @@
-generated: '2026-07-11'
+generated: '2026-08-13'
 method: searched
 probe: true
-source: https://www.stannp.com/uk/trust
-url: https://www.stannp.com/uk/trust
+source: https://www.stannp.com/us/trust
+url: https://www.stannp.com/us/trust
+alternate_urls:
+  - https://www.stannp.com/uk/trust
+  - https://www.stannp.com/ca-en/trust
+accreditations_page: https://www.stannp.com/us/accreditations
+description: >-
+  Stannp publishes a first-party trust center covering platform and
+  infrastructure security, US enterprise data protection, HIPAA, accreditations
+  and certifications, industry-specific compliance, published policies,
+  environmental sustainability and social responsibility. It is a content page
+  on stannp.com rather than a hosted trust portal (no Vanta/Drata/SafeBase
+  instance), and it does not offer downloadable audit reports or an NDA-gated
+  document room.
+certifications:
+  - HIPAA
+  - ISO 27001
+  - ISO 9001
+  - GDPR
+  - ICO registration ZA134992 (UK Data Processor)
+  - USPS CASS certification
+  - Royal Mail PAF accreditation
+  - Royal Mail Mail Made Easy partner
+  - SecurityScorecard A rating
+certifications_not_claimed:
+  - SOC 2
+  - PCI DSS
+  - FedRAMP
+  - CSA STAR
+sections:
+  - name: Platform & infrastructure security features
+    detail: >-
+      Encrypted transmission, secure cloud infrastructure, regular penetration
+      testing, 24/7 system monitoring.
+  - name: US Enterprise Grade Data Protection and Security Management
+    detail: >-
+      Access controls, data segregation, secure backup procedures, privacy
+      safeguards for customer information.
+  - name: HIPAA
+    detail: >-
+      Business Associate role, PHI safeguards, breach notification protocols,
+      workforce training, subprocessor due diligence.
+  - name: Accreditations and certifications
+    detail: Independently verified and regularly audited certifications.
+  - name: Industry solutions
+    detail: >-
+      Sector-specific compliance for healthcare, finance, retail and other
+      regulated industries.
+  - name: Our policies
+    detail: >-
+      Privacy Policy, Data Processing Agreement, Terms of Service and information
+      security policies.
+  - name: Environmental sustainability
+    detail: >-
+      Sustainable printing, carbon reduction (Forest Carbon, Carbon Capture),
+      responsible sourcing.
+  - name: Social and community
+    detail: Ethical business practices, community engagement, diversity and inclusion.
+security_contact:
+  channel: web form
+  url: https://www.stannp.com/us/trust
+  owner_role: Compliance Team (Compliance and Operations Director; Compliance Officer)
+  stated_purpose: >-
+    "Whether you need clarification on our data protection practices, want to
+    discuss compliance requirements, or need to report a security issue,
+    complete the form and we'll respond promptly."
+  see_also: security/stannp-vulnerability-disclosure.yml
 evidence:
-- source: https://www.stannp.com/uk/trust
-  keywords:
-  - trust centre
-  - compliance certification
+  - source: https://www.stannp.com/us/trust
+    status: 200
+    keywords:
+      - trust center
+      - security
+      - compliance
+      - HIPAA
+      - data protection
+      - penetration testing
+  - source: https://www.stannp.com/us/accreditations
+    status: 200
+    keywords:
+      - HIPAA
+      - ICO registration ZA134992
+      - USPS CASS
+      - Royal Mail PAF
+      - Mail Made Easy
+  - source: https://www.stannp.com/us/developer-tools
+    status: 200
+    keywords:
+      - weekly penetration testing
+      - two-factor authentication
+      - SFTP
+      - SecurityScorecard A Rating
+      - GDPR & ISO 9001/27001 compliant

@@ -1,0 +1,71 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Stannp Direct Mail Account Letters API
+  version: 1.0.0
+  x-generated: '2026-08-13'
+  x-method: generated
+  x-source: https://www.stannp.com/us/direct-mail-api/guide
+extends: openapi/stannp-letters-api-openapi.yml
+actions:
+- target: $.info
+  description: Record API Evangelist provenance and the artifacts derived from this spec.
+  update:
+    x-apievangelist-profile: https://apis.io/provider/stannp/
+    x-apievangelist-source: https://www.stannp.com/stannp-api-llm.md
+    x-apievangelist-artifacts:
+      conventions: conventions/stannp-conventions.yml
+      authentication: authentication/stannp-authentication.yml
+      errors: errors/stannp-problem-types.yml
+      rate-limits: rate-limits/stannp-rate-limits.yml
+      sandbox: sandbox/stannp-sandbox.yml
+      webhooks: asyncapi/stannp-webhooks.yml
+      data-model: data-model/stannp-data-model.yml
+      llms: llms/stannp-llms.txt
+- target: $.components.securitySchemes
+  description: 'Stannp documents a second, spec-absent auth transport: the API key may be sent as an `api_key`
+    query parameter instead of HTTP Basic. Added here rather than in the harvested spec. See authentication/stannp-authentication.yml.'
+  update:
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: 'Alternative to HTTP Basic: append ?api_key={API_KEY}. Documented at https://www.stannp.com/us/direct-mail-api/guide.
+        Note that a key in the query string is logged by proxies, CDNs and access logs; HTTP Basic is
+        the safer option.'
+- target: $.servers
+  description: Region is selected by host, not by parameter, and a key authenticates only against the
+    region it was issued in.
+  update:
+  - url: https://api-us1.stannp.com/v1
+    description: 'US / CA API server. Defaults: US-LETTER letters, 4x6 postcards.'
+  - url: https://api-eu1.stannp.com/v1
+    description: 'EU / UK API server. Defaults: A4 letters, A6 postcards.'
+- target: $.tags[?(@.name=='Letters')]
+  description: Cross-link the tag to the API Evangelist data model.
+  update:
+    x-apievangelist-data-model: data-model/stannp-data-model.yml
+- target: $.paths['/letters/create'].post
+  description: Stannp supports idempotent retries on this operation via an `idempotency_key` request parameter.
+    A replay returns the ORIGINAL response body with HTTP 409 — treat 409 as success, not failure.
+  update:
+    x-idempotency:
+      supported: true
+      mechanism: request-parameter
+      parameter: idempotency_key
+      replay_status: 409
+      replay_body: original response body
+      match: full request body
+      docs: https://www.stannp.com/us/direct-mail-api/idempotency-keys
+    x-test-mode:
+      parameter: test
+      default: false
+      effect: returns a proof PDF, dispatches nothing, charges nothing
+      warning: test defaults to false — omitting it posts real physical mail
+- target: $.paths['/letters/post'].post
+  description: Record the test-mode flag on this dispatch operation.
+  update:
+    x-test-mode:
+      parameter: test
+      default: false
+      effect: returns a proof PDF, dispatches nothing, charges nothing
+      warning: test defaults to false — omitting it posts real physical mail

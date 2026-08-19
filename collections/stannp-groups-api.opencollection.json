@@ -1,0 +1,193 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stannp Direct Mail Account Groups API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-us1.stannp.com/v1/groups/list",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return"
+              }
+            ]
+          },
+          "docs": "Retrieve a paginated list of recipient groups."
+        },
+        {
+          "info": {
+            "name": "Create a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/groups/new",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "name",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create a new recipient group."
+        },
+        {
+          "info": {
+            "name": "Add recipients to group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/groups/add/:group_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "Group ID"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "recipients",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Add one or more existing recipients to a group."
+        },
+        {
+          "info": {
+            "name": "Remove recipients from group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/groups/remove/:group_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "Group ID"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "recipients",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Remove one or more recipients from a group."
+        },
+        {
+          "info": {
+            "name": "Purge a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/groups/purge",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                },
+                {
+                  "name": "delete_recipients",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Remove all recipients from a group, optionally deleting recipient records."
+        },
+        {
+          "info": {
+            "name": "Recalculate group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/groups/calculate/:group_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "Group ID"
+              }
+            ]
+          },
+          "docs": "Trigger a recalculation of group recipient counts and validity."
+        },
+        {
+          "info": {
+            "name": "Delete a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/groups/delete",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                },
+                {
+                  "name": "delete_recipients",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Delete a recipient group, optionally deleting associated recipient records."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

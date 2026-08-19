@@ -1,0 +1,91 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.stannp.com/us/direct-mail-api/guide
+versioning:
+  scheme: uri-path
+  current: v1
+  docs: https://www.stannp.com/us/direct-mail-api/guide
+  history: >-
+    v1 is the only version Stannp has ever published on the current API hosts.
+    No v0 or v2 is documented and no version-negotiation header exists.
+  regional_hosts:
+    - url: https://api-eu1.stannp.com/v1
+      region: EU / UK
+    - url: https://api-us1.stannp.com/v1
+      region: US / CA
+  note: >-
+    Region is selected by HOST rather than by version or parameter. A key issued
+    in one region does not authenticate against the other.
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  deprecated_operations: []
+  note: >-
+    No deprecation or sunset policy is published anywhere on stannp.com, and no
+    RFC 8594 Sunset/Deprecation header is documented. Searched the API guide,
+    every /us/direct-mail-api/* reference page, /us/terms-of-service and the
+    knowledge base. No operation in openapi/ carries `deprecated: true`. Recorded
+    as an honest absence — no `Deprecation` pointer is wired in apis.yml.
+changelog:
+  published: false
+  probed:
+    - url: https://www.stannp.com/us/direct-mail-api/changelog
+      status: 404
+    - url: https://www.stannp.com/us/release-notes
+      status: 404
+    - url: https://knowledge.stannp.com/us/changelog
+      status: 404
+  note: >-
+    No dated API changelog or release-notes page exists. The company blog
+    (https://go.stannp.com/en-us/blogs) is marketing content about direct mail,
+    not API release notes. No `ChangeLog` pointer is wired.
+status_page:
+  url: https://status.stannp.com/
+  status: 200
+  name: Stannp Service
+  features:
+    - live service status
+    - 90-day uptime calendar
+    - overall uptime for last 24 hours / 7 / 30 / 90 days
+    - incident history
+    - email subscription to status updates
+  machine_readable: false
+  machine_readable_note: >-
+    Not a Statuspage.io-hosted page — https://status.stannp.com/api/v2/summary.json
+    returns 404, so there is no JSON status feed an agent can poll. Status is
+    rendered client-side for humans only.
+  linked_from: >-
+    The site footer, as "Service status monitor", on every stannp.com page.
+sla:
+  url: https://www.stannp.com/us/detailed-pricing
+  uptime_target: null
+  note: >-
+    Stannp publishes no API uptime SLA. It does publish a PRODUCTION SLA — a
+    "24-hour production SLA" included on every subscription tier, which is a
+    commitment about printing and mailing turnaround, not about API
+    availability. Recorded distinctly so the two are not conflated.
+support:
+  channels:
+    - email: support.us@stannp.com
+    - phone: 888-321-2148
+    - webchat: 24/7 digital support (all plans)
+    - knowledge_base: https://knowledge.stannp.com/us
+    - support_page: https://www.stannp.com/us/support
+  api_integration_team: >-
+    Stannp advertises a dedicated API integration team available on paid tiers
+    (https://www.stannp.com/us/developer-tools).
+roadmap:
+  public: false
+  note: >-
+    No public roadmap. A "Product strategy group membership" is listed as a
+    higher-tier subscription entitlement on
+    https://www.stannp.com/us/detailed-pricing — roadmap input is a paid
+    entitlement, not a published artifact. No `Roadmap` pointer is wired.
+sdk_currency:
+  note: >-
+    The three first-party SDKs were last released in 2017 (Go, C#) and 2022
+    (PHP), while the documented API surface now includes SMS, Selections, Files,
+    Reporting, Addresses, QR/PDF tools and idempotency keys. See
+    packages/stannp-packages.yml.

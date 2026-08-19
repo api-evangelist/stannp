@@ -1,0 +1,135 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.stannp.com/us/direct-mail-api/guide
+also_derived_from:
+  - openapi/stannp-account-api-openapi.yml
+  - openapi/stannp-campaigns-api-openapi.yml
+  - openapi/stannp-events-api-openapi.yml
+  - openapi/stannp-groups-api-openapi.yml
+  - openapi/stannp-letters-api-openapi.yml
+  - openapi/stannp-postcards-api-openapi.yml
+  - openapi/stannp-recipients-api-openapi.yml
+format: custom-envelope
+rfc9457: false
+envelope:
+  shape: '{ "success": false, "error": "Error message" }'
+  fields:
+    - name: success
+      type: boolean
+      description: Always false on an error.
+    - name: error
+      type: string
+      description: A single human-readable message.
+  content_type: application/json
+  note: >-
+    There is no machine-readable error code, no error type URI, no field-level
+    validation detail and no problem+json media type. An agent has only the HTTP
+    status plus a free-text string, so error handling must branch on status and
+    treat `error` as opaque text. This is the largest agent-readiness gap on the
+    Stannp API.
+catalog_completeness: >-
+  Stannp publishes a status-code table, not an error-code registry. The five
+  statuses below are the complete documented set — confirmed identically in the
+  guide's "API responses" table and in the provider's own LLM reference at
+  https://www.stannp.com/stannp-api-llm.md. No error-code reference page exists.
+problems:
+  - status: 200
+    title: OK
+    description: 'Successful result. Returned with `{"success": true, "data": ...}`.'
+    documented: true
+  - status: 401
+    title: Unauthorized
+    description: Invalid API key or no API key provided.
+    documented: true
+    observed:
+      url: https://api-eu1.stannp.com/v1/openapi.json
+      body: >-
+        {"success":false,"error":"You need an API key or token to access this
+        service"}
+      note: >-
+        Observed live 2026-08-13 on an unauthenticated request. Confirms the
+        error envelope shape verbatim.
+    source_operations:
+      - openapi/stannp-account-api-openapi.yml#getAccountBalance
+      - openapi/stannp-account-api-openapi.yml#topUpBalance
+      - openapi/stannp-account-api-openapi.yml#getCurrentUser
+      - openapi/stannp-postcards-api-openapi.yml#createPostcard
+      - openapi/stannp-postcards-api-openapi.yml#getPostcard
+      - openapi/stannp-postcards-api-openapi.yml#cancelPostcard
+      - openapi/stannp-letters-api-openapi.yml#createLetter
+      - openapi/stannp-letters-api-openapi.yml#postLetter
+      - openapi/stannp-letters-api-openapi.yml#getLetter
+      - openapi/stannp-letters-api-openapi.yml#cancelLetter
+      - openapi/stannp-recipients-api-openapi.yml#listRecipients
+      - openapi/stannp-recipients-api-openapi.yml#getRecipient
+      - openapi/stannp-recipients-api-openapi.yml#createRecipient
+      - openapi/stannp-recipients-api-openapi.yml#deleteRecipient
+      - openapi/stannp-recipients-api-openapi.yml#importRecipients
+      - openapi/stannp-groups-api-openapi.yml#listGroups
+      - openapi/stannp-groups-api-openapi.yml#createGroup
+      - openapi/stannp-groups-api-openapi.yml#addRecipientsToGroup
+      - openapi/stannp-groups-api-openapi.yml#removeRecipientsFromGroup
+      - openapi/stannp-groups-api-openapi.yml#purgeGroup
+      - openapi/stannp-groups-api-openapi.yml#recalculateGroup
+      - openapi/stannp-groups-api-openapi.yml#deleteGroup
+      - openapi/stannp-campaigns-api-openapi.yml#listCampaigns
+      - openapi/stannp-campaigns-api-openapi.yml#getCampaign
+      - openapi/stannp-campaigns-api-openapi.yml#createCampaign
+      - openapi/stannp-campaigns-api-openapi.yml#getCampaignSample
+      - openapi/stannp-campaigns-api-openapi.yml#approveCampaign
+      - openapi/stannp-campaigns-api-openapi.yml#getCampaignCost
+      - openapi/stannp-campaigns-api-openapi.yml#getCampaignAvailableDates
+      - openapi/stannp-campaigns-api-openapi.yml#bookCampaign
+      - openapi/stannp-campaigns-api-openapi.yml#deleteCampaign
+      - openapi/stannp-events-api-openapi.yml#createRecipientEvent
+    remediation: >-
+      Re-check the API key and that it is sent as the HTTP Basic username with an
+      empty password, or as the `api_key` query parameter. Confirm the request is
+      HTTPS and that the key belongs to the same region as the host being called
+      (api-eu1 keys do not work on api-us1).
+  - status: 404
+    title: Not Found
+    description: Resource does not exist or was deleted.
+    documented: true
+    source_operations:
+      - openapi/stannp-postcards-api-openapi.yml#getPostcard
+      - openapi/stannp-letters-api-openapi.yml#getLetter
+      - openapi/stannp-recipients-api-openapi.yml#getRecipient
+      - openapi/stannp-campaigns-api-openapi.yml#getCampaign
+    remediation: Verify the ID and that the record was not deleted or purged.
+  - status: 409
+    title: Conflict — idempotent replay
+    description: >-
+      A duplicate idempotent request was detected. Stannp returns the ORIGINAL
+      response body with a 409 status rather than re-executing the operation.
+    documented: true
+    source: https://www.stannp.com/us/direct-mail-api/idempotency-keys
+    remediation: >-
+      Treat 409 as SUCCESS, not failure — the original mailpiece was already
+      created and the body of this response is that original result. Retrying
+      again will not create a second mailpiece as long as the idempotency_key
+      and the full request body are unchanged.
+    note: >-
+      This is the runtime semantic most likely to be mishandled by a generic
+      HTTP client, which will classify 4xx as an error and may fall back to a
+      non-idempotent retry — producing duplicate physical mail.
+  - status: 500
+    title: Internal Server Error
+    description: Something went wrong at Stannp's end.
+    documented: true
+    remediation: >-
+      Retry with backoff. A create call should carry the same `idempotency_key`
+      on retry so a request that succeeded server-side but failed in transit is
+      not duplicated.
+undocumented_gaps:
+  - concern: rate-limit exhaustion
+    detail: >-
+      Stannp documents the X-RateLimit-Limit / -Remaining / -Reset headers and
+      the per-plan limits, but publishes NO status code for exceeding the limit
+      and no Retry-After header. A client must derive its wait from
+      X-RateLimit-Reset rather than from an exhaustion response.
+  - concern: validation errors
+    detail: >-
+      Mandatory-parameter and address-validation failures are not given their own
+      status or code in the documented table; they surface as free text in
+      `error`.

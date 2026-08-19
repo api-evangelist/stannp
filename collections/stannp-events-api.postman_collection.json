@@ -1,0 +1,330 @@
+{
+  "item": [
+    {
+      "id": "679ae3da-bf14-4c46-8bd5-ea24ba0407d8",
+      "name": "Events",
+      "description": {
+        "content": "Record recipient engagement and conversion events",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "149992c1-df8c-484a-b337-c7d50937b0a8",
+          "name": "Create a recipient event",
+          "request": {
+            "name": "Create a recipient event",
+            "description": {
+              "content": "Record an engagement or conversion event for a recipient (e.g. PURCHASE, SIGNUP, PAGE_VIEW). Can be used to trigger automation and dynamic templating.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recipientEvents",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "recipient_id",
+                  "value": "<string>",
+                  "description": "(Required) Recipient ID or alternative reference ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) Event name (e.g. PURCHASE, SIGNUP, PAGE_VIEW, PRODUCT_VIEW, PRODUCT_TO_BASKET)"
+                },
+                {
+                  "disabled": false,
+                  "key": "value",
+                  "value": "<string>",
+                  "description": "Value information (e.g. purchase amount or product name)"
+                },
+                {
+                  "disabled": false,
+                  "key": "conversion",
+                  "value": "false",
+                  "description": "Whether this is a conversion event"
+                },
+                {
+                  "disabled": false,
+                  "key": "data",
+                  "value": "<string>",
+                  "description": "Extended JSON data for automation or dynamic templating"
+                },
+                {
+                  "disabled": false,
+                  "key": "ref",
+                  "value": "<string>",
+                  "description": "Campaign or mailpiece reference ID; recent communications used if omitted"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d6dd750d-f7d9-4b89-910d-d92633f51ff7",
+              "name": "Event created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipientEvents",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Recipient ID or alternative reference ID",
+                        "type": "text/plain"
+                      },
+                      "key": "recipient_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Event name (e.g. PURCHASE, SIGNUP, PAGE_VIEW, PRODUCT_VIEW, PRODUCT_TO_BASKET)",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "PURCHASE"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Value information (e.g. purchase amount or product name)",
+                        "type": "text/plain"
+                      },
+                      "key": "value",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether this is a conversion event",
+                        "type": "text/plain"
+                      },
+                      "key": "conversion",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Extended JSON data for automation or dynamic templating",
+                        "type": "text/plain"
+                      },
+                      "key": "data",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Campaign or mailpiece reference ID; recent communications used if omitted",
+                        "type": "text/plain"
+                      },
+                      "key": "ref",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": 8335\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea57c50e-66c0-4404-a119-d233e0b0c48f",
+              "name": "Authentication required or API key invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipientEvents",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Recipient ID or alternative reference ID",
+                        "type": "text/plain"
+                      },
+                      "key": "recipient_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Event name (e.g. PURCHASE, SIGNUP, PAGE_VIEW, PRODUCT_VIEW, PRODUCT_TO_BASKET)",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "PURCHASE"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Value information (e.g. purchase amount or product name)",
+                        "type": "text/plain"
+                      },
+                      "key": "value",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether this is a conversion event",
+                        "type": "text/plain"
+                      },
+                      "key": "conversion",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Extended JSON data for automation or dynamic templating",
+                        "type": "text/plain"
+                      },
+                      "key": "data",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Campaign or mailpiece reference ID; recent communications used if omitted",
+                        "type": "text/plain"
+                      },
+                      "key": "ref",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-us1.stannp.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "35df3ed6-aa8c-401a-834d-225f925147a4",
+    "name": "Stannp Direct Mail Account Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for programmatically sending physical letters and postcards, managing recipient groups, configuring campaigns, triggering individual mail pieces, and tracking delivery status through webhooks and event callbacks. Authentication uses API key-based HTTP Basic Auth over HTTPS.\n\n\nContact Support:\n Name: Stannp Support",
+      "type": "text/plain"
+    }
+  }
+}

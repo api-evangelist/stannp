@@ -1,0 +1,171 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stannp Direct Mail Account Letters API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Letters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a letter (template/HTML)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/letters/create",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "test",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "idempotency_key",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "template",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "background",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "pages",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "recipient",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "size",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "duplex",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "addons",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "tags",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create and dispatch a single letter using a template or HTML content. Use test=true to generate a preview PDF without charges.\n"
+        },
+        {
+          "info": {
+            "name": "Post a pre-merged letter (PDF)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/letters/post",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "country",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "pdf",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "test",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "addons",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "transactional",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Dispatch a letter using a pre-merged PDF file."
+        },
+        {
+          "info": {
+            "name": "Get a letter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-us1.stannp.com/v1/letters/get/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Mailpiece ID"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a single letter mailpiece."
+        },
+        {
+          "info": {
+            "name": "Cancel a letter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/letters/cancel",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Cancel a letter that has not yet been dispatched."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

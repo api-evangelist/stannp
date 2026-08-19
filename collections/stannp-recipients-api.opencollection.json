@@ -1,0 +1,151 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stannp Direct Mail Account Recipients API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Recipients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List recipients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-us1.stannp.com/v1/recipients/list",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by group ID"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return"
+              }
+            ]
+          },
+          "docs": "Retrieve a paginated list of recipients, optionally filtered by group."
+        },
+        {
+          "info": {
+            "name": "Get a recipient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-us1.stannp.com/v1/recipients/get/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Recipient ID"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a single recipient."
+        },
+        {
+          "info": {
+            "name": "Create a recipient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/recipients/new",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Add a new recipient, optionally to a mailing group."
+        },
+        {
+          "info": {
+            "name": "Delete a recipient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/recipients/delete",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Permanently delete a recipient record."
+        },
+        {
+          "info": {
+            "name": "Import recipients from file",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/recipients/import",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "group_id",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "duplicates",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "no_headings",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "mappings",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Bulk import recipients from a CSV or XLS file into a group."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

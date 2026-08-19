@@ -2,30 +2,62 @@ specification: API Commons Rate Limits
 specificationVersion: '0.1'
 provider: Stannp
 providerId: stannp
+generated: '2026-08-13'
+method: searched
+source: https://www.stannp.com/us/direct-mail-api/guide
+docs:
+  rate_limits: https://www.stannp.com/us/direct-mail-api/rate-limit
+  guide: https://www.stannp.com/us/direct-mail-api/guide
+  plans: https://www.stannp.com/us/detailed-pricing
 created: '2026-06-12'
-modified: '2026-06-12'
-description: >
-  Stannp enforces per-minute request rate limits that vary by subscription plan.
-  The baseline for most API endpoints is 300 requests per minute. Exceeding the
-  limit results in a 429 Too Many Requests response. Response headers indicate
-  remaining quota. An idempotency key header is supported for safe retries of
-  POST requests.
-retryAfter:
-  header: Retry-After
-  description: >
-    When a 429 is returned, the Retry-After header indicates how many seconds
-    to wait before retrying the request.
-throttled:
-  statusCode: 429
-  description: Too Many Requests — rate limit exceeded for the current window
+modified: '2026-08-13'
+limit_count: 4
+description: >-
+  Stannp applies a per-account, per-minute request limit that is a subscription
+  entitlement: 300 req/min on Free and Starter, 600 on Growth, 2,000 on Premium
+  and 3,000 on Enterprise. The current allowance is exposed on EVERY response
+  through three X-RateLimit-* headers, which is the signal an agent should read
+  — Stannp's published status-code table does not include a rate-limit
+  exhaustion code and no Retry-After header is documented, so a client must pace
+  itself from X-RateLimit-Reset rather than react to a throttle response.
+scope: account
+window: minute
+headers:
+  - name: X-RateLimit-Limit
+    description: Maximum requests allowed per window.
+    example: '200'
+    always_present: true
+  - name: X-RateLimit-Remaining
+    description: Requests remaining in the current window.
+    example: '158'
+    always_present: true
+  - name: X-RateLimit-Reset
+    description: Seconds until the rate limit window resets.
+    example: '46'
+    always_present: true
+header_note: >-
+  Documented verbatim at https://www.stannp.com/us/direct-mail-api/guide
+  ("The specific allowances can be seen in the following three response headers
+  which are returned with every request"). Stannp uses the de-facto
+  `X-RateLimit-*` family, not the IETF draft `RateLimit-*` form.
+exhaustion:
+  status_code: null
+  retry_after_header: false
+  note: >-
+    NOT DOCUMENTED. Stannp's published status table lists 200, 401, 404, 409 and
+    500 only; no 429 and no Retry-After appear anywhere in the API guide, the
+    rate-limit page or the provider's own LLM reference
+    (https://www.stannp.com/stannp-api-llm.md). Recorded as an honest gap. A
+    prior revision of this file asserted a 429 with Retry-After; that claim had
+    no published source and has been removed.
 limits:
   - scope: account
     metric: api_requests
     limit: 300
     timeFrame: minute
-    description: >
-      Default rate limit for all API endpoints on the Free and Starter plans.
-      Applies to the majority of API operations.
+    description: >-
+      Baseline for the majority of endpoints. Stannp states "the majority of our
+      API's allow up to 300 requests per minute".
     plans:
       - Free
       - Starter
@@ -33,33 +65,44 @@ limits:
     metric: api_requests
     limit: 600
     timeFrame: minute
-    description: Elevated rate limit for Growth plan subscribers.
+    description: Growth plan allowance.
     plans:
       - Growth
   - scope: account
     metric: api_requests
     limit: 2000
     timeFrame: minute
-    description: >
-      High-throughput rate limit for Premium plan subscribers and Growth
-      subscribers with the rate limit add-on.
+    description: >-
+      Premium plan allowance. Also reachable from a lower tier through the
+      paid rate-limit add-on. See plans/stannp-plans-pricing.yml.
     plans:
       - Premium
   - scope: account
     metric: api_requests
     limit: 3000
     timeFrame: minute
-    description: Enterprise-tier maximum rate limit for large-volume senders.
+    description: Enterprise plan allowance.
     plans:
       - Enterprise
-headers:
-  - name: X-RateLimit-Remaining
-    description: Number of requests remaining in the current rate limit window
-  - name: Retry-After
-    description: Seconds to wait before making another request after a 429 response
+per_endpoint_limits:
+  documented: false
+  note: >-
+    Stannp says the limit applies to "the majority" of endpoints, implying some
+    differ, but publishes no per-endpoint table.
 idempotency:
   supported: true
-  header: Idempotency-Key
-  description: >
-    Pass a unique Idempotency-Key header on POST requests to safely retry
-    without risk of duplicate mail pieces being dispatched.
+  mechanism: request-parameter
+  parameter: idempotency_key
+  replay_status: 409
+  replay_body: the original response body
+  description: >-
+    Pass a unique `idempotency_key` on a create request so a retry does not
+    dispatch a duplicate mail piece. Stannp compares the full request body, so
+    only byte-identical repeats are treated as replays. See
+    conventions/stannp-conventions.yml.
+  docs: https://www.stannp.com/us/direct-mail-api/idempotency-keys
+quotas_that_are_not_rate_limits:
+  note: >-
+    Contacts stored, templates, users, webhooks, virtual-printer items and
+    customer journeys are plan entitlements rather than request limits; they are
+    recorded in plans/stannp-plans-pricing.yml.

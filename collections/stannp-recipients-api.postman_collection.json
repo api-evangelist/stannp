@@ -1,0 +1,1359 @@
+{
+  "item": [
+    {
+      "id": "f97d14e3-88a5-4868-a827-6c1aa1bb1f85",
+      "name": "Recipients",
+      "description": {
+        "content": "Manage individual recipients and bulk imports",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9d171cca-df54-4df7-9b34-d0a8c1efc667",
+          "name": "List recipients",
+          "request": {
+            "name": "List recipients",
+            "description": {
+              "content": "Retrieve a paginated list of recipients, optionally filtered by group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recipients",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "group_id",
+                  "value": "<integer>",
+                  "description": "Filter by group ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Pagination offset"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e314bee-95e9-4657-acc5-5ae5de2837ac",
+              "name": "Recipients retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "group_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 8348,\n      \"account_id\": 4052,\n      \"title\": \"string\",\n      \"firstname\": \"string\",\n      \"lastname\": \"string\",\n      \"company\": \"string\",\n      \"job_title\": \"string\",\n      \"address1\": \"string\",\n      \"address2\": \"string\",\n      \"address3\": \"string\",\n      \"city\": \"string\",\n      \"county\": \"string\",\n      \"country\": \"string\",\n      \"zipcode\": \"string\",\n      \"dps\": \"string\",\n      \"email\": \"string\",\n      \"phone_number\": \"string\",\n      \"ref_id\": \"string\",\n      \"blacklist\": true,\n      \"created\": \"1988-08-18T11:52:58.341Z\",\n      \"updated\": \"2002-08-29T22:28:02.219Z\"\n    },\n    {\n      \"id\": 2257,\n      \"account_id\": 9862,\n      \"title\": \"string\",\n      \"firstname\": \"string\",\n      \"lastname\": \"string\",\n      \"company\": \"string\",\n      \"job_title\": \"string\",\n      \"address1\": \"string\",\n      \"address2\": \"string\",\n      \"address3\": \"string\",\n      \"city\": \"string\",\n      \"county\": \"string\",\n      \"country\": \"string\",\n      \"zipcode\": \"string\",\n      \"dps\": \"string\",\n      \"email\": \"string\",\n      \"phone_number\": \"string\",\n      \"ref_id\": \"string\",\n      \"blacklist\": false,\n      \"created\": \"2022-03-26T17:57:06.815Z\",\n      \"updated\": \"1981-10-26T05:01:40.395Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a40c1d7-85e1-46b5-86e8-3a1d2dab1db7",
+              "name": "Authentication required or API key invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "group_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f1c045c7-2d11-4e93-bc03-09f909c25e5f",
+          "name": "Get a recipient",
+          "request": {
+            "name": "Get a recipient",
+            "description": {
+              "content": "Retrieve details of a single recipient.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recipients",
+                "get",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Recipient ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7a9ab242-7967-4a08-9350-c1581652d17f",
+              "name": "Recipient retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    "get",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Recipient ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 9154,\n    \"account_id\": 5171,\n    \"title\": \"string\",\n    \"firstname\": \"string\",\n    \"lastname\": \"string\",\n    \"company\": \"string\",\n    \"job_title\": \"string\",\n    \"address1\": \"string\",\n    \"address2\": \"string\",\n    \"address3\": \"string\",\n    \"city\": \"string\",\n    \"county\": \"string\",\n    \"country\": \"string\",\n    \"zipcode\": \"string\",\n    \"dps\": \"string\",\n    \"email\": \"string\",\n    \"phone_number\": \"string\",\n    \"ref_id\": \"string\",\n    \"blacklist\": false,\n    \"created\": \"1985-01-15T12:25:50.050Z\",\n    \"updated\": \"2006-07-07T13:15:13.795Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a7ba08a-97eb-4450-a809-248a36e80450",
+              "name": "Authentication required or API key invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    "get",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Recipient ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f6474a2-398b-4bf0-af35-93933b7aaf64",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    "get",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Recipient ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "389332a2-2a3b-41c1-b071-d074a369eccf",
+          "name": "Create a recipient",
+          "request": {
+            "name": "Create a recipient",
+            "description": {
+              "content": "Add a new recipient, optionally to a mailing group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recipients",
+                "new"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "group_id",
+                  "value": "<integer>",
+                  "description": "Group to add the recipient to"
+                },
+                {
+                  "disabled": false,
+                  "key": "title",
+                  "value": "<string>",
+                  "description": "Title (Mr, Mrs, Dr, etc.)"
+                },
+                {
+                  "disabled": false,
+                  "key": "firstname",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lastname",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "company",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "job_title",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "address1",
+                  "value": "<string>",
+                  "description": "First line of address"
+                },
+                {
+                  "disabled": false,
+                  "key": "address2",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "address3",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "city",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "county",
+                  "value": "<string>",
+                  "description": "State or county"
+                },
+                {
+                  "disabled": false,
+                  "key": "postcode",
+                  "value": "<string>",
+                  "description": "Postcode or ZIP code"
+                },
+                {
+                  "disabled": false,
+                  "key": "zipcode",
+                  "value": "<string>",
+                  "description": "ZIP code (US alternative to postcode)"
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "ISO 3166-1 Alpha-2 country code"
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<email>"
+                },
+                {
+                  "disabled": false,
+                  "key": "phone_number",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ref_id",
+                  "value": "<string>",
+                  "description": "Custom external reference ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "on_duplicate",
+                  "value": "<string>",
+                  "description": "Behaviour when duplicate is found"
+                },
+                {
+                  "disabled": false,
+                  "key": "test_level",
+                  "value": "<string>",
+                  "description": "Field(s) used to detect duplicates"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8fd0e58b-5d30-4242-8a5f-f55a11c56abc",
+              "name": "Recipient created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    "new"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Group to add the recipient to",
+                        "type": "text/plain"
+                      },
+                      "key": "group_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Title (Mr, Mrs, Dr, etc.)",
+                        "type": "text/plain"
+                      },
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "firstname",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "lastname",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "company",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "job_title",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "First line of address",
+                        "type": "text/plain"
+                      },
+                      "key": "address1",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "address2",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "address3",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "State or county",
+                        "type": "text/plain"
+                      },
+                      "key": "county",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Postcode or ZIP code",
+                        "type": "text/plain"
+                      },
+                      "key": "postcode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "ZIP code (US alternative to postcode)",
+                        "type": "text/plain"
+                      },
+                      "key": "zipcode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "ISO 3166-1 Alpha-2 country code",
+                        "type": "text/plain"
+                      },
+                      "key": "country",
+                      "value": "US"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "phone_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Custom external reference ID",
+                        "type": "text/plain"
+                      },
+                      "key": "ref_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Behaviour when duplicate is found",
+                        "type": "text/plain"
+                      },
+                      "key": "on_duplicate",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Field(s) used to detect duplicates",
+                        "type": "text/plain"
+                      },
+                      "key": "test_level",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"id\": \"string\",\n    \"valid\": true,\n    \"created\": \"2015-04-25T12:46:06.160Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9622f1f6-24d0-4ef4-96ab-19f536108d75",
+              "name": "Authentication required or API key invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    "new"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Group to add the recipient to",
+                        "type": "text/plain"
+                      },
+                      "key": "group_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Title (Mr, Mrs, Dr, etc.)",
+                        "type": "text/plain"
+                      },
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "firstname",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "lastname",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "company",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "job_title",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "First line of address",
+                        "type": "text/plain"
+                      },
+                      "key": "address1",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "address2",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "address3",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "State or county",
+                        "type": "text/plain"
+                      },
+                      "key": "county",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Postcode or ZIP code",
+                        "type": "text/plain"
+                      },
+                      "key": "postcode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "ZIP code (US alternative to postcode)",
+                        "type": "text/plain"
+                      },
+                      "key": "zipcode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "ISO 3166-1 Alpha-2 country code",
+                        "type": "text/plain"
+                      },
+                      "key": "country",
+                      "value": "US"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "phone_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Custom external reference ID",
+                        "type": "text/plain"
+                      },
+                      "key": "ref_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Behaviour when duplicate is found",
+                        "type": "text/plain"
+                      },
+                      "key": "on_duplicate",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Field(s) used to detect duplicates",
+                        "type": "text/plain"
+                      },
+                      "key": "test_level",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0549ac73-fd12-42b3-81fa-3102eff4aaa6",
+          "name": "Delete a recipient",
+          "request": {
+            "name": "Delete a recipient",
+            "description": {
+              "content": "Permanently delete a recipient record.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recipients",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>",
+                  "description": "(Required) Recipient ID to delete"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "699849d8-5dcf-45a4-a9e3-e5c1d3dbed19",
+              "name": "Recipient deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Recipient ID to delete",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f0323f9-e572-4538-9083-4a056248fc54",
+              "name": "Authentication required or API key invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Recipient ID to delete",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3b725f70-3d18-4003-98af-e0c36e7a4b30",
+          "name": "Import recipients from file",
+          "request": {
+            "name": "Import recipients from file",
+            "description": {
+              "content": "Bulk import recipients from a CSV or XLS file into a group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recipients",
+                "import"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) CSV or XLS file (binary, base64, or URL)"
+                },
+                {
+                  "key": "group_id",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": "(Required) Group to import recipients into"
+                },
+                {
+                  "key": "duplicates",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "How to handle duplicate recipients (This can only be one of update,ignore,duplicate)"
+                },
+                {
+                  "key": "no_headings",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "Set true if the file has no header row"
+                },
+                {
+                  "key": "mappings",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Column remapping instructions"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "257f6804-c8b4-40df-bcf4-f28d984fb8f7",
+              "name": "Import initiated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) CSV or XLS file (binary, base64, or URL)",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Group to import recipients into",
+                        "type": "text/plain"
+                      },
+                      "key": "group_id",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "How to handle duplicate recipients (This can only be one of update,ignore,duplicate)",
+                        "type": "text/plain"
+                      },
+                      "key": "duplicates",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Set true if the file has no header row",
+                        "type": "text/plain"
+                      },
+                      "key": "no_headings",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Column remapping instructions",
+                        "type": "text/plain"
+                      },
+                      "key": "mappings",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c3b14602-321e-4c7f-abcb-da5cfc3c38ac",
+              "name": "Authentication required or API key invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) CSV or XLS file (binary, base64, or URL)",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Group to import recipients into",
+                        "type": "text/plain"
+                      },
+                      "key": "group_id",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "How to handle duplicate recipients (This can only be one of update,ignore,duplicate)",
+                        "type": "text/plain"
+                      },
+                      "key": "duplicates",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Set true if the file has no header row",
+                        "type": "text/plain"
+                      },
+                      "key": "no_headings",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Column remapping instructions",
+                        "type": "text/plain"
+                      },
+                      "key": "mappings",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-us1.stannp.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f0e25b3f-b3ef-4d0c-ba51-fa2f66272453",
+    "name": "Stannp Direct Mail Account Recipients API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for programmatically sending physical letters and postcards, managing recipient groups, configuring campaigns, triggering individual mail pieces, and tracking delivery status through webhooks and event callbacks. Authentication uses API key-based HTTP Basic Auth over HTTPS.\n\n\nContact Support:\n Name: Stannp Support",
+      "type": "text/plain"
+    }
+  }
+}

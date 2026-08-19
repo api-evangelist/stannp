@@ -1,0 +1,118 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.stannp.com/us/direct-mail-api/guide
+also: https://www.stannp.com/stannp-api-llm.md
+summary: >-
+  Stannp has a test MODE, not a test ENVIRONMENT. There is no sandbox host, no
+  separate test key, and no test/live key prefix — the same production API key
+  against the same production host is switched into test mode per request with a
+  `test=true` parameter. In test mode the create call renders the real artwork
+  and returns a proof PDF, charges nothing, and dispatches nothing.
+model: per-request-flag
+separation:
+  test_live: request-parameter
+  parameter: test
+  type: boolean
+  key_prefixes: none
+  test_host: none
+  live_host_used_for_tests: true
+  note: >-
+    Because there is no key or host separation, an agent that omits `test` on a
+    create call posts real mail against a real balance. `test` defaults to false.
+    This is the highest-consequence default on the API.
+test_mode_operations:
+  - operation: openapi/stannp-postcards-api-openapi.yml#createPostcard
+    parameter: test
+    effect: Produces a sample PDF without dispatch or charge.
+  - operation: openapi/stannp-letters-api-openapi.yml#createLetter
+    parameter: test
+    effect: Produces a sample PDF without dispatch or charge.
+  - operation: openapi/stannp-letters-api-openapi.yml#postLetter
+    parameter: test
+    effect: Produces a sample PDF without dispatch or charge.
+  - operation: /v1/sms/create
+    parameter: test
+    effect: >-
+      The SMS is not sent and no charge is taken; the response carries
+      `"status": "test"`. Documented at
+      https://www.stannp.com/us/direct-mail-api/sms — no OpenAPI in this repo
+      covers the SMS surface.
+test_mode_response:
+  status_field: '"status": "test"'
+  id_field: '"id": 0 — a test mailpiece is never assigned a real ID'
+  shape: >-
+    { "success": true, "data": { "pdf": "<proof URL>", "id": 0,
+    "created": "<timestamp>", "format": "<A4|A6|US-LETTER|4x6|...>",
+    "cost": "<unit cost>", "status": "test" } }
+  note: >-
+    A test response is SHORTER than a live one — it omits recipient fields,
+    addons, tags, tracking_ref, production_ref, dispatched, updated,
+    transactional and class. Code that parses a test response will encounter
+    fields it has never seen when it first runs live.
+proof_and_preview:
+  - name: Test-mode proof PDF
+    description: >-
+      Every test create returns a `pdf` URL to the rendered mailpiece, which is
+      the intended way to verify artwork, mail merge and clear zones before
+      sending.
+  - name: Campaign sample
+    operation: openapi/stannp-campaigns-api-openapi.yml#getCampaignSample
+    description: >-
+      /v1/campaigns/sample renders a full campaign proof PDF. The returned link
+      is valid for 30 minutes.
+  - name: Campaign cost dry run
+    operation: openapi/stannp-campaigns-api-openapi.yml#getCampaignCost
+    description: >-
+      /v1/campaigns/cost returns the full cost breakdown (rate, non_valid_rate,
+      delivery_rate, international_rate, net, vat, total) BEFORE booking, so a
+      campaign can be priced without committing spend.
+  - name: Address validation
+    operation: /v1/addresses/validate
+    description: >-
+      Validates a UK, US or CA address and returns `is_valid` plus the
+      normalised address, dps and udprn — usable as a dry run before creating a
+      recipient. Documented at
+      https://www.stannp.com/us/direct-mail-api/addresses.
+safety_controls:
+  - name: post_unverified
+    default: true
+    description: >-
+      Set false to block dispatch when the recipient address could not be
+      verified. Applies to createPostcard and createLetter.
+  - name: cancel window
+    description: >-
+      cancelPostcard / cancelLetter succeed only while the mailpiece has not
+      entered production. There is no recall after that.
+  - name: use_balance
+    default: true
+    operation: openapi/stannp-campaigns-api-openapi.yml#bookCampaign
+    description: >-
+      Set false to schedule a campaign without taking payment from the account
+      balance; it is not posted until paid.
+  - name: campaign approval gate
+    operation: openapi/stannp-campaigns-api-openapi.yml#approveCampaign
+    description: >-
+      A campaign must be explicitly approved before it can be booked. Approval
+      locks the design and recipient selection and cannot be undone.
+magic_values: none
+test_clocks: none
+fixtures_and_triggers:
+  - name: Webhook validation request
+    description: >-
+      On creation, Stannp POSTs a validation payload
+      (`{"webhook_id": 0, "event": "test_url", "created": "...", "retries": 0}`)
+      to the configured URL and requires an HTTP 200 back, otherwise the webhook
+      is not created. That is the only published trigger tool.
+    source: https://www.stannp.com/us/direct-mail-api/webhooks
+free_tier:
+  plan: Free (£0 / $0 per month)
+  note: >-
+    The Free plan gives a real account with a real API key, 1 template, 50,000
+    stored contacts, 20 virtual-printer items and the 300 req/min baseline rate
+    limit — self-serve signup at https://app-us1.stannp.com/register. Combined
+    with `test=true`, this is the practical way to exercise the API with zero
+    spend. See plans/stannp-plans-pricing.yml.
+credentials_published: false
+note: >-
+  No test credentials, test cards, magic identifiers or hosted test tokens are
+  published by Stannp, and none are invented here.

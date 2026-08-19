@@ -1,0 +1,142 @@
+generated: '2026-08-13'
+method: derived
+status: candidate
+source: >-
+  openapi/stannp-*-openapi.yml (derived tool list); searched for a published
+  server across the Stannp docs, https://www.stannp.com/us/integrations,
+  https://www.stannp.com/us/developer-tools, the Stannp GitHub organization and
+  the npm registry — none exists.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: api-key
+  verified: probed
+search_evidence:
+  - url: https://mcp.stannp.com
+    status: 000
+    note: host does not resolve
+  - url: https://api-us1.stannp.com/mcp
+    status: 404
+  - url: https://www.stannp.com/mcp
+    status: 404
+  - url: https://www.stannp.com/us/integrations
+    status: 200
+    note: >-
+      Stannp's own integrations page lists Zapier, Make.com, HubSpot, Klaviyo and
+      the REST API. No MCP server, no agent surface.
+  - url: https://registry.npmjs.org/-/v1/search?text=stannp
+    status: 200
+    note: >-
+      No @stannp/* or *-mcp package. `@pipedream/stannp` is a Pipedream platform
+      connector, not an MCP server.
+note: >-
+  CANDIDATE ONLY. Stannp publishes no MCP server, hosted or local. The tools
+  below are derived one-per-operationId from the OpenAPI already in this repo so
+  an implementer has a starting shape; each tool's real input contract is that
+  operation's parameters/requestBody in the referenced spec. Auth would be the
+  API key Stannp already uses (HTTP Basic with the key as username, or an
+  `api_key` query parameter). Nothing here is an endpoint an agent can call
+  today.
+server:
+  name: stannp
+  transport: null
+  url: null
+tools:
+  - name: get_account_balance
+    description: Retrieve the current Stannp account balance.
+    source_operation: openapi/stannp-account-api-openapi.yml#getAccountBalance
+  - name: top_up_balance
+    description: Add funds to the Stannp account balance from the saved default card.
+    source_operation: openapi/stannp-account-api-openapi.yml#topUpBalance
+  - name: get_current_user
+    description: Retrieve information about the currently authenticated user.
+    source_operation: openapi/stannp-account-api-openapi.yml#getCurrentUser
+  - name: create_postcard
+    description: Create and dispatch a single postcard mailpiece.
+    source_operation: openapi/stannp-postcards-api-openapi.yml#createPostcard
+  - name: get_postcard
+    description: Retrieve details of a single postcard mailpiece.
+    source_operation: openapi/stannp-postcards-api-openapi.yml#getPostcard
+  - name: cancel_postcard
+    description: Cancel a postcard that has not yet been dispatched.
+    source_operation: openapi/stannp-postcards-api-openapi.yml#cancelPostcard
+  - name: create_letter
+    description: Create and dispatch a single letter from a template or HTML.
+    source_operation: openapi/stannp-letters-api-openapi.yml#createLetter
+  - name: post_letter
+    description: Dispatch a letter using a pre-merged PDF file.
+    source_operation: openapi/stannp-letters-api-openapi.yml#postLetter
+  - name: get_letter
+    description: Retrieve details of a single letter mailpiece.
+    source_operation: openapi/stannp-letters-api-openapi.yml#getLetter
+  - name: cancel_letter
+    description: Cancel a letter that has not yet been dispatched.
+    source_operation: openapi/stannp-letters-api-openapi.yml#cancelLetter
+  - name: list_recipients
+    description: List recipients, optionally filtered by group, with offset/limit paging.
+    source_operation: openapi/stannp-recipients-api-openapi.yml#listRecipients
+  - name: get_recipient
+    description: Retrieve a single recipient by ID.
+    source_operation: openapi/stannp-recipients-api-openapi.yml#getRecipient
+  - name: create_recipient
+    description: Add a new recipient, optionally to a mailing group.
+    source_operation: openapi/stannp-recipients-api-openapi.yml#createRecipient
+  - name: delete_recipient
+    description: Permanently delete a recipient record.
+    source_operation: openapi/stannp-recipients-api-openapi.yml#deleteRecipient
+  - name: import_recipients
+    description: Bulk import recipients from a CSV or XLS file into a group.
+    source_operation: openapi/stannp-recipients-api-openapi.yml#importRecipients
+  - name: list_groups
+    description: List recipient groups with offset/limit paging.
+    source_operation: openapi/stannp-groups-api-openapi.yml#listGroups
+  - name: create_group
+    description: Create a new recipient group.
+    source_operation: openapi/stannp-groups-api-openapi.yml#createGroup
+  - name: add_recipients_to_group
+    description: Add existing recipients to a group.
+    source_operation: openapi/stannp-groups-api-openapi.yml#addRecipientsToGroup
+  - name: remove_recipients_from_group
+    description: Remove recipients from a group without deleting them.
+    source_operation: openapi/stannp-groups-api-openapi.yml#removeRecipientsFromGroup
+  - name: purge_group
+    description: Remove all recipients from a group, optionally deleting the records.
+    source_operation: openapi/stannp-groups-api-openapi.yml#purgeGroup
+  - name: recalculate_group
+    description: Trigger a recalculation of group recipient counts and validity.
+    source_operation: openapi/stannp-groups-api-openapi.yml#recalculateGroup
+  - name: delete_group
+    description: Delete a recipient group.
+    source_operation: openapi/stannp-groups-api-openapi.yml#deleteGroup
+  - name: list_campaigns
+    description: List all campaigns on the account.
+    source_operation: openapi/stannp-campaigns-api-openapi.yml#listCampaigns
+  - name: get_campaign
+    description: Retrieve details of a single campaign.
+    source_operation: openapi/stannp-campaigns-api-openapi.yml#getCampaign
+  - name: create_campaign
+    description: Create a direct mail campaign targeting a recipient group.
+    source_operation: openapi/stannp-campaigns-api-openapi.yml#createCampaign
+  - name: get_campaign_sample
+    description: Generate a sample PDF of a campaign (link valid 30 minutes).
+    source_operation: openapi/stannp-campaigns-api-openapi.yml#getCampaignSample
+  - name: approve_campaign
+    description: Approve a campaign, locking design and recipient selection.
+    source_operation: openapi/stannp-campaigns-api-openapi.yml#approveCampaign
+  - name: get_campaign_cost
+    description: Calculate campaign cost with recipient breakdown and tax.
+    source_operation: openapi/stannp-campaigns-api-openapi.yml#getCampaignCost
+  - name: get_campaign_available_dates
+    description: Retrieve available dispatch dates for a campaign.
+    source_operation: openapi/stannp-campaigns-api-openapi.yml#getCampaignAvailableDates
+  - name: book_campaign
+    description: Schedule a campaign for dispatch on a specific date.
+    source_operation: openapi/stannp-campaigns-api-openapi.yml#bookCampaign
+  - name: delete_campaign
+    description: Delete an unbooked campaign.
+    source_operation: openapi/stannp-campaigns-api-openapi.yml#deleteCampaign
+  - name: create_recipient_event
+    description: Record an engagement or conversion event for a recipient.
+    source_operation: openapi/stannp-events-api-openapi.yml#createRecipientEvent

@@ -1,13 +1,113 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/stannp-direct-mail-api-openapi.yml
+generated: '2026-08-13'
+method: searched
+source: https://www.stannp.com/us/direct-mail-api/guide
+docs: https://www.stannp.com/us/direct-mail-api/guide
+derived_from:
+  - openapi/stannp-account-api-openapi.yml
+  - openapi/stannp-campaigns-api-openapi.yml
+  - openapi/stannp-events-api-openapi.yml
+  - openapi/stannp-groups-api-openapi.yml
+  - openapi/stannp-letters-api-openapi.yml
+  - openapi/stannp-postcards-api-openapi.yml
+  - openapi/stannp-recipients-api-openapi.yml
 summary:
   types:
-  - http
+    - http
+    - apiKey
+  http_schemes:
+    - basic
+  api_key_in:
+    - query
+  oauth2_flows: []
+  model: single static account API key, no scopes, no expiry, no rotation API
+description: >-
+  Every Stannp API call is authenticated with one account-level API key. The key
+  can be presented two ways — as the HTTP Basic username with an empty password,
+  or as an `api_key` query parameter — and both grant the same full account
+  access. There are no scopes, no per-key permissions, no token exchange, no
+  refresh and no documented rotation or revocation endpoint; keys are managed in
+  the account settings UI. Upgraded from `derived` because the OpenAPI in this
+  repo captures only the HTTP Basic form, while Stannp documents both.
 schemes:
-- name: basicAuth
-  type: http
-  scheme: basic
-  description: Use your API key as the username and leave the password blank.
-  sources:
-  - openapi/stannp-direct-mail-api-openapi.yml
+  - name: basicAuth
+    type: http
+    scheme: basic
+    description: >-
+      Send the API key as the HTTP Basic username with an empty password:
+      `curl "https://api-us1.stannp.com/v1/accounts/balance" -u {API_KEY}:`
+    documented: true
+    in_spec: true
+    sources:
+      - openapi/stannp-account-api-openapi.yml
+      - openapi/stannp-campaigns-api-openapi.yml
+      - openapi/stannp-events-api-openapi.yml
+      - openapi/stannp-groups-api-openapi.yml
+      - openapi/stannp-letters-api-openapi.yml
+      - openapi/stannp-postcards-api-openapi.yml
+      - openapi/stannp-recipients-api-openapi.yml
+  - name: apiKeyQuery
+    type: apiKey
+    in: query
+    parameter_name: api_key
+    description: >-
+      Append `?api_key={API_KEY}` to the request URL. Documented by Stannp but
+      NOT declared in any OpenAPI in this repo.
+    documented: true
+    in_spec: false
+    source: https://www.stannp.com/us/direct-mail-api/guide
+    risk_note: >-
+      A key in the query string is logged by proxies, CDNs, browser history and
+      server access logs. HTTP Basic is the safer of the two published options.
+  - name: publicKey
+    type: apiKey
+    in: query
+    parameter_name: api_key
+    scope: /v1/qrcode/create only
+    description: >-
+      QR-code generation takes a PUBLIC key rather than the private API key,
+      because the resulting image URL is embedded in mail artwork and rendered by
+      third parties.
+    documented: true
+    in_spec: false
+    source: https://www.stannp.com/us/direct-mail-api/tools
+transport:
+  https_required: true
+  enforcement: >-
+    Stannp documents that requests made over plain HTTP "will fail and could
+    suspend your API key" — a stated consequence, not just a redirect.
+  observed_tls: TLSv1.3 on api-eu1.stannp.com and api-us1.stannp.com
+  see_also: security/stannp-domain-security.yml
+key_management:
+  location: https://app-us1.stannp.com/settings/api
+  ui_only: true
+  rotation_api: none
+  revocation_api: none
+  expiry: none documented
+  scopes: none
+  multiple_keys: not documented
+regional_binding:
+  note: >-
+    A key is issued against a regional account and authenticates only on that
+    region's host — an api-eu1 key will not work against api-us1. This is an
+    auth-relevant fact that is easy to misread as a 401 for a bad key.
+  hosts:
+    - https://api-eu1.stannp.com/v1
+    - https://api-us1.stannp.com/v1
+account_security:
+  mfa: >-
+    Multi-factor authentication on the Stannp account is listed as a compliance
+    feature on every subscription tier
+    (https://www.stannp.com/us/detailed-pricing). It protects the dashboard, not
+    API calls — the API key alone is sufficient for full account access.
+failure_mode:
+  status: 401
+  body: '{"success":false,"error":"You need an API key or token to access this service"}'
+  observed: '2026-08-13'
+  observed_url: https://api-eu1.stannp.com/v1/openapi.json
+  see_also: errors/stannp-problem-types.yml
+oauth:
+  supported: false
+  note: >-
+    No OAuth 2.0, no OpenID Connect, no /.well-known/oauth-authorization-server
+    and no /.well-known/openid-configuration on any host. No scopes artifact is
+    written for this provider because there is no scope surface to record.

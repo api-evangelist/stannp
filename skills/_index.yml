@@ -1,0 +1,62 @@
+generated: '2026-08-13'
+method: generated
+source: >-
+  openapi/stannp-*-openapi.yml (every operationId verified verbatim in the spec)
+  grounded against https://www.stannp.com/us/direct-mail-api/guide and the
+  provider's own LLM reference at https://www.stannp.com/stannp-api-llm.md
+note: >-
+  Stannp publishes no AGENTS.md and no skill files of its own — searched
+  stannp.com, the Stannp GitHub organization and /.well-known/ on every host.
+  These four skills are API Evangelist's, generated from the specs in this repo
+  and the provider's documentation. Every operationId referenced exists verbatim
+  in the linked spec. Each skill carries the runtime semantics an agent gets
+  wrong on this API: `test` defaults to false, a 409 is a successful idempotent
+  replay, approve/book are irreversible, and `delete_recipients` deletes across
+  every group.
+skills:
+  - file: stannp-send-a-single-postcard.md
+    name: Send a single Stannp postcard
+    api: openapi/stannp-postcards-api-openapi.yml
+    operations:
+      - createPostcard
+      - getPostcard
+      - cancelPostcard
+      - getAccountBalance
+  - file: stannp-send-a-transactional-letter.md
+    name: Send a transactional Stannp letter
+    api: openapi/stannp-letters-api-openapi.yml
+    operations:
+      - createLetter
+      - postLetter
+      - getLetter
+      - cancelLetter
+  - file: stannp-build-and-book-a-campaign.md
+    name: Build, price and book a Stannp campaign
+    api: openapi/stannp-campaigns-api-openapi.yml
+    operations:
+      - createGroup
+      - createRecipient
+      - importRecipients
+      - recalculateGroup
+      - createCampaign
+      - getCampaignSample
+      - getCampaignCost
+      - approveCampaign
+      - getCampaignAvailableDates
+      - bookCampaign
+      - getCampaign
+      - deleteCampaign
+  - file: stannp-sync-recipients-and-track-engagement.md
+    name: Sync recipients into Stannp and track engagement
+    api: openapi/stannp-recipients-api-openapi.yml
+    operations:
+      - createGroup
+      - createRecipient
+      - importRecipients
+      - listRecipients
+      - getRecipient
+      - deleteRecipient
+      - addRecipientsToGroup
+      - removeRecipientsFromGroup
+      - purgeGroup
+      - createRecipientEvent

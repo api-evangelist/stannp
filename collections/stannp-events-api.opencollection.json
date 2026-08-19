@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stannp Direct Mail Account Events API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a recipient event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/recipientEvents/create",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "recipient_id",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "value": ""
+                },
+                {
+                  "name": "value",
+                  "value": ""
+                },
+                {
+                  "name": "conversion",
+                  "value": ""
+                },
+                {
+                  "name": "data",
+                  "value": ""
+                },
+                {
+                  "name": "ref",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Record an engagement or conversion event for a recipient (e.g. PURCHASE, SIGNUP, PAGE_VIEW). Can be used to trigger automation and dynamic templating.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

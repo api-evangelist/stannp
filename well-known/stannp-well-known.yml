@@ -1,0 +1,102 @@
+generated: '2026-08-13'
+method: probed
+source: live GET of /.well-known/* on every apis.yml and OpenAPI servers[] host
+result: none
+note: >-
+  NO WELL-KNOWN DOCUMENT IS SERVED. Recorded as a verified absence, and
+  deliberately NOT wired as a `WellKnown` or `SecurityTxt` pointer in apis.yml.
+  Two distinct false positives were ruled out here:
+  (1) www.stannp.com answers HTTP 200 with the body `{}` for EVERY /.well-known/
+  path. A control probe of https://www.stannp.com/.well-known/this-does-not-exist-xyz
+  returned the same 200 + `{}`, proving a catch-all rather than a served
+  document. An empty JSON object is not a security.txt, an OIDC discovery
+  document, or an agent card.
+  (2) app-us1.stannp.com answers HTTP 200 with an HTML single-page-app shell for
+  every /.well-known/ path, including a nonsense control path.
+  The real API hosts (api-eu1 / api-us1.stannp.com) return a clean 404 on every
+  path, which is the honest answer.
+hosts:
+  - host: https://www.stannp.com
+    catch_all: true
+    catch_all_evidence:
+      url: https://www.stannp.com/.well-known/this-does-not-exist-xyz
+      status: 200
+      body: '{}'
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        served: false
+        reason: soft-200 catch-all, body is `{}`
+      - path: /.well-known/openid-configuration
+        status: 200
+        served: false
+        reason: soft-200 catch-all, body is `{}`
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        served: false
+        reason: soft-200 catch-all, body is `{}`
+      - path: /.well-known/api-catalog
+        status: 200
+        served: false
+        reason: soft-200 catch-all, body is `{}`
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        served: false
+        reason: soft-200 catch-all, body is `{}`
+      - path: /.well-known/agent-card.json
+        status: 200
+        served: false
+        reason: soft-200 catch-all, body is `{}`
+      - path: /.well-known/agent.json
+        status: 200
+        served: false
+        reason: soft-200 catch-all, body is `{}`
+  - host: https://api-eu1.stannp.com
+    catch_all: false
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://api-us1.stannp.com
+    catch_all: false
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://app-us1.stannp.com
+    catch_all: true
+    catch_all_evidence:
+      url: https://app-us1.stannp.com/.well-known/nonsense-xyz-123
+      status: 200
+      body: HTML single-page-app shell
+    documents:
+      - path: /.well-known/agent-card.json
+        status: 200
+        served: false
+        reason: soft-200 SPA catch-all, body is HTML
+      - path: /.well-known/security.txt
+        status: 200
+        served: false
+        reason: soft-200 SPA catch-all, body is HTML
+robots:
+  url: https://www.stannp.com/robots.txt
+  status: 200
+  crawl_policy: >-
+    `User-agent: * / Allow: /` with /admin/, /api/, /dashboard/, /user/,
+    /account/, /checkout/, /payment/, /login/, /signup/, /design-review/
+    disallowed, plus `Disallow: /*.json$`. No AI-specific user-agent rules, no
+    AIPREF or Content-Signal directives.

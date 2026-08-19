@@ -1,0 +1,161 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.stannp.com/us/direct-mail-api/guide
+docs:
+  guide: https://www.stannp.com/us/direct-mail-api/guide
+  rate_limits: https://www.stannp.com/us/direct-mail-api/rate-limit
+  idempotency: https://www.stannp.com/us/direct-mail-api/idempotency-keys
+  llm_reference: https://www.stannp.com/stannp-api-llm.md
+  local_copy: llms/stannp-api-llm.md
+authentication:
+  style: api-key
+  transports:
+    - kind: http-basic
+      description: >-
+        Send the account API key as the HTTP Basic username with an empty
+        password — `curl "https://api-us1.stannp.com/v1/accounts/balance" -u {API_KEY}:`
+    - kind: query-parameter
+      parameter: api_key
+      description: Append `?api_key={API_KEY}` to the request URL.
+  transport_security: >-
+    HTTPS is mandatory. Stannp documents that requests made over plain HTTP will
+    fail and "could suspend your API key".
+  key_location: Account settings page — https://app-us1.stannp.com/settings/api
+  public_key_exception: >-
+    /v1/qrcode/create is the one documented operation that takes a PUBLIC key
+    rather than the private API key, because the generated image is embedded in
+    mail artwork.
+  see_also: authentication/stannp-authentication.yml
+idempotency:
+  supported: true
+  mechanism: request-parameter
+  parameter: idempotency_key
+  header: null
+  scope: >-
+    Per request body. Stannp compares the FULL request body, so only byte-identical
+    repeats are treated as replays of the same operation.
+  replay_response:
+    status: 409
+    body: the original response body is returned verbatim
+  retention: not documented
+  applies_to:
+    - openapi/stannp-letters-api-openapi.yml#createLetter
+    - openapi/stannp-postcards-api-openapi.yml#createPostcard
+  note: >-
+    Documented and worked-example'd at
+    https://www.stannp.com/us/direct-mail-api/idempotency-keys and in the
+    guide's "Idempotent Requests" section. It is a body parameter, not a header —
+    an agent replaying a create call must resend the identical body along with
+    the same idempotency_key. The 409-with-original-body behaviour is unusual
+    (most APIs return the original status) and is the single most important
+    runtime semantic on this API, because the side effect is a physical piece of
+    mail that cannot be recalled once printed.
+pagination:
+  style: offset-limit
+  parameters:
+    - name: offset
+      in: query
+      description: Zero-based record offset.
+    - name: limit
+      in: query
+      description: Number of records to return.
+  response_fields: >-
+    None. Paged endpoints return a bare `data` array with no total, next-cursor
+    or has-more field, so a client must page until a short/empty array comes back.
+  applies_to:
+    - openapi/stannp-recipients-api-openapi.yml#listRecipients
+    - openapi/stannp-groups-api-openapi.yml#listGroups
+  not_paginated:
+    - openapi/stannp-campaigns-api-openapi.yml#listCampaigns
+response_envelope:
+  success:
+    shape: '{ "success": true, "data": ... }'
+    note: >-
+      `data` is polymorphic — an object for a mailpiece, an array for a list, a
+      bare integer for a created group ID or an affected-row count, a bare string
+      for a URL. A client cannot assume `data` is an object.
+  error:
+    shape: '{ "success": false, "error": "Error message" }'
+    note: >-
+      A single human-readable string. There is no machine-readable error code,
+      no field-level detail, and no RFC 9457 problem+json. See
+      errors/stannp-problem-types.yml.
+  content_type: application/json
+  binary_exception: >-
+    /v1/qrcode/create returns a binary JPEG rather than the JSON envelope.
+request_encoding:
+  formats:
+    - application/x-www-form-urlencoded
+    - multipart/form-data
+  json_body: not supported
+  note: >-
+    Stannp is a form-encoded API, not a JSON-body API. Nested values use PHP
+    bracket notation — `recipient[firstname]=John`, `files[]=https://...`.
+    Custom recipient fields are passed the same way (`recipient[*]`).
+rate_limits:
+  signalling: response-headers
+  headers:
+    - X-RateLimit-Limit
+    - X-RateLimit-Remaining
+    - X-RateLimit-Reset
+  baseline: 300 requests per minute for the majority of endpoints
+  see_also: rate-limits/stannp-rate-limits.yml
+versioning:
+  scheme: uri-path
+  current: v1
+  regional_hosts:
+    - host: https://api-eu1.stannp.com/v1
+      region: EU / UK
+    - host: https://api-us1.stannp.com/v1
+      region: US / CA
+  note: >-
+    The region is chosen by HOST, not by a parameter, and an account exists in
+    one region only. Regional defaults leak into request semantics: `size`
+    defaults to A6/A4 on EU accounts and 4x6/US-LETTER on US accounts, and
+    `country` defaults to the account region.
+  see_also: lifecycle/stannp-lifecycle.yml
+request_tracing:
+  request_id_header: not documented
+  note: >-
+    Stannp documents no request-id or correlation header. The durable handles
+    for tracing are the returned mailpiece `id`, the `tracking_ref` /
+    `production_ref` fields on a live mailpiece, and the user-supplied `tags`
+    string, which is searchable through /v1/reporting/list.
+field_expansion:
+  supported: false
+  note: >-
+    No expand/fields/include parameters. Response shape instead varies by MODE:
+    a `test=true` create returns a short object (pdf, id, created, format, cost,
+    status) while a live create returns the full mailpiece with recipient,
+    addons, tags, tracking_ref, production_ref, dispatched, updated,
+    transactional and class.
+metadata:
+  supported: true
+  mechanisms:
+    - name: tags
+      description: >-
+        Comma-separated free-text tags on postcards, letters and campaigns;
+        searchable and filterable in /v1/reporting/list.
+    - name: ref_id
+      description: >-
+        A caller-owned external reference on a recipient, used to match a Stannp
+        recipient against a record in another system. `recipientEvents/create`
+        accepts a ref_id in place of a Stannp recipient_id.
+    - name: recipient[*]
+      description: Arbitrary custom recipient fields usable as mail-merge variables.
+filtering:
+  mechanism: selections
+  description: >-
+    /v1/selections/new builds a saved auto-filter over a group using a
+    triple-colon DSL — `[column]:::[operator]:::[value]`, chained with
+    `:::AND:::`. Operators: matches, contains, begins, ends, before, after,
+    less_than, more_than, is_not.
+test_mode:
+  see_also: sandbox/stannp-sandbox.yml
+  summary: >-
+    A `test=true` parameter on create operations returns a proof PDF and charges
+    nothing. There are no separate test credentials or test-mode keys.
+errors:
+  see_also: errors/stannp-problem-types.yml
+webhooks:
+  see_also: asyncapi/stannp-webhooks.yml

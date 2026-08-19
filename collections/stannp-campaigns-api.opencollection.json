@@ -1,0 +1,262 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stannp Direct Mail Account Campaigns API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Campaigns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List campaigns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-us1.stannp.com/v1/campaigns/list"
+          },
+          "docs": "Retrieve a list of all campaigns."
+        },
+        {
+          "info": {
+            "name": "Get a campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-us1.stannp.com/v1/campaigns/get/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Campaign ID"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a single campaign."
+        },
+        {
+          "info": {
+            "name": "Create a campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/campaigns/create",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "template_id",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "front",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "back",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "size",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "save",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "group_id",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "what_recipients",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "addons",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create a new direct mail campaign targeting a recipient group."
+        },
+        {
+          "info": {
+            "name": "Get campaign sample",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/campaigns/sample",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Generate a sample PDF for the campaign (valid for 30 minutes)."
+        },
+        {
+          "info": {
+            "name": "Approve a campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/campaigns/approve",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Approve a campaign, making it ready for booking."
+        },
+        {
+          "info": {
+            "name": "Get campaign cost",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/campaigns/cost",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Calculate the cost of a campaign including recipient breakdown and VAT."
+        },
+        {
+          "info": {
+            "name": "Get available booking dates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/campaigns/availableDates",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "start",
+                  "value": ""
+                },
+                {
+                  "name": "end",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Retrieve available dates on which a campaign can be dispatched."
+        },
+        {
+          "info": {
+            "name": "Book a campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/campaigns/book",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                },
+                {
+                  "name": "send_date",
+                  "value": ""
+                },
+                {
+                  "name": "next_available_date",
+                  "value": ""
+                },
+                {
+                  "name": "use_balance",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Schedule a campaign for dispatch on a specific date."
+        },
+        {
+          "info": {
+            "name": "Delete a campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/campaigns/delete",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Permanently delete a campaign."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

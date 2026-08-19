@@ -1,0 +1,150 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stannp Direct Mail Account Postcards API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Postcards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a postcard",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/postcards/create",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "size",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "test",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "template",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "recipient",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "message",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "front",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "back",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "padding",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "post_unverified",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "clearzone",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "return_address",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "tags",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "addons",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "idempotency_key",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create and dispatch a single postcard. Use test=true to generate a preview PDF without charges.\n"
+        },
+        {
+          "info": {
+            "name": "Get a postcard",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-us1.stannp.com/v1/postcards/get/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Mailpiece ID"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a single postcard mailpiece."
+        },
+        {
+          "info": {
+            "name": "Cancel a postcard",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/postcards/cancel",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Cancel a postcard that has not yet been dispatched."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

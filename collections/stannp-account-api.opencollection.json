@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stannp Direct Mail Account API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get account balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-us1.stannp.com/v1/accounts/balance"
+          },
+          "docs": "Retrieve the current account balance."
+        },
+        {
+          "info": {
+            "name": "Top up account balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-us1.stannp.com/v1/accounts/topup",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "net",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Add funds to the account balance."
+        },
+        {
+          "info": {
+            "name": "Get current user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-us1.stannp.com/v1/users/me"
+          },
+          "docs": "Retrieve information about the currently authenticated user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

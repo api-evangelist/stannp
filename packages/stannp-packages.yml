@@ -1,0 +1,98 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://github.com/Stannp (first-party GitHub organization) plus registry
+  metadata endpoints: repo.packagist.org, proxy.golang.org, registry.npmjs.org,
+  pypi.org, rubygems.org, azuresearch-usnc.nuget.org
+note: >-
+  Stannp maintains three first-party client libraries in its own GitHub
+  organization (PHP, Go, C#). Only the PHP library is published to a package
+  registry (Packagist); the Go library is consumable through the Go module proxy
+  by repository path; the C# library is source-only with no NuGet package (a
+  NuGet search for "stannp" returns zero hits). All three carry a last-release /
+  last-push date of 2017-2022, which predates the current documented API surface
+  (SMS, Selections, Files, Reporting, Addresses, QR/PDF tools and idempotency
+  keys are all documented at
+  https://www.stannp.com/us/direct-mail-api/guide but absent from the SDKs).
+  Recorded as a currency signal, not as a judgement of the running API.
+packages:
+  - language: php
+    registry: packagist
+    name: stannp/stannp-php
+    url: https://packagist.org/packages/stannp/stannp-php
+    repository: https://github.com/Stannp/stannp-php
+    install: composer require stannp/stannp-php
+    official: true
+    version: v0.1.5
+    published: '2022-03-09'
+    license: MIT
+    note: >-
+      First-party: composer.json authors lists Nathan Wright
+      <nathan@stannp.com>. Six published versions; latest v0.1.5 (2022-03-09).
+  - language: go
+    registry: go-modules
+    name: github.com/stannp/stannp-go
+    url: https://pkg.go.dev/github.com/stannp/stannp-go
+    repository: https://github.com/Stannp/stannp-go
+    install: go get github.com/stannp/stannp-go
+    official: true
+    version: v0.0.0-20170216164327-23fbd1b332d7
+    published: '2017-02-16'
+    note: >-
+      No semver tags exist, so the Go module proxy resolves only a pseudo-version
+      pinned to the single 2017 commit (proxy.golang.org/@latest confirms
+      2017-02-16T16:43:27Z). `@v/list` returns empty — there is no tagged
+      release.
+  - language: csharp
+    registry: null
+    name: Stannp/stannp-c-sharp
+    url: https://github.com/Stannp/stannp-c-sharp
+    repository: https://github.com/Stannp/stannp-c-sharp
+    install: git clone https://github.com/Stannp/stannp-c-sharp
+    official: true
+    version: null
+    published: '2017-02-16'
+    note: >-
+      Source-only. Checked, nothing to record: no NuGet package exists — a
+      package search for "stannp" on azuresearch-usnc.nuget.org returns
+      totalHits 0, and the repository carries no tags. `published` is the last
+      push to the repository, which is the only dated artifact available.
+community_packages:
+  - language: python
+    registry: pypi
+    name: stannp
+    url: https://pypi.org/project/stannp/
+    repository: https://github.com/andy-pi/stannp-api
+    official: false
+    version: 1.0.0
+    published: '2018-03-07'
+    note: Third-party wrapper by "AndyPi"; not published or endorsed by Stannp.
+  - language: ruby
+    registry: rubygems
+    name: stannp
+    url: https://rubygems.org/gems/stannp
+    official: false
+    version: 0.8.0
+    published: '2022-05-04'
+    note: Third-party wrapper by "k-p-jones"; not published or endorsed by Stannp.
+  - language: javascript
+    registry: npm
+    name: '@pipedream/stannp'
+    url: https://www.npmjs.com/package/@pipedream/stannp
+    official: false
+    version: 0.3.0
+    published: '2026-05-15'
+    note: >-
+      Pipedream's platform connector, not a Stannp SDK. No first-party Stannp
+      package exists on npm — `stannp`, `stannp-api`, `stannp-node`,
+      `@stannp/sdk` and `stannp-js` were all probed.
+languages_without_a_library:
+  - javascript
+  - python
+  - ruby
+  - java
+docs:
+  code_samples: >-
+    The API reference at https://www.stannp.com/us/direct-mail-api/guide renders
+    every example in cURL, PHP, Python and C# (RestSharp), so Python has
+    documented samples but no first-party library.
