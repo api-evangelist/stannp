@@ -36,6 +36,19 @@ tags:
   - Campaigns
   - Address Verification
   - SMS
+  - Webhook
+  - Mailing Lists
+  - Fulfillment
+tags_raw:
+  - Direct Mail
+  - Postcards
+  - Letters
+  - Print
+  - Physical Mail
+  - Marketing Automation
+  - Campaigns
+  - Address Verification
+  - SMS
   - Webhooks
   - Mailing Lists
   - Fulfillment
@@ -100,6 +113,8 @@ apis:
   humanURL: https://www.stannp.com/us/direct-mail-api
   baseURL: https://api-eu1.stannp.com/v1/
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -126,6 +141,8 @@ apis:
   humanURL: https://www.stannp.com/us/direct-mail-api
   baseURL: https://api-eu1.stannp.com/v1/
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
