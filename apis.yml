@@ -252,6 +252,9 @@ apis:
   - type: JSONLDContext
     url: json-ld/stannp-context.jsonld
 common:
+  - type: CapabilityMap
+    url: capabilities/stannp-capability-edges.yml
+    name: Stannp Business Capability Map
   - type: AgenticAccess
     url: agentic-access/stannp-agentic-access.yml
   - type: TrustCenter
