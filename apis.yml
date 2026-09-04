@@ -35,7 +35,10 @@ accessModel:
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  - rate-limits
+  - security
+  - sandbox
+  generated: '2026-09-03'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/stannp.png
 tags:
@@ -291,8 +294,9 @@ common:
     url: packages/stannp-packages.yml
   - type: SDKs
     url: packages/stannp-packages.yml
-  - type: MCPServer
+  - type: X-MCPServerCandidate
     url: mcp/stannp-mcp.yml
+    note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
   - type: AgentSkill
     url: skills/_index.yml
   - type: LLMsTxt
