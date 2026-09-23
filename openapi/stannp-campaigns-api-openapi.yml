@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Stannp Direct Mail Account Campaigns API
-  description: 'REST API for programmatically sending physical letters and postcards, managing recipient groups, configuring campaigns, triggering individual mail pieces, and tracking delivery status through webhooks and event callbacks. Authentication uses API key-based HTTP Basic Auth over HTTPS.
-
-    '
+  title: Stannp Direct Mail Campaigns API
+  description: REST API for programmatically sending physical letters and postcards, managing recipient groups, configuring campaigns, triggering individual mail pieces, and tracking delivery status through webhooks and event callbacks. Authentication uses API key-based HTTP Basic Auth over HTTPS.
   version: 1.0.0
   contact:
     name: Stannp Support
@@ -367,13 +365,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          description: Result value (boolean, integer, or string depending on operation)
     Campaign:
       type: object
       properties:
@@ -396,6 +387,13 @@ components:
         created:
           type: string
           format: date-time
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          description: Result value (boolean, integer, or string depending on operation)
     ErrorResponse:
       type: object
       properties:

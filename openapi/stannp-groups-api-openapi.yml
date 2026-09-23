@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Stannp Direct Mail Account Groups API
-  description: 'REST API for programmatically sending physical letters and postcards, managing recipient groups, configuring campaigns, triggering individual mail pieces, and tracking delivery status through webhooks and event callbacks. Authentication uses API key-based HTTP Basic Auth over HTTPS.
-
-    '
+  title: Stannp Direct Mail Groups API
+  description: REST API for programmatically sending physical letters and postcards, managing recipient groups, configuring campaigns, triggering individual mail pieces, and tracking delivery status through webhooks and event callbacks. Authentication uses API key-based HTTP Basic Auth over HTTPS.
   version: 1.0.0
   contact:
     name: Stannp Support
@@ -257,6 +255,15 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: string
+          description: Error message
     SuccessResponse:
       type: object
       properties:
@@ -294,15 +301,6 @@ components:
           description: Import progress percentage
         is_seeds:
           type: boolean
-    ErrorResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          example: false
-        error:
-          type: string
-          description: Error message
   responses:
     Unauthorized:
       description: Authentication required or API key invalid

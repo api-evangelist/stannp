@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Stannp Direct Mail Account Events API
-  description: 'REST API for programmatically sending physical letters and postcards, managing recipient groups, configuring campaigns, triggering individual mail pieces, and tracking delivery status through webhooks and event callbacks. Authentication uses API key-based HTTP Basic Auth over HTTPS.
-
-    '
+  title: Stannp Direct Mail Events API
+  description: REST API for programmatically sending physical letters and postcards, managing recipient groups, configuring campaigns, triggering individual mail pieces, and tracking delivery status through webhooks and event callbacks. Authentication uses API key-based HTTP Basic Auth over HTTPS.
   version: 1.0.0
   contact:
     name: Stannp Support
@@ -24,9 +22,7 @@ paths:
     post:
       operationId: createRecipientEvent
       summary: Create a recipient event
-      description: 'Record an engagement or conversion event for a recipient (e.g. PURCHASE, SIGNUP, PAGE_VIEW). Can be used to trigger automation and dynamic templating.
-
-        '
+      description: Record an engagement or conversion event for a recipient (e.g. PURCHASE, SIGNUP, PAGE_VIEW). Can be used to trigger automation and dynamic templating.
       tags:
       - Events
       requestBody:
@@ -75,13 +71,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication required or API key invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
     ErrorResponse:
       type: object
@@ -92,6 +81,13 @@ components:
         error:
           type: string
           description: Error message
+  responses:
+    Unauthorized:
+      description: Authentication required or API key invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     basicAuth:
       type: http

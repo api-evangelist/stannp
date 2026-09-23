@@ -1,13 +1,7 @@
 {
   "provider": "stannp",
   "sources": [
-    "stannp-account-api-openapi.yml",
-    "stannp-campaigns-api-openapi.yml",
-    "stannp-events-api-openapi.yml",
-    "stannp-groups-api-openapi.yml",
-    "stannp-letters-api-openapi.yml",
-    "stannp-postcards-api-openapi.yml",
-    "stannp-recipients-api-openapi.yml"
+    "_original/stannp-direct-mail-api-openapi.yml"
   ],
   "outputs": [
     "stannp-account-api-openapi.yml",
@@ -21,6 +15,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "stannp-direct-mail-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "stannp-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stannp-campaigns-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stannp-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stannp-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stannp-letters-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stannp-postcards-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stannp-recipients-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
