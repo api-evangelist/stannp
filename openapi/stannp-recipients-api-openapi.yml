@@ -200,6 +200,62 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    Recipient:
+      type: object
+      properties:
+        id:
+          type: integer
+        account_id:
+          type: integer
+        title:
+          type: string
+        firstname:
+          type: string
+        lastname:
+          type: string
+        company:
+          type: string
+        job_title:
+          type: string
+        address1:
+          type: string
+        address2:
+          type: string
+        address3:
+          type: string
+        city:
+          type: string
+        county:
+          type: string
+        country:
+          type: string
+        zipcode:
+          type: string
+        dps:
+          type: string
+          description: Delivery Point Suffix
+        email:
+          type: string
+        phone_number:
+          type: string
+        ref_id:
+          type: string
+        blacklist:
+          type: boolean
+          description: Whether recipient is on the block list
+        created:
+          type: string
+          format: date-time
+        updated:
+          type: string
+          format: date-time
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          description: Result value (boolean, integer, or string depending on operation)
     RecipientInput:
       type: object
       properties:
@@ -262,62 +318,6 @@ components:
           - initial
           - ref_id
           description: Field(s) used to detect duplicates
-    Recipient:
-      type: object
-      properties:
-        id:
-          type: integer
-        account_id:
-          type: integer
-        title:
-          type: string
-        firstname:
-          type: string
-        lastname:
-          type: string
-        company:
-          type: string
-        job_title:
-          type: string
-        address1:
-          type: string
-        address2:
-          type: string
-        address3:
-          type: string
-        city:
-          type: string
-        county:
-          type: string
-        country:
-          type: string
-        zipcode:
-          type: string
-        dps:
-          type: string
-          description: Delivery Point Suffix
-        email:
-          type: string
-        phone_number:
-          type: string
-        ref_id:
-          type: string
-        blacklist:
-          type: boolean
-          description: Whether recipient is on the block list
-        created:
-          type: string
-          format: date-time
-        updated:
-          type: string
-          format: date-time
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          description: Result value (boolean, integer, or string depending on operation)
     ErrorResponse:
       type: object
       properties:

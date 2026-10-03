@@ -148,41 +148,27 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication required or API key invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    MailpieceResponse:
+    SuccessResponse:
       type: object
       properties:
         success:
           type: boolean
         data:
-          type: object
-          properties:
-            id:
-              type: integer
-              description: Mailpiece ID
-            pdf:
-              type: string
-              format: uri
-              description: URL to the proof PDF
-            created:
-              type: string
-              format: date-time
-            format:
-              type: string
-              description: Mail piece format/size
-            cost:
-              type: string
-              description: Cost of the mailpiece
-            status:
-              type: string
-              description: Current status
-            tracking_reference:
-              type: string
-              description: Carrier tracking reference
-            dispatched:
-              type: string
-              format: date-time
-              description: Dispatch timestamp
+          description: Result value (boolean, integer, or string depending on operation)
     RecipientInput:
       type: object
       properties:
@@ -245,13 +231,6 @@ components:
           - initial
           - ref_id
           description: Field(s) used to detect duplicates
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          description: Result value (boolean, integer, or string depending on operation)
     ErrorResponse:
       type: object
       properties:
@@ -261,19 +240,40 @@ components:
         error:
           type: string
           description: Error message
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication required or API key invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+    MailpieceResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: Mailpiece ID
+            pdf:
+              type: string
+              format: uri
+              description: URL to the proof PDF
+            created:
+              type: string
+              format: date-time
+            format:
+              type: string
+              description: Mail piece format/size
+            cost:
+              type: string
+              description: Cost of the mailpiece
+            status:
+              type: string
+              description: Current status
+            tracking_reference:
+              type: string
+              description: Carrier tracking reference
+            dispatched:
+              type: string
+              format: date-time
+              description: Dispatch timestamp
   securitySchemes:
     basicAuth:
       type: http
