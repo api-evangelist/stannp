@@ -262,15 +262,6 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          example: false
-        error:
-          type: string
-          description: Error message
     Group:
       type: object
       properties:
@@ -308,6 +299,15 @@ components:
           type: boolean
         data:
           description: Result value (boolean, integer, or string depending on operation)
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: string
+          description: Error message
   securitySchemes:
     basicAuth:
       type: http
