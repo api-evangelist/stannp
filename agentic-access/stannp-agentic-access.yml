@@ -1,17 +1,19 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/stannp-direct-mail-api-openapi.yml
+source: openapi/stannp-account-api-openapi.yml, openapi/stannp-campaigns-api-openapi.yml, openapi/stannp-events-api-openapi.yml,
+  openapi/stannp-groups-api-openapi.yml, openapi/stannp-letters-api-openapi.yml, openapi/stannp-postcards-api-openapi.yml,
+  openapi/stannp-recipients-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 32
   by_action_class:
-    connected: 9
-    acting: 23
+    connected: 12
+    acting: 20
   by_consequence:
-    read: 9
-    write: 23
+    read: 12
+    write: 20
   human_in_the_loop_required: 0
 operations:
 - path: /accounts/balance
@@ -50,25 +52,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /postcards/create
-  method: post
-  operationId: createPostcard
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /postcards/get/{id}
+- path: /campaigns/list
   method: get
-  operationId: getPostcard
+  operationId: listCampaigns
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -76,57 +62,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /postcards/cancel
-  method: post
-  operationId: cancelPostcard
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /letters/create
-  method: post
-  operationId: createLetter
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /letters/post
-  method: post
-  operationId: postLetter
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /letters/get/{id}
+- path: /campaigns/get/{id}
   method: get
-  operationId: getLetter
+  operationId: getCampaign
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -134,9 +72,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /letters/cancel
+- path: /campaigns/create
   method: post
-  operationId: cancelLetter
+  operationId: createCampaign
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -150,9 +88,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /recipients/list
-  method: get
-  operationId: listRecipients
+- path: /campaigns/sample
+  method: post
+  operationId: getCampaignSample
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -160,9 +98,25 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /recipients/get/{id}
-  method: get
-  operationId: getRecipient
+- path: /campaigns/approve
+  method: post
+  operationId: approveCampaign
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /campaigns/cost
+  method: post
+  operationId: getCampaignCost
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -170,9 +124,19 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /recipients/new
+- path: /campaigns/availableDates
   method: post
-  operationId: createRecipient
+  operationId: getCampaignAvailableDates
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /campaigns/book
+  method: post
+  operationId: bookCampaign
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -186,9 +150,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /recipients/delete
+- path: /campaigns/delete
   method: post
-  operationId: deleteRecipient
+  operationId: deleteCampaign
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -202,9 +166,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /recipients/import
+- path: /recipientEvents/create
   method: post
-  operationId: importRecipients
+  operationId: createRecipientEvent
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -324,9 +288,41 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /campaigns/list
+- path: /letters/create
+  method: post
+  operationId: createLetter
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /letters/post
+  method: post
+  operationId: postLetter
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /letters/get/{id}
   method: get
-  operationId: listCampaigns
+  operationId: getLetter
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -334,9 +330,41 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /campaigns/get/{id}
+- path: /letters/cancel
+  method: post
+  operationId: cancelLetter
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /postcards/create
+  method: post
+  operationId: createPostcard
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /postcards/get/{id}
   method: get
-  operationId: getCampaign
+  operationId: getPostcard
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -344,9 +372,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /campaigns/create
+- path: /postcards/cancel
   method: post
-  operationId: createCampaign
+  operationId: cancelPostcard
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -360,9 +388,29 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /campaigns/sample
+- path: /recipients/list
+  method: get
+  operationId: listRecipients
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /recipients/get/{id}
+  method: get
+  operationId: getRecipient
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /recipients/new
   method: post
-  operationId: getCampaignSample
+  operationId: createRecipient
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -376,9 +424,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /campaigns/approve
+- path: /recipients/delete
   method: post
-  operationId: approveCampaign
+  operationId: deleteRecipient
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -392,73 +440,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /campaigns/cost
+- path: /recipients/import
   method: post
-  operationId: getCampaignCost
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /campaigns/availableDates
-  method: post
-  operationId: getCampaignAvailableDates
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /campaigns/book
-  method: post
-  operationId: bookCampaign
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /campaigns/delete
-  method: post
-  operationId: deleteCampaign
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /recipientEvents/create
-  method: post
-  operationId: createRecipientEvent
+  operationId: importRecipients
   x-agentic-access:
     action-class: acting
     consequence: write
