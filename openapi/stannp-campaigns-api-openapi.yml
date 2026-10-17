@@ -378,13 +378,6 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          description: Result value (boolean, integer, or string depending on operation)
     Campaign:
       type: object
       properties:
@@ -416,6 +409,13 @@ components:
         error:
           type: string
           description: Error message
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          description: Result value (boolean, integer, or string depending on operation)
   securitySchemes:
     basicAuth:
       type: http

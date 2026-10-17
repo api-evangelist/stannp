@@ -148,6 +148,19 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication required or API key invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
     RecipientInput:
       type: object
@@ -245,13 +258,6 @@ components:
               type: string
               format: date-time
               description: Dispatch timestamp
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          description: Result value (boolean, integer, or string depending on operation)
     ErrorResponse:
       type: object
       properties:
@@ -261,19 +267,13 @@ components:
         error:
           type: string
           description: Error message
-  responses:
-    Unauthorized:
-      description: Authentication required or API key invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          description: Result value (boolean, integer, or string depending on operation)
   securitySchemes:
     basicAuth:
       type: http

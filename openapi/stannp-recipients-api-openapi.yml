@@ -199,6 +199,19 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication required or API key invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
     RecipientInput:
       type: object
@@ -262,22 +275,6 @@ components:
           - initial
           - ref_id
           description: Field(s) used to detect duplicates
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          description: Result value (boolean, integer, or string depending on operation)
-    ErrorResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          example: false
-        error:
-          type: string
-          description: Error message
     Recipient:
       type: object
       properties:
@@ -327,19 +324,22 @@ components:
         updated:
           type: string
           format: date-time
-  responses:
-    Unauthorized:
-      description: Authentication required or API key invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: string
+          description: Error message
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          description: Result value (boolean, integer, or string depending on operation)
   securitySchemes:
     basicAuth:
       type: http
