@@ -54,3 +54,33 @@
     builder: Pipedream repo (component)
   status: not-a-workflow
   arazzo: null
+- slug: stannp-go-module-proxy
+  label: Go module proxy
+  partner_name: Go module proxy
+  category: official SDK (Go)
+  type: register
+  channel: package-registry
+  evidence: https://pkg.go.dev/github.com/stannp/stannp-go
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: Go module proxy (public registry JSON)
+    spec_file: null
+    language: Go
+    packages:
+    - name: github.com/stannp/stannp-go
+      version: v0.0.0-20170216164327-23fbd1b332d7
+      released: '2017-02-16'
+      released_field: Time
+      lapsed: true
+      page: https://pkg.go.dev/github.com/stannp/stannp-go
+      repo_leg: github-org:stannp
+      publisher_leg: org:stannp
+      matched_by: github-org
+    current: false
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  status: not-a-workflow
+  arazzo: null
