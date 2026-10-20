@@ -1,5 +1,35 @@
 generated: '2026-10-15'
 edges:
+- partner_name: Go module proxy
+  partner: null
+  partner_match: null
+  type: register
+  direction: provider-built
+  category: official SDK (Go)
+  evidence: https://pkg.go.dev/github.com/stannp/stannp-go
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: Go module proxy (public registry JSON)
+    spec_file: null
+    language: Go
+    packages:
+    - name: github.com/stannp/stannp-go
+      version: v0.0.0-20170216164327-23fbd1b332d7
+      released: '2017-02-16'
+      released_field: Time
+      lapsed: true
+      page: https://pkg.go.dev/github.com/stannp/stannp-go
+      repo_leg: github-org:stannp
+      publisher_leg: org:stannp
+      matched_by: github-org
+    current: false
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
 - partner_name: Zapier
   partner: zapier
   partner_match: aggregator
@@ -33,7 +63,7 @@ edges:
   channel: open-source-node
   relationship: ipaas-bridge
   direction: third-party
-  evidence: https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/stannp
+  evidence: https://github.com/PipedreamHQ/pipedream/tree/d5872355ef27b4efa769f05352f2820c299a456e/components/stannp
   category: null
   contract_reference:
     register: Pipedream components (PipedreamHQ/pipedream components/)
@@ -51,41 +81,12 @@ edges:
     builder: Pipedream repo (component)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
-- partner_name: Go module proxy
-  partner: null
-  partner_match: null
-  type: register
-  direction: provider-built
-  category: official SDK (Go)
-  evidence: https://pkg.go.dev/github.com/stannp/stannp-go
-  channel: package-registry
-  relationship: distribution-channel
-  contract_reference:
-    register: Go module proxy (public registry JSON)
-    spec_file: null
-    language: Go
-    packages:
-    - name: github.com/stannp/stannp-go
-      version: v0.0.0-20170216164327-23fbd1b332d7
-      released: '2017-02-16'
-      released_field: Time
-      lapsed: true
-      page: https://pkg.go.dev/github.com/stannp/stannp-go
-      repo_leg: github-org:stannp
-      publisher_leg: org:stannp
-      matched_by: github-org
-    current: false
-    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
-      24 months'
-    detected_by: sweep-official-sdks.py
-    detected: '2026-10-18'
-  detected_by: sweep-official-sdks.py
-  first_seen: '2026-10-18'
 method: searched
 checked:
 - https://api.nuget.org/v3
 - https://crates.io/api/v1
 - https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
+- https://github.com/PipedreamHQ/pipedream/tree/d5872355ef27b4efa769f05352f2820c299a456e/components/
 - https://proxy.golang.org
 - https://pypi.org/pypi
 - https://registry.npmjs.org
