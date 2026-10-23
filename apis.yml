@@ -76,7 +76,7 @@ apis:
   name: Stannp Account API
   description: Account balance and user information
   humanURL: https://www.stannp.com/us/direct-mail-api
-  baseURL: https://api-eu1.stannp.com/v1/
+  baseURL: https://api-us1.stannp.com/v1
   tags:
   - Account
   properties:
@@ -100,7 +100,7 @@ apis:
   name: Stannp Campaigns API
   description: Manage batch direct mail campaigns
   humanURL: https://www.stannp.com/us/direct-mail-api
-  baseURL: https://api-eu1.stannp.com/v1/
+  baseURL: https://api-us1.stannp.com/v1
   tags:
   - Campaigns
   properties:
@@ -126,7 +126,7 @@ apis:
   name: Stannp Events API
   description: Record recipient engagement and conversion events
   humanURL: https://www.stannp.com/us/direct-mail-api
-  baseURL: https://api-eu1.stannp.com/v1/
+  baseURL: https://api-us1.stannp.com/v1
   tags:
   - Event
   tags_raw:
@@ -154,7 +154,7 @@ apis:
   name: Stannp Groups API
   description: Manage recipient groups
   humanURL: https://www.stannp.com/us/direct-mail-api
-  baseURL: https://api-eu1.stannp.com/v1/
+  baseURL: https://api-us1.stannp.com/v1
   tags:
   - Group
   tags_raw:
@@ -180,7 +180,7 @@ apis:
   name: Stannp Letters API
   description: Create, post, retrieve, and cancel letter mailpieces
   humanURL: https://www.stannp.com/us/direct-mail-api
-  baseURL: https://api-eu1.stannp.com/v1/
+  baseURL: https://api-us1.stannp.com/v1
   tags:
   - Letters
   properties:
@@ -206,7 +206,7 @@ apis:
   name: Stannp Postcards API
   description: Create, retrieve, and cancel postcard mailpieces
   humanURL: https://www.stannp.com/us/direct-mail-api
-  baseURL: https://api-eu1.stannp.com/v1/
+  baseURL: https://api-us1.stannp.com/v1
   tags:
   - Postcards
   properties:
@@ -232,7 +232,7 @@ apis:
   name: Stannp Recipients API
   description: Manage individual recipients and bulk imports
   humanURL: https://www.stannp.com/us/direct-mail-api
-  baseURL: https://api-eu1.stannp.com/v1/
+  baseURL: https://api-us1.stannp.com/v1
   tags:
   - Recipients
   properties:
@@ -255,6 +255,8 @@ apis:
   - type: JSONLDContext
     url: json-ld/stannp-context.jsonld
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/stannp/overview
   - type: CapabilityMap
     url: capabilities/stannp-capability-edges.yml
     name: Stannp Business Capability Map
