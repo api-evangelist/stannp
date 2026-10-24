@@ -1,436 +1,455 @@
 {
+  "info": {
+    "_postman_id": "081e346b-aa46-4bd1-b7f0-e30be3083e40",
+    "name": "Stannp Direct Mail Account API",
+    "description": "REST API for programmatically sending physical letters and postcards, managing recipient groups, configuring campaigns, triggering individual mail pieces, and tracking delivery status through webhooks and event callbacks. Authentication uses API key-based HTTP Basic Auth over HTTPS.\n\nContact Support:\n Name: Stannp Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:47:44.000Z",
+    "updatedAt": "2026-10-21T20:47:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-081e346b-aa46-4bd1-b7f0-e30be3083e40"
+  },
   "item": [
     {
-      "id": "b43c251e-172a-4f63-925d-65ba627b837c",
-      "name": "Account",
-      "description": {
-        "content": "Account balance and user information",
-        "type": "text/plain"
-      },
+      "name": "accounts",
       "item": [
         {
-          "id": "88146f66-ec13-43f6-9ff8-26cbd6990f7a",
-          "name": "Get account balance",
-          "request": {
-            "name": "Get account balance",
-            "description": {
-              "content": "Retrieve the current account balance.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "accounts",
-                "balance"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "balance",
+          "item": [
             {
-              "id": "70f34183-44e9-415b-bde3-b7bc6daaa9a3",
-              "name": "Account balance retrieved successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    "balance"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Get account balance",
+              "id": "0af07991-e9b2-4c5e-86bd-65ceeb2eb7be",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"balance\": \"150.00\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "090a5e50-bdcd-471b-a762-f2cf16d4393b",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "accounts",
-                    "balance"
-                  ],
+                  "raw": "{{baseUrl}}/accounts/balance",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
+                  "path": [
+                    "accounts",
+                    "balance"
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieve the current account balance."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "4904a66f-af2c-436a-a1d5-99c51571f2b3",
+                  "name": "Account balance retrieved successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/balance",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        "balance"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"balance\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:47:45.000Z",
+                  "updatedAt": "2026-10-21T20:47:45.000Z",
+                  "uid": "35240-4904a66f-af2c-436a-a1d5-99c51571f2b3"
+                },
+                {
+                  "id": "ee93d687-2a50-4201-b196-97445b057e1a",
+                  "name": "Authentication required or API key invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/balance",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        "balance"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:47:45.000Z",
+                  "updatedAt": "2026-10-21T20:47:45.000Z",
+                  "uid": "35240-ee93d687-2a50-4201-b196-97445b057e1a"
                 }
               ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:47:45.000Z",
+              "updatedAt": "2026-10-21T20:47:45.000Z",
+              "uid": "35240-0af07991-e9b2-4c5e-86bd-65ceeb2eb7be"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "d96a62ac-7a5e-418f-9361-fc0b33d4713d",
+          "createdAt": "2026-10-21T20:47:45.000Z",
+          "updatedAt": "2026-10-21T20:47:45.000Z",
+          "uid": "35240-d96a62ac-7a5e-418f-9361-fc0b33d4713d"
         },
         {
-          "id": "6c0f31e8-365f-4608-b097-63224f86418c",
-          "name": "Top up account balance",
-          "request": {
-            "name": "Top up account balance",
-            "description": {
-              "content": "Add funds to the account balance.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "accounts",
-                "topup"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "net",
-                  "value": "<string>",
-                  "description": "(Required) The amount to top up (e.g. \"10.00\"). Tax may be added after."
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "topup",
+          "item": [
             {
-              "id": "142e690c-8b5a-42b6-9f07-6214d5efc280",
-              "name": "Balance topped up successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    "topup"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Top up account balance",
+              "id": "42f369dc-b97d-48ae-bb21-8cc1dceb489a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "urlencoded",
                   "urlencoded": [
                     {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The amount to top up (e.g. \"10.00\"). Tax may be added after.",
-                        "type": "text/plain"
-                      },
+                      "description": "(Required) The amount to top up (e.g. \"10.00\"). Tax may be added after.",
                       "key": "net",
-                      "value": "10.00"
+                      "value": "<string>"
                     }
                   ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"receipt_pdf\": \"https://aGjLOCtGDb.xmHt7Liish4teHW5.H-40,dsS+MYGQx,yq+spt\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "8bbfc1f7-6cb3-4ea3-a847-456bbe1b447c",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/accounts/topup",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "accounts",
                     "topup"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) The amount to top up (e.g. \"10.00\"). Tax may be added after.",
-                        "type": "text/plain"
-                      },
-                      "key": "net",
-                      "value": "10.00"
-                    }
                   ]
-                }
+                },
+                "description": "Add funds to the account balance."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "755e5a5a-3ee5-421b-8de0-ea2fe6c29ce2",
+                  "name": "Balance topped up successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The amount to top up (e.g. \"10.00\"). Tax may be added after.",
+                          "key": "net",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/topup",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        "topup"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"receipt_pdf\": \"<uri>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:47:45.000Z",
+                  "updatedAt": "2026-10-21T20:47:45.000Z",
+                  "uid": "35240-755e5a5a-3ee5-421b-8de0-ea2fe6c29ce2"
+                },
+                {
+                  "id": "3faece7a-2e8b-4171-a57e-b1be89692e59",
+                  "name": "Authentication required or API key invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The amount to top up (e.g. \"10.00\"). Tax may be added after.",
+                          "key": "net",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/topup",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        "topup"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:47:45.000Z",
+                  "updatedAt": "2026-10-21T20:47:45.000Z",
+                  "uid": "35240-3faece7a-2e8b-4171-a57e-b1be89692e59"
                 }
               ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:47:45.000Z",
+              "updatedAt": "2026-10-21T20:47:45.000Z",
+              "uid": "35240-42f369dc-b97d-48ae-bb21-8cc1dceb489a"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "8344ce3b-c28e-444c-952f-fb0b049d33bb",
-          "name": "Get current user",
-          "request": {
-            "name": "Get current user",
-            "description": {
-              "content": "Retrieve information about the currently authenticated user.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "users",
-                "me"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "ce7721b1-d9ca-4d42-a64e-7968af8744a8",
-              "name": "User information retrieved successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "users",
-                    "me"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"data\": {}\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "45adec93-6957-4a39-ac0e-047eefcc5cda",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "users",
-                    "me"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "d9701c78-1afb-471a-a6a4-0df9fdbca8f8",
+          "createdAt": "2026-10-21T20:47:45.000Z",
+          "updatedAt": "2026-10-21T20:47:45.000Z",
+          "uid": "35240-d9701c78-1afb-471a-a6a4-0df9fdbca8f8"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
+      "id": "5e50611a-745c-478f-ab34-5ddb752fc188",
+      "createdAt": "2026-10-21T20:47:45.000Z",
+      "updatedAt": "2026-10-21T20:47:45.000Z",
+      "uid": "35240-5e50611a-745c-478f-ab34-5ddb752fc188"
+    },
     {
-      "type": "string",
-      "value": "https://api-us1.stannp.com/v1",
-      "key": "baseUrl"
+      "name": "users",
+      "item": [
+        {
+          "name": "me",
+          "item": [
+            {
+              "name": "Get current user",
+              "id": "f9b9e0a3-20cc-4e74-b50c-a2f92a5746f1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/me",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    "me"
+                  ]
+                },
+                "description": "Retrieve information about the currently authenticated user."
+              },
+              "response": [
+                {
+                  "id": "6b714512-cea3-46a8-a041-18e40f0a53a3",
+                  "name": "User information retrieved successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/me",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        "me"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {}\n}",
+                  "createdAt": "2026-10-21T20:47:45.000Z",
+                  "updatedAt": "2026-10-21T20:47:45.000Z",
+                  "uid": "35240-6b714512-cea3-46a8-a041-18e40f0a53a3"
+                },
+                {
+                  "id": "1af459df-26bc-4f6e-970d-8a82c72d846f",
+                  "name": "Authentication required or API key invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/me",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        "me"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:47:45.000Z",
+                  "updatedAt": "2026-10-21T20:47:45.000Z",
+                  "uid": "35240-1af459df-26bc-4f6e-970d-8a82c72d846f"
+                }
+              ],
+              "createdAt": "2026-10-21T20:47:45.000Z",
+              "updatedAt": "2026-10-21T20:47:45.000Z",
+              "uid": "35240-f9b9e0a3-20cc-4e74-b50c-a2f92a5746f1"
+            }
+          ],
+          "id": "eb6f3955-2070-4166-95a3-0ad9ad984c80",
+          "createdAt": "2026-10-21T20:47:45.000Z",
+          "updatedAt": "2026-10-21T20:47:45.000Z",
+          "uid": "35240-eb6f3955-2070-4166-95a3-0ad9ad984c80"
+        }
+      ],
+      "id": "7edc736b-c0fc-4874-bd46-c0c33bcfc0ea",
+      "createdAt": "2026-10-21T20:47:45.000Z",
+      "updatedAt": "2026-10-21T20:47:45.000Z",
+      "uid": "35240-7edc736b-c0fc-4874-bd46-c0c33bcfc0ea"
     }
   ],
   "auth": {
@@ -438,21 +457,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "8332c879-c323-4f47-8e0a-1e5b19672157",
-    "name": "Stannp Direct Mail Account API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "REST API for programmatically sending physical letters and postcards, managing recipient groups, configuring campaigns, triggering individual mail pieces, and tracking delivery status through webhooks and event callbacks. Authentication uses API key-based HTTP Basic Auth over HTTPS.\n\n\nContact Support:\n Name: Stannp Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api-us1.stannp.com/v1"
     }
-  }
+  ]
 }

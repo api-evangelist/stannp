@@ -1,869 +1,804 @@
 {
+  "info": {
+    "_postman_id": "20f5612c-f18c-4a21-b50c-6cbe547cfe12",
+    "name": "Stannp Direct Mail Postcards API",
+    "description": "REST API for programmatically sending physical letters and postcards, managing recipient groups, configuring campaigns, triggering individual mail pieces, and tracking delivery status through webhooks and event callbacks. Authentication uses API key-based HTTP Basic Auth over HTTPS.\n\nContact Support:\n Name: Stannp Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:48:14.000Z",
+    "updatedAt": "2026-10-21T20:48:14.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-20f5612c-f18c-4a21-b50c-6cbe547cfe12"
+  },
   "item": [
     {
-      "id": "3653ddec-87c1-4383-a7c1-28b6aea7ce57",
-      "name": "Postcards",
-      "description": {
-        "content": "Create, retrieve, and cancel postcard mailpieces",
-        "type": "text/plain"
-      },
+      "name": "postcards",
       "item": [
         {
-          "id": "af1e4072-8353-4f6d-8992-066dc563f5ab",
-          "name": "Create a postcard",
-          "request": {
-            "name": "Create a postcard",
-            "description": {
-              "content": "Create and dispatch a single postcard. Use test=true to generate a preview PDF without charges.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "postcards",
-                "create"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "multipart/form-data"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "size",
-                  "value": "4x6",
-                  "type": "text",
-                  "description": "Postcard size (US formats) (This can only be one of 4x6,6x9,6x11)"
-                },
-                {
-                  "key": "test",
-                  "value": "<boolean>",
-                  "type": "text",
-                  "description": "Produce sample PDF without dispatch or charges"
-                },
-                {
-                  "key": "template",
-                  "value": "<integer>",
-                  "type": "text",
-                  "description": "Template ID from the platform"
-                },
-                {
-                  "key": "recipient",
-                  "value": "<integer>",
-                  "type": "text",
-                  "description": "Existing recipient ID or new recipient object"
-                },
-                {
-                  "key": "message",
-                  "value": "<string>",
-                  "type": "text",
-                  "description": "Text overlay on postcard back"
-                },
-                {
-                  "key": "front",
-                  "value": "<uri>",
-                  "type": "text",
-                  "description": "URL to JPG, PNG, or PDF for the front design"
-                },
-                {
-                  "key": "back",
-                  "value": "<uri>",
-                  "type": "text",
-                  "description": "URL to JPG, PNG, or PDF for the back design"
-                },
-                {
-                  "key": "padding",
-                  "value": "<integer>",
-                  "type": "text",
-                  "description": "White border control; 0 removes the default border"
-                },
-                {
-                  "key": "post_unverified",
-                  "value": "true",
-                  "type": "text",
-                  "description": "Prevents posting if address is unverified"
-                },
-                {
-                  "key": "clearzone",
-                  "value": "<boolean>",
-                  "type": "text",
-                  "description": "Overlays clear zones with white background"
-                },
-                {
-                  "key": "return_address",
-                  "value": "<string>",
-                  "type": "text",
-                  "description": "Custom return address"
-                },
-                {
-                  "key": "tags",
-                  "value": "<string>",
-                  "type": "text",
-                  "description": "Comma-separated searchable tags"
-                },
-                {
-                  "key": "addons",
-                  "value": "<string>",
-                  "type": "text",
-                  "description": "Upgrade codes (e.g. FIRST_CLASS)"
-                },
-                {
-                  "key": "idempotency_key",
-                  "value": "<string>",
-                  "type": "text",
-                  "description": "Key for safe request retries"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "create",
+          "item": [
             {
-              "id": "019e09fa-efb8-43de-a9cf-809546c8a0a5",
-              "name": "Postcard created successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "postcards",
-                    "create"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Create a postcard",
+              "id": "b376c8e3-5d97-4f17-892c-5394f18a40e6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "formdata",
                   "formdata": [
                     {
-                      "description": {
-                        "content": "Postcard size (US formats) (This can only be one of 4x6,6x9,6x11)",
-                        "type": "text/plain"
-                      },
+                      "description": "Postcard size (US formats) (This can only be one of 4x6,6x9,6x11)",
                       "key": "size",
                       "value": "4x6",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Produce sample PDF without dispatch or charges",
-                        "type": "text/plain"
-                      },
+                      "description": "Produce sample PDF without dispatch or charges",
                       "key": "test",
                       "value": "<boolean>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Template ID from the platform",
-                        "type": "text/plain"
-                      },
+                      "description": "Template ID from the platform",
                       "key": "template",
                       "value": "<integer>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Existing recipient ID or new recipient object",
-                        "type": "text/plain"
-                      },
+                      "description": "Existing recipient ID",
                       "key": "recipient",
                       "value": "<integer>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Text overlay on postcard back",
-                        "type": "text/plain"
-                      },
+                      "description": "Text overlay on postcard back",
                       "key": "message",
                       "value": "<string>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "URL to JPG, PNG, or PDF for the front design",
-                        "type": "text/plain"
-                      },
+                      "description": "URL to JPG, PNG, or PDF for the front design",
                       "key": "front",
                       "value": "<uri>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "URL to JPG, PNG, or PDF for the back design",
-                        "type": "text/plain"
-                      },
+                      "description": "URL to JPG, PNG, or PDF for the back design",
                       "key": "back",
                       "value": "<uri>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "White border control; 0 removes the default border",
-                        "type": "text/plain"
-                      },
+                      "description": "White border control; 0 removes the default border",
                       "key": "padding",
                       "value": "<integer>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Prevents posting if address is unverified",
-                        "type": "text/plain"
-                      },
+                      "description": "Prevents posting if address is unverified",
                       "key": "post_unverified",
                       "value": "true",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Overlays clear zones with white background",
-                        "type": "text/plain"
-                      },
+                      "description": "Overlays clear zones with white background",
                       "key": "clearzone",
                       "value": "<boolean>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Custom return address",
-                        "type": "text/plain"
-                      },
+                      "description": "Custom return address",
                       "key": "return_address",
                       "value": "<string>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Comma-separated searchable tags",
-                        "type": "text/plain"
-                      },
+                      "description": "Comma-separated searchable tags",
                       "key": "tags",
                       "value": "<string>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Upgrade codes (e.g. FIRST_CLASS)",
-                        "type": "text/plain"
-                      },
+                      "description": "Upgrade codes (e.g. FIRST_CLASS)",
                       "key": "addons",
                       "value": "<string>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Key for safe request retries",
-                        "type": "text/plain"
-                      },
+                      "description": "Key for safe request retries",
                       "key": "idempotency_key",
                       "value": "<string>",
                       "type": "text"
                     }
                   ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 7360,\n    \"pdf\": \"http://eGtzzheKAmnUgXybszCnxcJHQfmqMv.tnvo01ALxPx,px2GGInAx6b,dNWh-dKH,IXsGMeBSrqF8.qZ\",\n    \"created\": \"1985-04-17T19:44:07.954Z\",\n    \"format\": \"string\",\n    \"cost\": \"string\",\n    \"status\": \"string\",\n    \"tracking_reference\": \"string\",\n    \"dispatched\": \"1990-09-07T14:42:08.819Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "81acff5e-0e55-4e6c-acd9-35c25f1c2ebd",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/postcards/create",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "postcards",
                     "create"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "description": {
-                        "content": "Postcard size (US formats) (This can only be one of 4x6,6x9,6x11)",
-                        "type": "text/plain"
-                      },
-                      "key": "size",
-                      "value": "4x6",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Produce sample PDF without dispatch or charges",
-                        "type": "text/plain"
-                      },
-                      "key": "test",
-                      "value": "<boolean>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Template ID from the platform",
-                        "type": "text/plain"
-                      },
-                      "key": "template",
-                      "value": "<integer>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Existing recipient ID or new recipient object",
-                        "type": "text/plain"
-                      },
-                      "key": "recipient",
-                      "value": "<integer>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Text overlay on postcard back",
-                        "type": "text/plain"
-                      },
-                      "key": "message",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "URL to JPG, PNG, or PDF for the front design",
-                        "type": "text/plain"
-                      },
-                      "key": "front",
-                      "value": "<uri>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "URL to JPG, PNG, or PDF for the back design",
-                        "type": "text/plain"
-                      },
-                      "key": "back",
-                      "value": "<uri>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "White border control; 0 removes the default border",
-                        "type": "text/plain"
-                      },
-                      "key": "padding",
-                      "value": "<integer>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Prevents posting if address is unverified",
-                        "type": "text/plain"
-                      },
-                      "key": "post_unverified",
-                      "value": "true",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Overlays clear zones with white background",
-                        "type": "text/plain"
-                      },
-                      "key": "clearzone",
-                      "value": "<boolean>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Custom return address",
-                        "type": "text/plain"
-                      },
-                      "key": "return_address",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Comma-separated searchable tags",
-                        "type": "text/plain"
-                      },
-                      "key": "tags",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Upgrade codes (e.g. FIRST_CLASS)",
-                        "type": "text/plain"
-                      },
-                      "key": "addons",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Key for safe request retries",
-                        "type": "text/plain"
-                      },
-                      "key": "idempotency_key",
-                      "value": "<string>",
-                      "type": "text"
-                    }
                   ]
-                }
+                },
+                "description": "Create and dispatch a single postcard. Use test=true to generate a preview PDF without charges."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "9abeded6-d5db-4860-8a41-9412eb6635af",
+                  "name": "Postcard created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "Postcard size (US formats) (This can only be one of 4x6,6x9,6x11)",
+                          "key": "size",
+                          "value": "4x6",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Produce sample PDF without dispatch or charges",
+                          "key": "test",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Template ID from the platform",
+                          "key": "template",
+                          "value": "<integer>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Existing recipient ID",
+                          "key": "recipient",
+                          "value": "<integer>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Text overlay on postcard back",
+                          "key": "message",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "URL to JPG, PNG, or PDF for the front design",
+                          "key": "front",
+                          "value": "<uri>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "URL to JPG, PNG, or PDF for the back design",
+                          "key": "back",
+                          "value": "<uri>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "White border control; 0 removes the default border",
+                          "key": "padding",
+                          "value": "<integer>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Prevents posting if address is unverified",
+                          "key": "post_unverified",
+                          "value": "true",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Overlays clear zones with white background",
+                          "key": "clearzone",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Custom return address",
+                          "key": "return_address",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Comma-separated searchable tags",
+                          "key": "tags",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Upgrade codes (e.g. FIRST_CLASS)",
+                          "key": "addons",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Key for safe request retries",
+                          "key": "idempotency_key",
+                          "value": "<string>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/postcards/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "postcards",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"pdf\": \"<uri>\",\n    \"created\": \"<dateTime>\",\n    \"format\": \"<string>\",\n    \"cost\": \"<string>\",\n    \"status\": \"<string>\",\n    \"tracking_reference\": \"<string>\",\n    \"dispatched\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:48:14.000Z",
+                  "updatedAt": "2026-10-21T20:48:14.000Z",
+                  "uid": "35240-9abeded6-d5db-4860-8a41-9412eb6635af"
+                },
+                {
+                  "id": "0670d4d8-08c0-4a2c-bff7-2a23363028e9",
+                  "name": "Authentication required or API key invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "Postcard size (US formats) (This can only be one of 4x6,6x9,6x11)",
+                          "key": "size",
+                          "value": "4x6",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Produce sample PDF without dispatch or charges",
+                          "key": "test",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Template ID from the platform",
+                          "key": "template",
+                          "value": "<integer>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Existing recipient ID",
+                          "key": "recipient",
+                          "value": "<integer>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Text overlay on postcard back",
+                          "key": "message",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "URL to JPG, PNG, or PDF for the front design",
+                          "key": "front",
+                          "value": "<uri>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "URL to JPG, PNG, or PDF for the back design",
+                          "key": "back",
+                          "value": "<uri>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "White border control; 0 removes the default border",
+                          "key": "padding",
+                          "value": "<integer>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Prevents posting if address is unverified",
+                          "key": "post_unverified",
+                          "value": "true",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Overlays clear zones with white background",
+                          "key": "clearzone",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Custom return address",
+                          "key": "return_address",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Comma-separated searchable tags",
+                          "key": "tags",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Upgrade codes (e.g. FIRST_CLASS)",
+                          "key": "addons",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Key for safe request retries",
+                          "key": "idempotency_key",
+                          "value": "<string>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/postcards/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "postcards",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:48:14.000Z",
+                  "updatedAt": "2026-10-21T20:48:14.000Z",
+                  "uid": "35240-0670d4d8-08c0-4a2c-bff7-2a23363028e9"
                 }
               ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:48:14.000Z",
+              "updatedAt": "2026-10-21T20:48:14.000Z",
+              "uid": "35240-b376c8e3-5d97-4f17-892c-5394f18a40e6"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "56aff698-1545-45bc-a0b2-8bc0f7cdbb44",
+          "createdAt": "2026-10-21T20:48:14.000Z",
+          "updatedAt": "2026-10-21T20:48:14.000Z",
+          "uid": "35240-56aff698-1545-45bc-a0b2-8bc0f7cdbb44"
         },
         {
-          "id": "74492b43-cb9c-4fb0-ac78-ea74d73a28eb",
-          "name": "Get a postcard",
-          "request": {
-            "name": "Get a postcard",
-            "description": {
-              "content": "Retrieve details of a single postcard mailpiece.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "postcards",
-                "get",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "id",
-                  "description": "(Required) Mailpiece ID"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "get",
+          "item": [
             {
-              "id": "c749f996-2857-4524-8b0a-e3c57a2142f2",
-              "name": "Postcard details retrieved",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "postcards",
-                    "get",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Mailpiece ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{id}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Get a postcard",
+                  "id": "8735705b-5315-481d-8a8e-e8a44658e682",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/postcards/get/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "postcards",
+                        "get",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3ebf8256-c720-4dbe-8db8-95aaece3dcde",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) Mailpiece ID"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve details of a single postcard mailpiece."
+                  },
+                  "response": [
+                    {
+                      "id": "abe1bc20-1e4e-40fc-b166-138e2235d722",
+                      "name": "Postcard details retrieved",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/postcards/get/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "postcards",
+                            "get",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"pdf\": \"<uri>\",\n    \"created\": \"<dateTime>\",\n    \"format\": \"<string>\",\n    \"cost\": \"<string>\",\n    \"status\": \"<string>\",\n    \"tracking_reference\": \"<string>\",\n    \"dispatched\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-10-21T20:48:14.000Z",
+                      "updatedAt": "2026-10-21T20:48:14.000Z",
+                      "uid": "35240-abe1bc20-1e4e-40fc-b166-138e2235d722"
+                    },
+                    {
+                      "id": "39b50c58-28cd-4d11-88a5-a072315c6f59",
+                      "name": "Authentication required or API key invalid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/postcards/get/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "postcards",
+                            "get",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:48:14.000Z",
+                      "updatedAt": "2026-10-21T20:48:14.000Z",
+                      "uid": "35240-39b50c58-28cd-4d11-88a5-a072315c6f59"
+                    },
+                    {
+                      "id": "2aadeac6-3787-454a-8e36-421a0576b169",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/postcards/get/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "postcards",
+                            "get",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:48:14.000Z",
+                      "updatedAt": "2026-10-21T20:48:14.000Z",
+                      "uid": "35240-2aadeac6-3787-454a-8e36-421a0576b169"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:48:14.000Z",
+                  "updatedAt": "2026-10-21T20:48:14.000Z",
+                  "uid": "35240-8735705b-5315-481d-8a8e-e8a44658e682"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 7360,\n    \"pdf\": \"http://eGtzzheKAmnUgXybszCnxcJHQfmqMv.tnvo01ALxPx,px2GGInAx6b,dNWh-dKH,IXsGMeBSrqF8.qZ\",\n    \"created\": \"1985-04-17T19:44:07.954Z\",\n    \"format\": \"string\",\n    \"cost\": \"string\",\n    \"status\": \"string\",\n    \"tracking_reference\": \"string\",\n    \"dispatched\": \"1990-09-07T14:42:08.819Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "8dbcee56-4e46-47f5-b95e-7645b811d10b",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "postcards",
-                    "get",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Mailpiece ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4dd5c127-5dd7-4c16-9b00-36000fb0855a",
-              "name": "Resource not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "postcards",
-                    "get",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Mailpiece ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "e1f94594-4fed-4657-80bd-255a7ab6f440",
+              "createdAt": "2026-10-21T20:48:14.000Z",
+              "updatedAt": "2026-10-21T20:48:14.000Z",
+              "uid": "35240-e1f94594-4fed-4657-80bd-255a7ab6f440"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "f674e3c4-c89a-4ac0-8091-72572b09b8ee",
+          "createdAt": "2026-10-21T20:48:14.000Z",
+          "updatedAt": "2026-10-21T20:48:14.000Z",
+          "uid": "35240-f674e3c4-c89a-4ac0-8091-72572b09b8ee"
         },
         {
-          "id": "1f950758-fe2e-4872-a539-7f7d643fcc70",
-          "name": "Cancel a postcard",
-          "request": {
-            "name": "Cancel a postcard",
-            "description": {
-              "content": "Cancel a postcard that has not yet been dispatched.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "postcards",
-                "cancel"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "id",
-                  "value": "<integer>",
-                  "description": "(Required) Mailpiece ID to cancel"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "cancel",
+          "item": [
             {
-              "id": "df1fdef8-42e0-4f7a-9076-2629fb45cbef",
-              "name": "Postcard cancelled successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "postcards",
-                    "cancel"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Cancel a postcard",
+              "id": "1368f73b-bfd3-4040-a5b8-9be148070109",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "urlencoded",
                   "urlencoded": [
                     {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Mailpiece ID to cancel",
-                        "type": "text/plain"
-                      },
+                      "description": "(Required) Mailpiece ID to cancel",
                       "key": "id",
                       "value": "<integer>"
                     }
                   ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": true,\n  \"data\": {}\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "6d5380b3-a647-4400-83ed-e66f41d3a7c0",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
+                },
                 "url": {
-                  "path": [
-                    "postcards",
-                    "cancel"
-                  ],
+                  "raw": "{{baseUrl}}/postcards/cancel",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Mailpiece ID to cancel",
-                        "type": "text/plain"
-                      },
-                      "key": "id",
-                      "value": "<integer>"
-                    }
+                  "path": [
+                    "postcards",
+                    "cancel"
                   ]
-                }
+                },
+                "description": "Cancel a postcard that has not yet been dispatched."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "c2270578-12ba-4236-a100-f410633a2628",
+                  "name": "Postcard cancelled successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Mailpiece ID to cancel",
+                          "key": "id",
+                          "value": "<integer>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/postcards/cancel",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "postcards",
+                        "cancel"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"description\": \"Result value (boolean, integer, or string depending on operation)\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:48:14.000Z",
+                  "updatedAt": "2026-10-21T20:48:14.000Z",
+                  "uid": "35240-c2270578-12ba-4236-a100-f410633a2628"
+                },
+                {
+                  "id": "dae37a6b-e41e-4480-a74f-4363e5574c8e",
+                  "name": "Authentication required or API key invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Mailpiece ID to cancel",
+                          "key": "id",
+                          "value": "<integer>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/postcards/cancel",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "postcards",
+                        "cancel"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:48:14.000Z",
+                  "updatedAt": "2026-10-21T20:48:14.000Z",
+                  "uid": "35240-dae37a6b-e41e-4480-a74f-4363e5574c8e"
                 }
               ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:48:14.000Z",
+              "updatedAt": "2026-10-21T20:48:14.000Z",
+              "uid": "35240-1368f73b-bfd3-4040-a5b8-9be148070109"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "59c43d7f-1e53-4c9b-8397-5643e1b4b694",
+          "createdAt": "2026-10-21T20:48:14.000Z",
+          "updatedAt": "2026-10-21T20:48:14.000Z",
+          "uid": "35240-59c43d7f-1e53-4c9b-8397-5643e1b4b694"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api-us1.stannp.com/v1",
-      "key": "baseUrl"
+      "id": "a9f2e6a6-3b31-4dd4-8a07-593fc4d5f1e5",
+      "createdAt": "2026-10-21T20:48:14.000Z",
+      "updatedAt": "2026-10-21T20:48:14.000Z",
+      "uid": "35240-a9f2e6a6-3b31-4dd4-8a07-593fc4d5f1e5"
     }
   ],
   "auth": {
@@ -871,21 +806,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "ad379079-979e-40e8-b86f-e0a4d0d381ca",
-    "name": "Stannp Direct Mail Account Postcards API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "REST API for programmatically sending physical letters and postcards, managing recipient groups, configuring campaigns, triggering individual mail pieces, and tracking delivery status through webhooks and event callbacks. Authentication uses API key-based HTTP Basic Auth over HTTPS.\n\n\nContact Support:\n Name: Stannp Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api-us1.stannp.com/v1"
     }
-  }
+  ]
 }

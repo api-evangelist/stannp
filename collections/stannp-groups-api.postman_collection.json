@@ -1,1256 +1,1278 @@
 {
+  "info": {
+    "_postman_id": "1621a1f9-a6fc-48b6-9b1a-ec9043d6e731",
+    "name": "Stannp Direct Mail Groups API",
+    "description": "REST API for programmatically sending physical letters and postcards, managing recipient groups, configuring campaigns, triggering individual mail pieces, and tracking delivery status through webhooks and event callbacks. Authentication uses API key-based HTTP Basic Auth over HTTPS.\n\nContact Support:\n Name: Stannp Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:48:03.000Z",
+    "updatedAt": "2026-10-21T20:48:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1621a1f9-a6fc-48b6-9b1a-ec9043d6e731"
+  },
   "item": [
     {
-      "id": "3dc5807b-342a-4efc-8bcc-b9a22fd7ad6d",
-      "name": "Groups",
-      "description": {
-        "content": "Manage recipient groups",
-        "type": "text/plain"
-      },
+      "name": "groups",
       "item": [
         {
-          "id": "87108a89-3c9e-470f-909a-40397b6d2d86",
-          "name": "List groups",
-          "request": {
-            "name": "List groups",
-            "description": {
-              "content": "Retrieve a paginated list of recipient groups.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "groups",
-                "list"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "<integer>",
-                  "description": "Pagination offset"
-                },
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "<integer>",
-                  "description": "Number of results to return"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "list",
+          "item": [
             {
-              "id": "cdf36861-ca18-4014-bcbf-c8e6c1b887cc",
-              "name": "Groups retrieved successfully",
-              "originalRequest": {
+              "name": "List groups",
+              "id": "80b8ae50-b725-443a-a4aa-9a8153efa349",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/groups/list?offset=<integer>&limit=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "groups",
                     "list"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Pagination offset",
                       "key": "offset",
                       "value": "<integer>"
                     },
                     {
+                      "description": "Number of results to return",
                       "key": "limit",
                       "value": "<integer>"
                     }
-                  ],
-                  "variable": []
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieve a paginated list of recipient groups."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 9081,\n      \"account_id\": 6069,\n      \"name\": \"string\",\n      \"created\": \"1964-01-22T07:54:10.989Z\",\n      \"recipients\": 1622,\n      \"valid\": 5719,\n      \"international\": 8759,\n      \"skipped\": 8788,\n      \"status\": \"string\",\n      \"import_progress\": 8993,\n      \"is_seeds\": true\n    },\n    {\n      \"id\": 4894,\n      \"account_id\": 6648,\n      \"name\": \"string\",\n      \"created\": \"1991-02-05T20:02:31.165Z\",\n      \"recipients\": 1469,\n      \"valid\": 6702,\n      \"international\": 3734,\n      \"skipped\": 7419,\n      \"status\": \"string\",\n      \"import_progress\": 3136,\n      \"is_seeds\": true\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d13ad203-ad87-4c71-9ab5-e0083479af46",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "groups",
-                    "list"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "1982d21f-1e1a-4959-a5e2-15d06abf971c",
+                  "name": "Groups retrieved successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/list?offset=<integer>&limit=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        "list"
+                      ],
+                      "query": [
+                        {
+                          "description": "Pagination offset",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of results to return",
+                          "key": "limit",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "offset",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "<integer>"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": []
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"account_id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"recipients\": \"<integer>\",\n      \"valid\": \"<integer>\",\n      \"international\": \"<integer>\",\n      \"skipped\": \"<integer>\",\n      \"status\": \"<string>\",\n      \"import_progress\": \"<integer>\",\n      \"is_seeds\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"account_id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"recipients\": \"<integer>\",\n      \"valid\": \"<integer>\",\n      \"international\": \"<integer>\",\n      \"skipped\": \"<integer>\",\n      \"status\": \"<string>\",\n      \"import_progress\": \"<integer>\",\n      \"is_seeds\": \"<boolean>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:48:03.000Z",
+                  "updatedAt": "2026-10-21T20:48:03.000Z",
+                  "uid": "35240-1982d21f-1e1a-4959-a5e2-15d06abf971c"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "2c7bcd2d-4053-4cb9-aff7-cd8fcc5cb0b3",
+                  "name": "Authentication required or API key invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/list?offset=<integer>&limit=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        "list"
+                      ],
+                      "query": [
+                        {
+                          "description": "Pagination offset",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of results to return",
+                          "key": "limit",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:48:03.000Z",
+                  "updatedAt": "2026-10-21T20:48:03.000Z",
+                  "uid": "35240-2c7bcd2d-4053-4cb9-aff7-cd8fcc5cb0b3"
                 }
               ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:48:03.000Z",
+              "updatedAt": "2026-10-21T20:48:03.000Z",
+              "uid": "35240-80b8ae50-b725-443a-a4aa-9a8153efa349"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "1d928100-b815-459d-b083-3635c921d46d",
+          "createdAt": "2026-10-21T20:48:03.000Z",
+          "updatedAt": "2026-10-21T20:48:03.000Z",
+          "uid": "35240-1d928100-b815-459d-b083-3635c921d46d"
         },
         {
-          "id": "bdcd2ad4-bcbf-47e8-ab31-7358942ec2a3",
-          "name": "Create a group",
-          "request": {
-            "name": "Create a group",
-            "description": {
-              "content": "Create a new recipient group.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "groups",
-                "new"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "name",
-                  "value": "<string>",
-                  "description": "(Required) Group name"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "new",
+          "item": [
             {
-              "id": "59c2a791-db0d-42d5-8470-5716922d6c33",
-              "name": "Group created successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "groups",
-                    "new"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Create a group",
+              "id": "5cbe5b1c-3d4d-4bca-ab42-414a30fb4cfc",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "urlencoded",
                   "urlencoded": [
                     {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Group name",
-                        "type": "text/plain"
-                      },
+                      "description": "(Required) Group name",
                       "key": "name",
                       "value": "<string>"
                     }
                   ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"data\": 2698\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4d09f317-376b-462d-9005-6faf2e6d676b",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/groups/new",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "groups",
                     "new"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Group name",
-                        "type": "text/plain"
-                      },
-                      "key": "name",
-                      "value": "<string>"
-                    }
                   ]
-                }
+                },
+                "description": "Create a new recipient group."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "1ed380b2-f615-4cc4-8309-52dd46969507",
+                  "name": "Group created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Group name",
+                          "key": "name",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/new",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        "new"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": \"<integer>\"\n}",
+                  "createdAt": "2026-10-21T20:48:03.000Z",
+                  "updatedAt": "2026-10-21T20:48:03.000Z",
+                  "uid": "35240-1ed380b2-f615-4cc4-8309-52dd46969507"
+                },
+                {
+                  "id": "6fe19250-cf51-4f87-bb19-c6f0be3dca53",
+                  "name": "Authentication required or API key invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Group name",
+                          "key": "name",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/new",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        "new"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:48:03.000Z",
+                  "updatedAt": "2026-10-21T20:48:03.000Z",
+                  "uid": "35240-6fe19250-cf51-4f87-bb19-c6f0be3dca53"
                 }
               ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:48:03.000Z",
+              "updatedAt": "2026-10-21T20:48:03.000Z",
+              "uid": "35240-5cbe5b1c-3d4d-4bca-ab42-414a30fb4cfc"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "95e7c713-d48f-4819-92fe-8647350e88b4",
+          "createdAt": "2026-10-21T20:48:03.000Z",
+          "updatedAt": "2026-10-21T20:48:03.000Z",
+          "uid": "35240-95e7c713-d48f-4819-92fe-8647350e88b4"
         },
         {
-          "id": "aa80214a-b56b-40c3-bfed-4a1aa236d8a1",
-          "name": "Add recipients to group",
-          "request": {
-            "name": "Add recipients to group",
-            "description": {
-              "content": "Add one or more existing recipients to a group.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "groups",
-                "add",
-                ":group_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "group_id",
-                  "description": "(Required) Group ID"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "recipients",
-                  "value": "<string>",
-                  "description": "(Required) Comma-separated recipient IDs"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "add",
+          "item": [
             {
-              "id": "18c486eb-04f5-47cb-abac-7d04ccc311d5",
-              "name": "Recipients added successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "groups",
-                    "add",
-                    ":group_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "group_id",
-                      "description": "(Required) Group ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Comma-separated recipient IDs",
-                        "type": "text/plain"
-                      },
-                      "key": "recipients",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{group_id}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Add recipients to group",
+                  "id": "80d345eb-e673-4a40-9939-5fca7999186f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Comma-separated recipient IDs",
+                          "key": "recipients",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/add/:group_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        "add",
+                        ":group_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3c4d4750-5562-419f-a930-e50227e7966b",
+                          "key": "group_id",
+                          "value": "<integer>",
+                          "description": "(Required) Group ID"
+                        }
+                      ]
+                    },
+                    "description": "Add one or more existing recipients to a group."
+                  },
+                  "response": [
+                    {
+                      "id": "b04ffc7b-4a36-4972-8a23-ab970e5266ac",
+                      "name": "Recipients added successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Comma-separated recipient IDs",
+                              "key": "recipients",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/add/:group_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            "add",
+                            ":group_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "group_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-21T20:48:03.000Z",
+                      "updatedAt": "2026-10-21T20:48:03.000Z",
+                      "uid": "35240-b04ffc7b-4a36-4972-8a23-ab970e5266ac"
+                    },
+                    {
+                      "id": "4179d4c6-e7f2-47eb-9648-99097b54e9d7",
+                      "name": "Authentication required or API key invalid",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Comma-separated recipient IDs",
+                              "key": "recipients",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/add/:group_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            "add",
+                            ":group_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "group_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:48:03.000Z",
+                      "updatedAt": "2026-10-21T20:48:03.000Z",
+                      "uid": "35240-4179d4c6-e7f2-47eb-9648-99097b54e9d7"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:48:03.000Z",
+                  "updatedAt": "2026-10-21T20:48:03.000Z",
+                  "uid": "35240-80d345eb-e673-4a40-9939-5fca7999186f"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"data\": 6945\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "22e9a758-a094-4ea7-b44e-89015e14c6d4",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "groups",
-                    "add",
-                    ":group_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "group_id",
-                      "description": "(Required) Group ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Comma-separated recipient IDs",
-                        "type": "text/plain"
-                      },
-                      "key": "recipients",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "5a7012f5-bc82-48c2-afc4-2a27f10f24e3",
+              "createdAt": "2026-10-21T20:48:03.000Z",
+              "updatedAt": "2026-10-21T20:48:03.000Z",
+              "uid": "35240-5a7012f5-bc82-48c2-afc4-2a27f10f24e3"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "8bfc3ea2-bdef-4139-89d9-c79188c7f252",
+          "createdAt": "2026-10-21T20:48:03.000Z",
+          "updatedAt": "2026-10-21T20:48:03.000Z",
+          "uid": "35240-8bfc3ea2-bdef-4139-89d9-c79188c7f252"
         },
         {
-          "id": "9a539e3c-599d-4b80-a07e-4d45ac122329",
-          "name": "Remove recipients from group",
-          "request": {
-            "name": "Remove recipients from group",
-            "description": {
-              "content": "Remove one or more recipients from a group.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "groups",
-                "remove",
-                ":group_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "group_id",
-                  "description": "(Required) Group ID"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "recipients",
-                  "value": "<string>",
-                  "description": "(Required) Comma-separated recipient IDs"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "remove",
+          "item": [
             {
-              "id": "82a7fa2b-dace-4ed4-815d-518ff985f24d",
-              "name": "Recipients removed successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "groups",
-                    "remove",
-                    ":group_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "group_id",
-                      "description": "(Required) Group ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Comma-separated recipient IDs",
-                        "type": "text/plain"
-                      },
-                      "key": "recipients",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{group_id}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Remove recipients from group",
+                  "id": "d4a07e80-b00f-446d-81fc-988b8552de21",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Comma-separated recipient IDs",
+                          "key": "recipients",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/remove/:group_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        "remove",
+                        ":group_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "2c18af3e-811c-4684-ac76-d865419cae7d",
+                          "key": "group_id",
+                          "value": "<integer>",
+                          "description": "(Required) Group ID"
+                        }
+                      ]
+                    },
+                    "description": "Remove one or more recipients from a group."
+                  },
+                  "response": [
+                    {
+                      "id": "2bab466a-ccbf-4104-ba1a-c941cceea9be",
+                      "name": "Recipients removed successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Comma-separated recipient IDs",
+                              "key": "recipients",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/remove/:group_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            "remove",
+                            ":group_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "group_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-21T20:48:03.000Z",
+                      "updatedAt": "2026-10-21T20:48:03.000Z",
+                      "uid": "35240-2bab466a-ccbf-4104-ba1a-c941cceea9be"
+                    },
+                    {
+                      "id": "5f9a7613-58bd-43cd-9043-b1346dadbee9",
+                      "name": "Authentication required or API key invalid",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Comma-separated recipient IDs",
+                              "key": "recipients",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/remove/:group_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            "remove",
+                            ":group_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "group_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:48:03.000Z",
+                      "updatedAt": "2026-10-21T20:48:03.000Z",
+                      "uid": "35240-5f9a7613-58bd-43cd-9043-b1346dadbee9"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:48:03.000Z",
+                  "updatedAt": "2026-10-21T20:48:03.000Z",
+                  "uid": "35240-d4a07e80-b00f-446d-81fc-988b8552de21"
                 }
               ],
-              "body": "{\n  \"success\": false,\n  \"data\": 2552\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b3ddbde2-a13e-4e71-a364-aa227af46519",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "groups",
-                    "remove",
-                    ":group_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "group_id",
-                      "description": "(Required) Group ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Comma-separated recipient IDs",
-                        "type": "text/plain"
-                      },
-                      "key": "recipients",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "1b83d2a9-3435-4e67-9dc2-6b9acf34700b",
+              "createdAt": "2026-10-21T20:48:03.000Z",
+              "updatedAt": "2026-10-21T20:48:03.000Z",
+              "uid": "35240-1b83d2a9-3435-4e67-9dc2-6b9acf34700b"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "868ede63-889f-41b2-b975-4ea15ac93a83",
+          "createdAt": "2026-10-21T20:48:03.000Z",
+          "updatedAt": "2026-10-21T20:48:03.000Z",
+          "uid": "35240-868ede63-889f-41b2-b975-4ea15ac93a83"
         },
         {
-          "id": "ccc5f4ca-f83e-4a95-8de0-e32adb1318fd",
-          "name": "Purge a group",
-          "request": {
-            "name": "Purge a group",
-            "description": {
-              "content": "Remove all recipients from a group, optionally deleting recipient records.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "groups",
-                "purge"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "id",
-                  "value": "<integer>",
-                  "description": "(Required) Group ID"
-                },
-                {
-                  "disabled": false,
-                  "key": "delete_recipients",
-                  "value": "<boolean>",
-                  "description": "If true, delete all recipient records in the group"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "purge",
+          "item": [
             {
-              "id": "d184b08e-84b6-48a4-a76b-ff40c4b6a569",
-              "name": "Group purged successfully",
-              "originalRequest": {
+              "name": "Purge a group",
+              "id": "a5ed6d49-07fa-4431-b1d1-5cd7403ffac3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Group ID",
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "If true, delete all recipient records in the group",
+                      "key": "delete_recipients",
+                      "value": "<boolean>"
+                    }
+                  ]
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/groups/purge",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "groups",
                     "purge"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  ]
                 },
+                "description": "Remove all recipients from a group, optionally deleting recipient records."
+              },
+              "response": [
+                {
+                  "id": "1ebec271-7a90-4e02-9cec-b386aa6ab929",
+                  "name": "Group purged successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Group ID",
+                          "key": "id",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "If true, delete all recipient records in the group",
+                          "key": "delete_recipients",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/purge",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        "purge"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"description\": \"Result value (boolean, integer, or string depending on operation)\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:48:03.000Z",
+                  "updatedAt": "2026-10-21T20:48:03.000Z",
+                  "uid": "35240-1ebec271-7a90-4e02-9cec-b386aa6ab929"
+                },
+                {
+                  "id": "43e65894-ba7d-4ee5-810d-dd2d548b1053",
+                  "name": "Authentication required or API key invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Group ID",
+                          "key": "id",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "If true, delete all recipient records in the group",
+                          "key": "delete_recipients",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/purge",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        "purge"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:48:03.000Z",
+                  "updatedAt": "2026-10-21T20:48:03.000Z",
+                  "uid": "35240-43e65894-ba7d-4ee5-810d-dd2d548b1053"
+                }
+              ],
+              "createdAt": "2026-10-21T20:48:03.000Z",
+              "updatedAt": "2026-10-21T20:48:03.000Z",
+              "uid": "35240-a5ed6d49-07fa-4431-b1d1-5cd7403ffac3"
+            }
+          ],
+          "id": "48e04cc3-3a5d-4ddd-946b-db7e9ff02849",
+          "createdAt": "2026-10-21T20:48:03.000Z",
+          "updatedAt": "2026-10-21T20:48:03.000Z",
+          "uid": "35240-48e04cc3-3a5d-4ddd-946b-db7e9ff02849"
+        },
+        {
+          "name": "calculate",
+          "item": [
+            {
+              "name": "{group_id}",
+              "item": [
+                {
+                  "name": "Recalculate group",
+                  "id": "1b7f632b-3306-4de2-b310-bdffe478bce6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/calculate/:group_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        "calculate",
+                        ":group_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "5ee9609c-f0a1-4f60-89a3-8250b2d73c94",
+                          "key": "group_id",
+                          "value": "<integer>",
+                          "description": "(Required) Group ID"
+                        }
+                      ]
+                    },
+                    "description": "Trigger a recalculation of group recipient counts and validity."
+                  },
+                  "response": [
+                    {
+                      "id": "d7967635-ccf5-40e7-83be-a41b52aeec17",
+                      "name": "Recalculation triggered successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/calculate/:group_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            "calculate",
+                            ":group_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "group_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"description\": \"Result value (boolean, integer, or string depending on operation)\"\n  }\n}",
+                      "createdAt": "2026-10-21T20:48:03.000Z",
+                      "updatedAt": "2026-10-21T20:48:03.000Z",
+                      "uid": "35240-d7967635-ccf5-40e7-83be-a41b52aeec17"
+                    },
+                    {
+                      "id": "807e40e5-9356-4243-be9b-a55e0bd88a5c",
+                      "name": "Authentication required or API key invalid",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/calculate/:group_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            "calculate",
+                            ":group_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "group_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:48:03.000Z",
+                      "updatedAt": "2026-10-21T20:48:03.000Z",
+                      "uid": "35240-807e40e5-9356-4243-be9b-a55e0bd88a5c"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:48:03.000Z",
+                  "updatedAt": "2026-10-21T20:48:03.000Z",
+                  "uid": "35240-1b7f632b-3306-4de2-b310-bdffe478bce6"
+                }
+              ],
+              "id": "9258eaff-ee12-4179-ada4-2219ddfa5311",
+              "createdAt": "2026-10-21T20:48:03.000Z",
+              "updatedAt": "2026-10-21T20:48:03.000Z",
+              "uid": "35240-9258eaff-ee12-4179-ada4-2219ddfa5311"
+            }
+          ],
+          "id": "7aba6397-057f-4ceb-b90c-68fa5480477f",
+          "createdAt": "2026-10-21T20:48:03.000Z",
+          "updatedAt": "2026-10-21T20:48:03.000Z",
+          "uid": "35240-7aba6397-057f-4ceb-b90c-68fa5480477f"
+        },
+        {
+          "name": "delete",
+          "item": [
+            {
+              "name": "Delete a group",
+              "id": "a9b95076-6135-4259-9a86-9c36db518972",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "urlencoded",
                   "urlencoded": [
                     {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Group ID",
-                        "type": "text/plain"
-                      },
+                      "description": "(Required) Group ID",
                       "key": "id",
                       "value": "<integer>"
                     },
                     {
-                      "disabled": false,
-                      "description": {
-                        "content": "If true, delete all recipient records in the group",
-                        "type": "text/plain"
-                      },
+                      "description": "If true, also delete all recipients in the group",
                       "key": "delete_recipients",
                       "value": "<boolean>"
                     }
                   ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"data\": {}\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "8b83b9ec-ec29-46d3-89d1-dcf9836cc6e2",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
+                },
                 "url": {
-                  "path": [
-                    "groups",
-                    "purge"
-                  ],
+                  "raw": "{{baseUrl}}/groups/delete",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Group ID",
-                        "type": "text/plain"
-                      },
-                      "key": "id",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "If true, delete all recipient records in the group",
-                        "type": "text/plain"
-                      },
-                      "key": "delete_recipients",
-                      "value": "<boolean>"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "d046e3ac-71a2-4eb8-9890-4ab325e40048",
-          "name": "Recalculate group",
-          "request": {
-            "name": "Recalculate group",
-            "description": {
-              "content": "Trigger a recalculation of group recipient counts and validity.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "groups",
-                "calculate",
-                ":group_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "group_id",
-                  "description": "(Required) Group ID"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "2b94bed1-637d-4ffe-b01a-6018f9b50b85",
-              "name": "Recalculation triggered successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "groups",
-                    "calculate",
-                    ":group_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "group_id",
-                      "description": "(Required) Group ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"data\": {}\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9c13fcab-3c9b-4f06-b9e5-42af7ebc2212",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "groups",
-                    "calculate",
-                    ":group_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "group_id",
-                      "description": "(Required) Group ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "3d900d04-23d1-4f84-b55f-bca332cfb46e",
-          "name": "Delete a group",
-          "request": {
-            "name": "Delete a group",
-            "description": {
-              "content": "Delete a recipient group, optionally deleting associated recipient records.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "groups",
-                "delete"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "id",
-                  "value": "<integer>",
-                  "description": "(Required) Group ID"
-                },
-                {
-                  "disabled": false,
-                  "key": "delete_recipients",
-                  "value": "<boolean>",
-                  "description": "If true, also delete all recipients in the group"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "7273bf5c-c062-47ca-99c3-29d3a5ced979",
-              "name": "Group deleted successfully",
-              "originalRequest": {
-                "url": {
                   "path": [
                     "groups",
                     "delete"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Group ID",
-                        "type": "text/plain"
-                      },
-                      "key": "id",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "If true, also delete all recipients in the group",
-                        "type": "text/plain"
-                      },
-                      "key": "delete_recipients",
-                      "value": "<boolean>"
-                    }
                   ]
-                }
+                },
+                "description": "Delete a recipient group, optionally deleting associated recipient records."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "8c740497-3877-4382-bf24-1a6328dbcde9",
+                  "name": "Group deleted successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Group ID",
+                          "key": "id",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "If true, also delete all recipients in the group",
+                          "key": "delete_recipients",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/delete",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        "delete"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"description\": \"Result value (boolean, integer, or string depending on operation)\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:48:03.000Z",
+                  "updatedAt": "2026-10-21T20:48:03.000Z",
+                  "uid": "35240-8c740497-3877-4382-bf24-1a6328dbcde9"
+                },
+                {
+                  "id": "d242f291-4202-4973-8670-df5d6838b761",
+                  "name": "Authentication required or API key invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Group ID",
+                          "key": "id",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "If true, also delete all recipients in the group",
+                          "key": "delete_recipients",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/delete",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        "delete"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:48:03.000Z",
+                  "updatedAt": "2026-10-21T20:48:03.000Z",
+                  "uid": "35240-d242f291-4202-4973-8670-df5d6838b761"
                 }
               ],
-              "body": "{\n  \"success\": false,\n  \"data\": {}\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "eb6a3be1-856a-4638-88d0-3b02c5e9863c",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "groups",
-                    "delete"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Group ID",
-                        "type": "text/plain"
-                      },
-                      "key": "id",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "If true, also delete all recipients in the group",
-                        "type": "text/plain"
-                      },
-                      "key": "delete_recipients",
-                      "value": "<boolean>"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:48:03.000Z",
+              "updatedAt": "2026-10-21T20:48:03.000Z",
+              "uid": "35240-a9b95076-6135-4259-9a86-9c36db518972"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "01c0d572-2692-438f-8952-ac2bfab8d75a",
+          "createdAt": "2026-10-21T20:48:03.000Z",
+          "updatedAt": "2026-10-21T20:48:03.000Z",
+          "uid": "35240-01c0d572-2692-438f-8952-ac2bfab8d75a"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api-us1.stannp.com/v1",
-      "key": "baseUrl"
+      "id": "99c80d06-e942-4276-92bf-d5789d8d078c",
+      "createdAt": "2026-10-21T20:48:03.000Z",
+      "updatedAt": "2026-10-21T20:48:03.000Z",
+      "uid": "35240-99c80d06-e942-4276-92bf-d5789d8d078c"
     }
   ],
   "auth": {
@@ -1258,21 +1280,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "8418f14e-40dc-40c3-995a-623e02c4c2f0",
-    "name": "Stannp Direct Mail Account Groups API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "REST API for programmatically sending physical letters and postcards, managing recipient groups, configuring campaigns, triggering individual mail pieces, and tracking delivery status through webhooks and event callbacks. Authentication uses API key-based HTTP Basic Auth over HTTPS.\n\n\nContact Support:\n Name: Stannp Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api-us1.stannp.com/v1"
     }
-  }
+  ]
 }

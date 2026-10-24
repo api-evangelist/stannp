@@ -1,1034 +1,976 @@
 {
+  "info": {
+    "_postman_id": "4e0e1bd8-0f90-428e-879d-cbdca2aadd6f",
+    "name": "Stannp Direct Mail Letters API",
+    "description": "REST API for programmatically sending physical letters and postcards, managing recipient groups, configuring campaigns, triggering individual mail pieces, and tracking delivery status through webhooks and event callbacks. Authentication uses API key-based HTTP Basic Auth over HTTPS.\n\nContact Support:\n Name: Stannp Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:48:08.000Z",
+    "updatedAt": "2026-10-21T20:48:09.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4e0e1bd8-0f90-428e-879d-cbdca2aadd6f"
+  },
   "item": [
     {
-      "id": "fd5b7eaf-296c-45ec-9e35-a07ced9941c1",
-      "name": "Letters",
-      "description": {
-        "content": "Create, post, retrieve, and cancel letter mailpieces",
-        "type": "text/plain"
-      },
+      "name": "letters",
       "item": [
         {
-          "id": "82ae7022-fee5-4510-80b2-dd96ff7c52b8",
-          "name": "Create a letter (template/HTML)",
-          "request": {
-            "name": "Create a letter (template/HTML)",
-            "description": {
-              "content": "Create and dispatch a single letter using a template or HTML content. Use test=true to generate a preview PDF without charges.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "letters",
-                "create"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "multipart/form-data"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "test",
-                  "value": "<boolean>",
-                  "type": "text",
-                  "description": "Produce sample PDF without dispatch or charges"
-                },
-                {
-                  "key": "idempotency_key",
-                  "value": "<string>",
-                  "type": "text",
-                  "description": "Key for safe request retries"
-                },
-                {
-                  "key": "template",
-                  "value": "<integer>",
-                  "type": "text",
-                  "description": "Template ID for mail merge"
-                },
-                {
-                  "key": "background",
-                  "value": "<uri>",
-                  "type": "text",
-                  "description": "URL to background image or PDF"
-                },
-                {
-                  "key": "pages",
-                  "value": "<string>",
-                  "type": "text",
-                  "description": "HTML content for letter pages"
-                },
-                {
-                  "key": "recipient",
-                  "value": "<integer>",
-                  "type": "text",
-                  "description": "Existing recipient ID or new recipient object"
-                },
-                {
-                  "key": "size",
-                  "value": "<string>",
-                  "type": "text",
-                  "description": "Letter size (This can only be one of US-LETTER,US-LETTER-XL-WINDOW)"
-                },
-                {
-                  "key": "duplex",
-                  "value": "<boolean>",
-                  "type": "text",
-                  "description": "Enable front/back printing"
-                },
-                {
-                  "key": "addons",
-                  "value": "<string>",
-                  "type": "text",
-                  "description": "Upgrade codes (e.g. FIRST_CLASS, CONFIDENTIAL)"
-                },
-                {
-                  "key": "tags",
-                  "value": "<string>",
-                  "type": "text",
-                  "description": "Comma-separated searchable tags"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "create",
+          "item": [
             {
-              "id": "60e9c23e-7cdb-4fad-a447-9db65a9e745e",
-              "name": "Letter created successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "letters",
-                    "create"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Create a letter (template/HTML)",
+              "id": "0c22d3ce-8eda-4efc-8d6b-90920c2262da",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "formdata",
                   "formdata": [
                     {
-                      "description": {
-                        "content": "Produce sample PDF without dispatch or charges",
-                        "type": "text/plain"
-                      },
+                      "description": "Produce sample PDF without dispatch or charges",
                       "key": "test",
                       "value": "<boolean>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Key for safe request retries",
-                        "type": "text/plain"
-                      },
+                      "description": "Key for safe request retries",
                       "key": "idempotency_key",
                       "value": "<string>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Template ID for mail merge",
-                        "type": "text/plain"
-                      },
+                      "description": "Template ID for mail merge",
                       "key": "template",
                       "value": "<integer>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "URL to background image or PDF",
-                        "type": "text/plain"
-                      },
+                      "description": "URL to background image or PDF",
                       "key": "background",
                       "value": "<uri>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "HTML content for letter pages",
-                        "type": "text/plain"
-                      },
+                      "description": "HTML content for letter pages",
                       "key": "pages",
                       "value": "<string>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Existing recipient ID or new recipient object",
-                        "type": "text/plain"
-                      },
+                      "description": "Existing recipient ID",
                       "key": "recipient",
                       "value": "<integer>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Letter size (This can only be one of US-LETTER,US-LETTER-XL-WINDOW)",
-                        "type": "text/plain"
-                      },
+                      "description": "Letter size (This can only be one of US-LETTER,US-LETTER-XL-WINDOW)",
                       "key": "size",
-                      "value": "<string>",
+                      "value": "US-LETTER-XL-WINDOW",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Enable front/back printing",
-                        "type": "text/plain"
-                      },
+                      "description": "Enable front/back printing",
                       "key": "duplex",
                       "value": "<boolean>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Upgrade codes (e.g. FIRST_CLASS, CONFIDENTIAL)",
-                        "type": "text/plain"
-                      },
+                      "description": "Upgrade codes (e.g. FIRST_CLASS, CONFIDENTIAL)",
                       "key": "addons",
                       "value": "<string>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Comma-separated searchable tags",
-                        "type": "text/plain"
-                      },
+                      "description": "Comma-separated searchable tags",
                       "key": "tags",
                       "value": "<string>",
                       "type": "text"
                     }
                   ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1418,\n    \"pdf\": \"http://wlmtnlgDGNEhVyLdYOtfXvIlfohxExBb.kgqMxgSMFZPBBtKnmbWIhnHPWZpO2CNZmf5Cerv5VbDvEVNlayI\",\n    \"created\": \"1964-10-07T07:30:19.542Z\",\n    \"format\": \"string\",\n    \"cost\": \"string\",\n    \"status\": \"string\",\n    \"tracking_reference\": \"string\",\n    \"dispatched\": \"2006-12-03T00:11:58.632Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b4f188b9-da23-43fa-a2f5-5c07c4864659",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/letters/create",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "letters",
                     "create"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "description": {
-                        "content": "Produce sample PDF without dispatch or charges",
-                        "type": "text/plain"
-                      },
-                      "key": "test",
-                      "value": "<boolean>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Key for safe request retries",
-                        "type": "text/plain"
-                      },
-                      "key": "idempotency_key",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Template ID for mail merge",
-                        "type": "text/plain"
-                      },
-                      "key": "template",
-                      "value": "<integer>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "URL to background image or PDF",
-                        "type": "text/plain"
-                      },
-                      "key": "background",
-                      "value": "<uri>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "HTML content for letter pages",
-                        "type": "text/plain"
-                      },
-                      "key": "pages",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Existing recipient ID or new recipient object",
-                        "type": "text/plain"
-                      },
-                      "key": "recipient",
-                      "value": "<integer>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Letter size (This can only be one of US-LETTER,US-LETTER-XL-WINDOW)",
-                        "type": "text/plain"
-                      },
-                      "key": "size",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Enable front/back printing",
-                        "type": "text/plain"
-                      },
-                      "key": "duplex",
-                      "value": "<boolean>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Upgrade codes (e.g. FIRST_CLASS, CONFIDENTIAL)",
-                        "type": "text/plain"
-                      },
-                      "key": "addons",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Comma-separated searchable tags",
-                        "type": "text/plain"
-                      },
-                      "key": "tags",
-                      "value": "<string>",
-                      "type": "text"
-                    }
                   ]
-                }
+                },
+                "description": "Create and dispatch a single letter using a template or HTML content. Use test=true to generate a preview PDF without charges."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "56b6243c-4880-47a8-84e2-b87edc0ab2d3",
+                  "name": "Letter created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "Produce sample PDF without dispatch or charges",
+                          "key": "test",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Key for safe request retries",
+                          "key": "idempotency_key",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Template ID for mail merge",
+                          "key": "template",
+                          "value": "<integer>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "URL to background image or PDF",
+                          "key": "background",
+                          "value": "<uri>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "HTML content for letter pages",
+                          "key": "pages",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Existing recipient ID",
+                          "key": "recipient",
+                          "value": "<integer>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Letter size (This can only be one of US-LETTER,US-LETTER-XL-WINDOW)",
+                          "key": "size",
+                          "value": "US-LETTER-XL-WINDOW",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Enable front/back printing",
+                          "key": "duplex",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Upgrade codes (e.g. FIRST_CLASS, CONFIDENTIAL)",
+                          "key": "addons",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Comma-separated searchable tags",
+                          "key": "tags",
+                          "value": "<string>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/letters/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "letters",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"pdf\": \"<uri>\",\n    \"created\": \"<dateTime>\",\n    \"format\": \"<string>\",\n    \"cost\": \"<string>\",\n    \"status\": \"<string>\",\n    \"tracking_reference\": \"<string>\",\n    \"dispatched\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:48:09.000Z",
+                  "updatedAt": "2026-10-21T20:48:09.000Z",
+                  "uid": "35240-56b6243c-4880-47a8-84e2-b87edc0ab2d3"
+                },
+                {
+                  "id": "07348d5d-b97d-4f78-98fb-26ad4e5aaba5",
+                  "name": "Authentication required or API key invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "Produce sample PDF without dispatch or charges",
+                          "key": "test",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Key for safe request retries",
+                          "key": "idempotency_key",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Template ID for mail merge",
+                          "key": "template",
+                          "value": "<integer>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "URL to background image or PDF",
+                          "key": "background",
+                          "value": "<uri>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "HTML content for letter pages",
+                          "key": "pages",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Existing recipient ID",
+                          "key": "recipient",
+                          "value": "<integer>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Letter size (This can only be one of US-LETTER,US-LETTER-XL-WINDOW)",
+                          "key": "size",
+                          "value": "US-LETTER-XL-WINDOW",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Enable front/back printing",
+                          "key": "duplex",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Upgrade codes (e.g. FIRST_CLASS, CONFIDENTIAL)",
+                          "key": "addons",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Comma-separated searchable tags",
+                          "key": "tags",
+                          "value": "<string>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/letters/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "letters",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:48:09.000Z",
+                  "updatedAt": "2026-10-21T20:48:09.000Z",
+                  "uid": "35240-07348d5d-b97d-4f78-98fb-26ad4e5aaba5"
                 }
               ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:48:09.000Z",
+              "updatedAt": "2026-10-21T20:48:09.000Z",
+              "uid": "35240-0c22d3ce-8eda-4efc-8d6b-90920c2262da"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "1915780f-7879-4fed-b80c-977d143cfc1b",
+          "createdAt": "2026-10-21T20:48:09.000Z",
+          "updatedAt": "2026-10-21T20:48:09.000Z",
+          "uid": "35240-1915780f-7879-4fed-b80c-977d143cfc1b"
         },
         {
-          "id": "bf1f5084-c8db-4f92-8e6c-a395676bf288",
-          "name": "Post a pre-merged letter (PDF)",
-          "request": {
-            "name": "Post a pre-merged letter (PDF)",
-            "description": {
-              "content": "Dispatch a letter using a pre-merged PDF file.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "letters",
-                "post"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "multipart/form-data"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "country",
-                  "value": "<string>",
-                  "type": "text",
-                  "description": "(Required) ISO alpha-2 country code (US, CA, GB, etc.)"
-                },
-                {
-                  "key": "pdf",
-                  "value": "<uri>",
-                  "type": "text",
-                  "description": "URL or binary PDF file (max 25 pages)"
-                },
-                {
-                  "key": "test",
-                  "value": "<boolean>",
-                  "type": "text",
-                  "description": "Sample mode - no dispatch or charges"
-                },
-                {
-                  "key": "addons",
-                  "value": "<string>",
-                  "type": "text",
-                  "description": "Upgrade codes (e.g. FIRST_CLASS, CONFIDENTIAL)"
-                },
-                {
-                  "key": "transactional",
-                  "value": "<boolean>",
-                  "type": "text",
-                  "description": "Mark as transactional for sensitive data handling"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "post",
+          "item": [
             {
-              "id": "8d709212-82e1-4128-bda0-0563ae11f7fd",
-              "name": "Letter posted successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "letters",
-                    "post"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Post a pre-merged letter (PDF)",
+              "id": "11c3d1e8-328a-4688-a1e7-8045670f7af7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "formdata",
                   "formdata": [
                     {
-                      "description": {
-                        "content": "(Required) ISO alpha-2 country code (US, CA, GB, etc.)",
-                        "type": "text/plain"
-                      },
+                      "description": "(Required) ISO alpha-2 country code (US, CA, GB, etc.)",
                       "key": "country",
-                      "value": "US",
+                      "value": "<string>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "URL or binary PDF file (max 25 pages)",
-                        "type": "text/plain"
-                      },
+                      "description": "URL or binary PDF file (max 25 pages)",
                       "key": "pdf",
                       "value": "<uri>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Sample mode - no dispatch or charges",
-                        "type": "text/plain"
-                      },
+                      "description": "Sample mode - no dispatch or charges",
                       "key": "test",
                       "value": "<boolean>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Upgrade codes (e.g. FIRST_CLASS, CONFIDENTIAL)",
-                        "type": "text/plain"
-                      },
+                      "description": "Upgrade codes (e.g. FIRST_CLASS, CONFIDENTIAL)",
                       "key": "addons",
                       "value": "<string>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Mark as transactional for sensitive data handling",
-                        "type": "text/plain"
-                      },
+                      "description": "Mark as transactional for sensitive data handling",
                       "key": "transactional",
                       "value": "<boolean>",
                       "type": "text"
                     }
                   ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1418,\n    \"pdf\": \"http://wlmtnlgDGNEhVyLdYOtfXvIlfohxExBb.kgqMxgSMFZPBBtKnmbWIhnHPWZpO2CNZmf5Cerv5VbDvEVNlayI\",\n    \"created\": \"1964-10-07T07:30:19.542Z\",\n    \"format\": \"string\",\n    \"cost\": \"string\",\n    \"status\": \"string\",\n    \"tracking_reference\": \"string\",\n    \"dispatched\": \"2006-12-03T00:11:58.632Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "370bdf57-eddd-4ef4-908f-09aa4fa27409",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/letters/post",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "letters",
                     "post"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "description": {
-                        "content": "(Required) ISO alpha-2 country code (US, CA, GB, etc.)",
-                        "type": "text/plain"
-                      },
-                      "key": "country",
-                      "value": "US",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "URL or binary PDF file (max 25 pages)",
-                        "type": "text/plain"
-                      },
-                      "key": "pdf",
-                      "value": "<uri>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Sample mode - no dispatch or charges",
-                        "type": "text/plain"
-                      },
-                      "key": "test",
-                      "value": "<boolean>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Upgrade codes (e.g. FIRST_CLASS, CONFIDENTIAL)",
-                        "type": "text/plain"
-                      },
-                      "key": "addons",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Mark as transactional for sensitive data handling",
-                        "type": "text/plain"
-                      },
-                      "key": "transactional",
-                      "value": "<boolean>",
-                      "type": "text"
-                    }
                   ]
-                }
+                },
+                "description": "Dispatch a letter using a pre-merged PDF file."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "dd7b0ca9-23e3-436d-943c-1f0d27d0eefb",
+                  "name": "Letter posted successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) ISO alpha-2 country code (US, CA, GB, etc.)",
+                          "key": "country",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "URL or binary PDF file (max 25 pages)",
+                          "key": "pdf",
+                          "value": "<uri>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Sample mode - no dispatch or charges",
+                          "key": "test",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Upgrade codes (e.g. FIRST_CLASS, CONFIDENTIAL)",
+                          "key": "addons",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Mark as transactional for sensitive data handling",
+                          "key": "transactional",
+                          "value": "<boolean>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/letters/post",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "letters",
+                        "post"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"pdf\": \"<uri>\",\n    \"created\": \"<dateTime>\",\n    \"format\": \"<string>\",\n    \"cost\": \"<string>\",\n    \"status\": \"<string>\",\n    \"tracking_reference\": \"<string>\",\n    \"dispatched\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:48:09.000Z",
+                  "updatedAt": "2026-10-21T20:48:09.000Z",
+                  "uid": "35240-dd7b0ca9-23e3-436d-943c-1f0d27d0eefb"
+                },
+                {
+                  "id": "ff739f0d-c017-479d-a513-32ae837ed89b",
+                  "name": "Authentication required or API key invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) ISO alpha-2 country code (US, CA, GB, etc.)",
+                          "key": "country",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "URL or binary PDF file (max 25 pages)",
+                          "key": "pdf",
+                          "value": "<uri>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Sample mode - no dispatch or charges",
+                          "key": "test",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Upgrade codes (e.g. FIRST_CLASS, CONFIDENTIAL)",
+                          "key": "addons",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Mark as transactional for sensitive data handling",
+                          "key": "transactional",
+                          "value": "<boolean>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/letters/post",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "letters",
+                        "post"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:48:09.000Z",
+                  "updatedAt": "2026-10-21T20:48:09.000Z",
+                  "uid": "35240-ff739f0d-c017-479d-a513-32ae837ed89b"
                 }
               ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:48:09.000Z",
+              "updatedAt": "2026-10-21T20:48:09.000Z",
+              "uid": "35240-11c3d1e8-328a-4688-a1e7-8045670f7af7"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "6fedb097-f642-4e53-a35d-7a2441225101",
+          "createdAt": "2026-10-21T20:48:09.000Z",
+          "updatedAt": "2026-10-21T20:48:09.000Z",
+          "uid": "35240-6fedb097-f642-4e53-a35d-7a2441225101"
         },
         {
-          "id": "f451328e-0a1f-4086-b67e-c0b5aa06e873",
-          "name": "Get a letter",
-          "request": {
-            "name": "Get a letter",
-            "description": {
-              "content": "Retrieve details of a single letter mailpiece.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "letters",
-                "get",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "id",
-                  "description": "(Required) Mailpiece ID"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "get",
+          "item": [
             {
-              "id": "4526b02a-8b31-4924-b554-cb7aeb56615f",
-              "name": "Letter details retrieved",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "letters",
-                    "get",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Mailpiece ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{id}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Get a letter",
+                  "id": "86ea0e88-d709-43bd-a027-f64df0ed68ab",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/letters/get/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "letters",
+                        "get",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "2a97afd0-6326-49a9-8d93-9416fa934cb9",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) Mailpiece ID"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve details of a single letter mailpiece."
+                  },
+                  "response": [
+                    {
+                      "id": "9e4bd84e-9db8-40f7-a107-d3a31a0ee78d",
+                      "name": "Letter details retrieved",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/letters/get/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "letters",
+                            "get",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"pdf\": \"<uri>\",\n    \"created\": \"<dateTime>\",\n    \"format\": \"<string>\",\n    \"cost\": \"<string>\",\n    \"status\": \"<string>\",\n    \"tracking_reference\": \"<string>\",\n    \"dispatched\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-10-21T20:48:09.000Z",
+                      "updatedAt": "2026-10-21T20:48:09.000Z",
+                      "uid": "35240-9e4bd84e-9db8-40f7-a107-d3a31a0ee78d"
+                    },
+                    {
+                      "id": "5782ee76-6b64-4d64-8576-1ad11a1573b8",
+                      "name": "Authentication required or API key invalid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/letters/get/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "letters",
+                            "get",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:48:09.000Z",
+                      "updatedAt": "2026-10-21T20:48:09.000Z",
+                      "uid": "35240-5782ee76-6b64-4d64-8576-1ad11a1573b8"
+                    },
+                    {
+                      "id": "bdf52655-d377-4fcf-8b24-ba24e9d366ae",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/letters/get/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "letters",
+                            "get",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:48:09.000Z",
+                      "updatedAt": "2026-10-21T20:48:09.000Z",
+                      "uid": "35240-bdf52655-d377-4fcf-8b24-ba24e9d366ae"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:48:09.000Z",
+                  "updatedAt": "2026-10-21T20:48:09.000Z",
+                  "uid": "35240-86ea0e88-d709-43bd-a027-f64df0ed68ab"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1418,\n    \"pdf\": \"http://wlmtnlgDGNEhVyLdYOtfXvIlfohxExBb.kgqMxgSMFZPBBtKnmbWIhnHPWZpO2CNZmf5Cerv5VbDvEVNlayI\",\n    \"created\": \"1964-10-07T07:30:19.542Z\",\n    \"format\": \"string\",\n    \"cost\": \"string\",\n    \"status\": \"string\",\n    \"tracking_reference\": \"string\",\n    \"dispatched\": \"2006-12-03T00:11:58.632Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c239ae90-f28c-4ede-8185-2382489b1cab",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "letters",
-                    "get",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Mailpiece ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b3050ef9-a1ff-4e1b-8296-f1a386702c07",
-              "name": "Resource not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "letters",
-                    "get",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Mailpiece ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "5ab2f96c-e309-4f9c-baf1-69e000626d54",
+              "createdAt": "2026-10-21T20:48:09.000Z",
+              "updatedAt": "2026-10-21T20:48:09.000Z",
+              "uid": "35240-5ab2f96c-e309-4f9c-baf1-69e000626d54"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "2bc14629-eaba-4a0b-a4f0-af52935655e9",
+          "createdAt": "2026-10-21T20:48:09.000Z",
+          "updatedAt": "2026-10-21T20:48:09.000Z",
+          "uid": "35240-2bc14629-eaba-4a0b-a4f0-af52935655e9"
         },
         {
-          "id": "2a1f6e3e-8674-4464-a6ad-6947a5675953",
-          "name": "Cancel a letter",
-          "request": {
-            "name": "Cancel a letter",
-            "description": {
-              "content": "Cancel a letter that has not yet been dispatched.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "letters",
-                "cancel"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "id",
-                  "value": "<integer>",
-                  "description": "(Required) Mailpiece ID to cancel"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "cancel",
+          "item": [
             {
-              "id": "bb8b7f88-9c14-4acd-8de2-0bf78a1d2abc",
-              "name": "Letter cancelled successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "letters",
-                    "cancel"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Cancel a letter",
+              "id": "83dd8829-90f2-4550-a1b0-923cd9475035",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "urlencoded",
                   "urlencoded": [
                     {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Mailpiece ID to cancel",
-                        "type": "text/plain"
-                      },
+                      "description": "(Required) Mailpiece ID to cancel",
                       "key": "id",
                       "value": "<integer>"
                     }
                   ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": true,\n  \"data\": {}\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c5828f4b-f493-4d0b-977c-27269c6c4fa2",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
+                },
                 "url": {
-                  "path": [
-                    "letters",
-                    "cancel"
-                  ],
+                  "raw": "{{baseUrl}}/letters/cancel",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Mailpiece ID to cancel",
-                        "type": "text/plain"
-                      },
-                      "key": "id",
-                      "value": "<integer>"
-                    }
+                  "path": [
+                    "letters",
+                    "cancel"
                   ]
-                }
+                },
+                "description": "Cancel a letter that has not yet been dispatched."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "8fcc8691-3691-45e5-9031-e073c2f8af3a",
+                  "name": "Letter cancelled successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Mailpiece ID to cancel",
+                          "key": "id",
+                          "value": "<integer>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/letters/cancel",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "letters",
+                        "cancel"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"description\": \"Result value (boolean, integer, or string depending on operation)\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:48:09.000Z",
+                  "updatedAt": "2026-10-21T20:48:09.000Z",
+                  "uid": "35240-8fcc8691-3691-45e5-9031-e073c2f8af3a"
+                },
+                {
+                  "id": "1c64b0c2-4260-4051-bac4-fb8666a6911e",
+                  "name": "Authentication required or API key invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Mailpiece ID to cancel",
+                          "key": "id",
+                          "value": "<integer>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/letters/cancel",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "letters",
+                        "cancel"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:48:09.000Z",
+                  "updatedAt": "2026-10-21T20:48:09.000Z",
+                  "uid": "35240-1c64b0c2-4260-4051-bac4-fb8666a6911e"
                 }
               ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:48:09.000Z",
+              "updatedAt": "2026-10-21T20:48:09.000Z",
+              "uid": "35240-83dd8829-90f2-4550-a1b0-923cd9475035"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "09f803b9-6ab3-4744-83ef-44907c98da46",
+          "createdAt": "2026-10-21T20:48:09.000Z",
+          "updatedAt": "2026-10-21T20:48:09.000Z",
+          "uid": "35240-09f803b9-6ab3-4744-83ef-44907c98da46"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api-us1.stannp.com/v1",
-      "key": "baseUrl"
+      "id": "9ab7a696-34e5-4193-9990-7c384ffbe03c",
+      "createdAt": "2026-10-21T20:48:09.000Z",
+      "updatedAt": "2026-10-21T20:48:09.000Z",
+      "uid": "35240-9ab7a696-34e5-4193-9990-7c384ffbe03c"
     }
   ],
   "auth": {
@@ -1036,21 +978,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "22f1c8c4-83e9-4bc6-ae87-ee3906ce35e6",
-    "name": "Stannp Direct Mail Account Letters API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "REST API for programmatically sending physical letters and postcards, managing recipient groups, configuring campaigns, triggering individual mail pieces, and tracking delivery status through webhooks and event callbacks. Authentication uses API key-based HTTP Basic Auth over HTTPS.\n\n\nContact Support:\n Name: Stannp Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api-us1.stannp.com/v1"
     }
-  }
+  ]
 }

@@ -1,1842 +1,1782 @@
 {
+  "info": {
+    "_postman_id": "ad81584e-cb6d-433a-ac5a-3c862f5ace07",
+    "name": "Stannp Direct Mail Campaigns API",
+    "description": "REST API for programmatically sending physical letters and postcards, managing recipient groups, configuring campaigns, triggering individual mail pieces, and tracking delivery status through webhooks and event callbacks. Authentication uses API key-based HTTP Basic Auth over HTTPS.\n\nContact Support:\n Name: Stannp Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:47:50.000Z",
+    "updatedAt": "2026-10-21T20:47:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ad81584e-cb6d-433a-ac5a-3c862f5ace07"
+  },
   "item": [
     {
-      "id": "352a3507-02e7-40f8-a2fe-3b3f6a48585d",
-      "name": "Campaigns",
-      "description": {
-        "content": "Manage batch direct mail campaigns",
-        "type": "text/plain"
-      },
+      "name": "campaigns",
       "item": [
         {
-          "id": "f8bcecf4-ac88-4c0a-b5af-3618bf217b44",
-          "name": "List campaigns",
-          "request": {
-            "name": "List campaigns",
-            "description": {
-              "content": "Retrieve a list of all campaigns.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "campaigns",
-                "list"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "list",
+          "item": [
             {
-              "id": "b576ecd0-6da0-4c74-a795-741d8dce010f",
-              "name": "Campaigns retrieved successfully",
-              "originalRequest": {
+              "name": "List campaigns",
+              "id": "3443ebd6-d045-479c-b62e-6a553fd2070c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/campaigns/list",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "campaigns",
                     "list"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieve a list of all campaigns."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "ebcd0d66-137b-4d56-8168-909ecd8b9288",
+                  "name": "Campaigns retrieved successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/campaigns/list",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "campaigns",
+                        "list"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"type\": \"a5-postcard\",\n      \"status\": \"<string>\",\n      \"recipients\": \"<integer>\",\n      \"cost\": \"<string>\",\n      \"created\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"type\": \"a6-postcard\",\n      \"status\": \"<string>\",\n      \"recipients\": \"<integer>\",\n      \"cost\": \"<string>\",\n      \"created\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-ebcd0d66-137b-4d56-8168-909ecd8b9288"
+                },
+                {
+                  "id": "2e6614d9-8dfc-47bd-8546-3548b5341828",
+                  "name": "Authentication required or API key invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/campaigns/list",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "campaigns",
+                        "list"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-2e6614d9-8dfc-47bd-8546-3548b5341828"
                 }
               ],
-              "body": "{\n  \"success\": false,\n  \"data\": [\n    {\n      \"id\": 7542,\n      \"name\": \"string\",\n      \"type\": \"a5-postcard\",\n      \"status\": \"string\",\n      \"recipients\": 2260,\n      \"cost\": \"string\",\n      \"created\": \"2025-11-10T02:28:11.803Z\"\n    },\n    {\n      \"id\": 1480,\n      \"name\": \"string\",\n      \"type\": \"a5-postcard\",\n      \"status\": \"string\",\n      \"recipients\": 4172,\n      \"cost\": \"string\",\n      \"created\": \"1998-01-25T07:58:22.117Z\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "75594763-dcb2-436c-841a-52c40c2ec6a8",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "campaigns",
-                    "list"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:47:51.000Z",
+              "updatedAt": "2026-10-21T20:47:51.000Z",
+              "uid": "35240-3443ebd6-d045-479c-b62e-6a553fd2070c"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "12110710-3be8-4e4d-a3d1-169ded6650f8",
+          "createdAt": "2026-10-21T20:47:51.000Z",
+          "updatedAt": "2026-10-21T20:47:51.000Z",
+          "uid": "35240-12110710-3be8-4e4d-a3d1-169ded6650f8"
         },
         {
-          "id": "383735cb-4641-4880-9cf4-c3e832268b91",
-          "name": "Get a campaign",
-          "request": {
-            "name": "Get a campaign",
-            "description": {
-              "content": "Retrieve details of a single campaign.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "campaigns",
-                "get",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "id",
-                  "description": "(Required) Campaign ID"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "get",
+          "item": [
             {
-              "id": "e953a04e-d984-4bc1-a43b-7dfcebe98481",
-              "name": "Campaign retrieved successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "campaigns",
-                    "get",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Campaign ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{id}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Get a campaign",
+                  "id": "a2bd5df9-410c-42a7-94c8-9b81d9ecc9b2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/campaigns/get/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "campaigns",
+                        "get",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ee82a91e-25fb-4bf2-bb5d-bbefbef3065f",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) Campaign ID"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve details of a single campaign."
+                  },
+                  "response": [
+                    {
+                      "id": "b2880bb6-03af-41b4-ab82-874485379b15",
+                      "name": "Campaign retrieved successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/campaigns/get/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "campaigns",
+                            "get",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"type\": \"a6-postcard\",\n    \"status\": \"<string>\",\n    \"recipients\": \"<integer>\",\n    \"cost\": \"<string>\",\n    \"created\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-10-21T20:47:51.000Z",
+                      "updatedAt": "2026-10-21T20:47:51.000Z",
+                      "uid": "35240-b2880bb6-03af-41b4-ab82-874485379b15"
+                    },
+                    {
+                      "id": "6c9410fc-8223-47ae-9145-061e30c41130",
+                      "name": "Authentication required or API key invalid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/campaigns/get/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "campaigns",
+                            "get",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:47:51.000Z",
+                      "updatedAt": "2026-10-21T20:47:51.000Z",
+                      "uid": "35240-6c9410fc-8223-47ae-9145-061e30c41130"
+                    },
+                    {
+                      "id": "93e3b556-61c1-4226-988c-f676598b6032",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/campaigns/get/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "campaigns",
+                            "get",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:47:51.000Z",
+                      "updatedAt": "2026-10-21T20:47:51.000Z",
+                      "uid": "35240-93e3b556-61c1-4226-988c-f676598b6032"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-a2bd5df9-410c-42a7-94c8-9b81d9ecc9b2"
                 }
               ],
-              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"id\": 9993,\n    \"name\": \"string\",\n    \"type\": \"a5-postcard\",\n    \"status\": \"string\",\n    \"recipients\": 5331,\n    \"cost\": \"string\",\n    \"created\": \"2002-12-17T06:53:54.909Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "076afaa9-863e-4630-8754-276ca9d3ede9",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "campaigns",
-                    "get",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Campaign ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a6f07d0f-1e28-4bd4-96de-43b7196577cd",
-              "name": "Resource not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "campaigns",
-                    "get",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Campaign ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "49030b62-97a6-45d9-a369-25d9f0a4b749",
+              "createdAt": "2026-10-21T20:47:51.000Z",
+              "updatedAt": "2026-10-21T20:47:51.000Z",
+              "uid": "35240-49030b62-97a6-45d9-a369-25d9f0a4b749"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "1f15eec8-f1a1-4bb1-9bfb-cc59e53ffac3",
+          "createdAt": "2026-10-21T20:47:51.000Z",
+          "updatedAt": "2026-10-21T20:47:51.000Z",
+          "uid": "35240-1f15eec8-f1a1-4bb1-9bfb-cc59e53ffac3"
         },
         {
-          "id": "59132d28-c664-4c0d-bb44-8e75b1eb6220",
-          "name": "Create a campaign",
-          "request": {
-            "name": "Create a campaign",
-            "description": {
-              "content": "Create a new direct mail campaign targeting a recipient group.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "campaigns",
-                "create"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "multipart/form-data"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "name",
-                  "value": "<string>",
-                  "type": "text",
-                  "description": "(Required) Campaign name"
-                },
-                {
-                  "key": "type",
-                  "value": "<string>",
-                  "type": "text",
-                  "description": "(Required) Campaign type (This can only be one of a6-postcard,a5-postcard,letter)"
-                },
-                {
-                  "key": "group_id",
-                  "value": "<integer>",
-                  "type": "text",
-                  "description": "(Required) ID of the recipient group"
-                },
-                {
-                  "key": "template_id",
-                  "value": "<integer>",
-                  "type": "text",
-                  "description": "Template ID to use for the campaign"
-                },
-                {
-                  "key": "file",
-                  "value": "<uri>",
-                  "type": "text",
-                  "description": "URL to PDF file for letters"
-                },
-                {
-                  "key": "front",
-                  "value": "<uri>",
-                  "type": "text",
-                  "description": "URL to front design for postcards"
-                },
-                {
-                  "key": "back",
-                  "value": "<uri>",
-                  "type": "text",
-                  "description": "URL to back design for postcards"
-                },
-                {
-                  "key": "size",
-                  "value": "<string>",
-                  "type": "text",
-                  "description": "Mail piece size (when using files)"
-                },
-                {
-                  "key": "save",
-                  "value": "<boolean>",
-                  "type": "text",
-                  "description": "Save the campaign as a draft"
-                },
-                {
-                  "key": "what_recipients",
-                  "value": "<string>",
-                  "type": "text",
-                  "description": "Filter: all, valid, not_valid, or integer count"
-                },
-                {
-                  "key": "addons",
-                  "value": "<string>",
-                  "type": "text",
-                  "description": "Upgrade codes (e.g. FIRST_CLASS)"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "create",
+          "item": [
             {
-              "id": "bad0e73f-3101-4272-a2aa-f3d45af9f79d",
-              "name": "Campaign created successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "campaigns",
-                    "create"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
+              "name": "Create a campaign",
+              "id": "66cb0dd3-5c81-418c-a539-af2bb0f8404a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
                 "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "body": {
                   "mode": "formdata",
                   "formdata": [
                     {
-                      "description": {
-                        "content": "(Required) Campaign name",
-                        "type": "text/plain"
-                      },
+                      "description": "(Required) Campaign name",
                       "key": "name",
                       "value": "<string>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "(Required) Campaign type (This can only be one of a6-postcard,a5-postcard,letter)",
-                        "type": "text/plain"
-                      },
+                      "description": "(Required) Campaign type (This can only be one of a6-postcard,a5-postcard,letter)",
                       "key": "type",
-                      "value": "<string>",
+                      "value": "a6-postcard",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "(Required) ID of the recipient group",
-                        "type": "text/plain"
-                      },
+                      "description": "(Required) ID of the recipient group",
                       "key": "group_id",
                       "value": "<integer>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Template ID to use for the campaign",
-                        "type": "text/plain"
-                      },
+                      "description": "Template ID to use for the campaign",
                       "key": "template_id",
                       "value": "<integer>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "URL to PDF file for letters",
-                        "type": "text/plain"
-                      },
+                      "description": "URL to PDF file for letters",
                       "key": "file",
                       "value": "<uri>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "URL to front design for postcards",
-                        "type": "text/plain"
-                      },
+                      "description": "URL to front design for postcards",
                       "key": "front",
                       "value": "<uri>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "URL to back design for postcards",
-                        "type": "text/plain"
-                      },
+                      "description": "URL to back design for postcards",
                       "key": "back",
                       "value": "<uri>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Mail piece size (when using files)",
-                        "type": "text/plain"
-                      },
+                      "description": "Mail piece size (when using files)",
                       "key": "size",
                       "value": "<string>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Save the campaign as a draft",
-                        "type": "text/plain"
-                      },
+                      "description": "Save the campaign as a draft",
                       "key": "save",
                       "value": "<boolean>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Filter: all, valid, not_valid, or integer count",
-                        "type": "text/plain"
-                      },
+                      "description": "Filter: all, valid, not_valid, or integer count",
                       "key": "what_recipients",
                       "value": "<string>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Upgrade codes (e.g. FIRST_CLASS)",
-                        "type": "text/plain"
-                      },
+                      "description": "Upgrade codes (e.g. FIRST_CLASS)",
                       "key": "addons",
                       "value": "<string>",
                       "type": "text"
                     }
                   ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"id\": 9993,\n    \"name\": \"string\",\n    \"type\": \"a5-postcard\",\n    \"status\": \"string\",\n    \"recipients\": 5331,\n    \"cost\": \"string\",\n    \"created\": \"2002-12-17T06:53:54.909Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "14bc475b-d491-4069-95bd-fe5c5e301af6",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/campaigns/create",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "campaigns",
                     "create"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  ]
                 },
+                "description": "Create a new direct mail campaign targeting a recipient group."
+              },
+              "response": [
+                {
+                  "id": "92907532-b4d9-49e8-b515-fa3533c62fb2",
+                  "name": "Campaign created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) Campaign name",
+                          "key": "name",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "(Required) Campaign type (This can only be one of a6-postcard,a5-postcard,letter)",
+                          "key": "type",
+                          "value": "a6-postcard",
+                          "type": "text"
+                        },
+                        {
+                          "description": "(Required) ID of the recipient group",
+                          "key": "group_id",
+                          "value": "<integer>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Template ID to use for the campaign",
+                          "key": "template_id",
+                          "value": "<integer>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "URL to PDF file for letters",
+                          "key": "file",
+                          "value": "<uri>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "URL to front design for postcards",
+                          "key": "front",
+                          "value": "<uri>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "URL to back design for postcards",
+                          "key": "back",
+                          "value": "<uri>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Mail piece size (when using files)",
+                          "key": "size",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Save the campaign as a draft",
+                          "key": "save",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Filter: all, valid, not_valid, or integer count",
+                          "key": "what_recipients",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Upgrade codes (e.g. FIRST_CLASS)",
+                          "key": "addons",
+                          "value": "<string>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/campaigns/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "campaigns",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"type\": \"a6-postcard\",\n    \"status\": \"<string>\",\n    \"recipients\": \"<integer>\",\n    \"cost\": \"<string>\",\n    \"created\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-92907532-b4d9-49e8-b515-fa3533c62fb2"
+                },
+                {
+                  "id": "05d6bd4d-ad9c-46d0-9c1f-300bb4f6b861",
+                  "name": "Authentication required or API key invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) Campaign name",
+                          "key": "name",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "(Required) Campaign type (This can only be one of a6-postcard,a5-postcard,letter)",
+                          "key": "type",
+                          "value": "a6-postcard",
+                          "type": "text"
+                        },
+                        {
+                          "description": "(Required) ID of the recipient group",
+                          "key": "group_id",
+                          "value": "<integer>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Template ID to use for the campaign",
+                          "key": "template_id",
+                          "value": "<integer>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "URL to PDF file for letters",
+                          "key": "file",
+                          "value": "<uri>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "URL to front design for postcards",
+                          "key": "front",
+                          "value": "<uri>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "URL to back design for postcards",
+                          "key": "back",
+                          "value": "<uri>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Mail piece size (when using files)",
+                          "key": "size",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Save the campaign as a draft",
+                          "key": "save",
+                          "value": "<boolean>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Filter: all, valid, not_valid, or integer count",
+                          "key": "what_recipients",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Upgrade codes (e.g. FIRST_CLASS)",
+                          "key": "addons",
+                          "value": "<string>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/campaigns/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "campaigns",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-05d6bd4d-ad9c-46d0-9c1f-300bb4f6b861"
+                }
+              ],
+              "createdAt": "2026-10-21T20:47:51.000Z",
+              "updatedAt": "2026-10-21T20:47:51.000Z",
+              "uid": "35240-66cb0dd3-5c81-418c-a539-af2bb0f8404a"
+            }
+          ],
+          "id": "5b55b070-c2f9-41b6-8744-6e82773b997a",
+          "createdAt": "2026-10-21T20:47:51.000Z",
+          "updatedAt": "2026-10-21T20:47:51.000Z",
+          "uid": "35240-5b55b070-c2f9-41b6-8744-6e82773b997a"
+        },
+        {
+          "name": "sample",
+          "item": [
+            {
+              "name": "Get campaign sample",
+              "id": "4b6bf571-828d-4fa4-9550-5c613cfcac04",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
-                  "mode": "formdata",
-                  "formdata": [
+                  "mode": "urlencoded",
+                  "urlencoded": [
                     {
-                      "description": {
-                        "content": "(Required) Campaign name",
-                        "type": "text/plain"
-                      },
-                      "key": "name",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "(Required) Campaign type (This can only be one of a6-postcard,a5-postcard,letter)",
-                        "type": "text/plain"
-                      },
-                      "key": "type",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "(Required) ID of the recipient group",
-                        "type": "text/plain"
-                      },
-                      "key": "group_id",
-                      "value": "<integer>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Template ID to use for the campaign",
-                        "type": "text/plain"
-                      },
-                      "key": "template_id",
-                      "value": "<integer>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "URL to PDF file for letters",
-                        "type": "text/plain"
-                      },
-                      "key": "file",
-                      "value": "<uri>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "URL to front design for postcards",
-                        "type": "text/plain"
-                      },
-                      "key": "front",
-                      "value": "<uri>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "URL to back design for postcards",
-                        "type": "text/plain"
-                      },
-                      "key": "back",
-                      "value": "<uri>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Mail piece size (when using files)",
-                        "type": "text/plain"
-                      },
-                      "key": "size",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Save the campaign as a draft",
-                        "type": "text/plain"
-                      },
-                      "key": "save",
-                      "value": "<boolean>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Filter: all, valid, not_valid, or integer count",
-                        "type": "text/plain"
-                      },
-                      "key": "what_recipients",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Upgrade codes (e.g. FIRST_CLASS)",
-                        "type": "text/plain"
-                      },
-                      "key": "addons",
-                      "value": "<string>",
-                      "type": "text"
+                      "description": "(Required) Campaign ID",
+                      "key": "id",
+                      "value": "<integer>"
                     }
                   ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "d88514d8-9e30-4fed-8143-6c7f6ffdce4a",
-          "name": "Get campaign sample",
-          "request": {
-            "name": "Get campaign sample",
-            "description": {
-              "content": "Generate a sample PDF for the campaign (valid for 30 minutes).",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "campaigns",
-                "sample"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "id",
-                  "value": "<integer>",
-                  "description": "(Required) Campaign ID"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "5b79606f-bcc6-4f66-a1a6-154bab1faa5c",
-              "name": "Sample PDF generated",
-              "originalRequest": {
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/campaigns/sample",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "campaigns",
                     "sample"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Campaign ID",
-                        "type": "text/plain"
-                      },
-                      "key": "id",
-                      "value": "<integer>"
-                    }
                   ]
-                }
+                },
+                "description": "Generate a sample PDF for the campaign (valid for 30 minutes)."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "7b07b007-5057-4abe-a36c-4e078c8f6a34",
+                  "name": "Sample PDF generated",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Campaign ID",
+                          "key": "id",
+                          "value": "<integer>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/campaigns/sample",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "campaigns",
+                        "sample"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": \"<uri>\"\n}",
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-7b07b007-5057-4abe-a36c-4e078c8f6a34"
+                },
+                {
+                  "id": "3250a80e-315b-4f1f-8670-1dd541d99e0b",
+                  "name": "Authentication required or API key invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Campaign ID",
+                          "key": "id",
+                          "value": "<integer>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/campaigns/sample",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "campaigns",
+                        "sample"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-3250a80e-315b-4f1f-8670-1dd541d99e0b"
                 }
               ],
-              "body": "{\n  \"success\": false,\n  \"data\": \"https://NBlSTAaKumuRqhfcnKK.vhpaKqFcXtl3TafhlFTk6DLAOPx9\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "6d4e1c75-91a4-4ea4-b714-af039392c8be",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "campaigns",
-                    "sample"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Campaign ID",
-                        "type": "text/plain"
-                      },
-                      "key": "id",
-                      "value": "<integer>"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:47:51.000Z",
+              "updatedAt": "2026-10-21T20:47:51.000Z",
+              "uid": "35240-4b6bf571-828d-4fa4-9550-5c613cfcac04"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "e90dc09d-0f56-4955-8fae-3e6f6cf86d8d",
+          "createdAt": "2026-10-21T20:47:51.000Z",
+          "updatedAt": "2026-10-21T20:47:51.000Z",
+          "uid": "35240-e90dc09d-0f56-4955-8fae-3e6f6cf86d8d"
         },
         {
-          "id": "bd02a4d7-353d-418d-ad1a-9c9bd4af1a6b",
-          "name": "Approve a campaign",
-          "request": {
-            "name": "Approve a campaign",
-            "description": {
-              "content": "Approve a campaign, making it ready for booking.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "campaigns",
-                "approve"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "id",
-                  "value": "<integer>",
-                  "description": "(Required) Campaign ID"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "approve",
+          "item": [
             {
-              "id": "74cb18a4-e220-40a0-b4ef-9722931cc326",
-              "name": "Campaign approved successfully",
-              "originalRequest": {
+              "name": "Approve a campaign",
+              "id": "e681ecc2-ee07-4c9f-974a-e84e6b480aec",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Campaign ID",
+                      "key": "id",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/campaigns/approve",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "campaigns",
                     "approve"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Campaign ID",
-                        "type": "text/plain"
-                      },
-                      "key": "id",
-                      "value": "<integer>"
-                    }
                   ]
-                }
+                },
+                "description": "Approve a campaign, making it ready for booking."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "c691f7fc-6d85-4824-b7d0-b91da2608875",
+                  "name": "Campaign approved successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Campaign ID",
+                          "key": "id",
+                          "value": "<integer>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/campaigns/approve",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "campaigns",
+                        "approve"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"description\": \"Result value (boolean, integer, or string depending on operation)\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-c691f7fc-6d85-4824-b7d0-b91da2608875"
+                },
+                {
+                  "id": "a180ec34-727f-4add-a18b-578ad36302f2",
+                  "name": "Authentication required or API key invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Campaign ID",
+                          "key": "id",
+                          "value": "<integer>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/campaigns/approve",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "campaigns",
+                        "approve"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-a180ec34-727f-4add-a18b-578ad36302f2"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"data\": {}\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "05b5ce19-c2f6-4647-b00f-67f5aca16ccb",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "campaigns",
-                    "approve"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Campaign ID",
-                        "type": "text/plain"
-                      },
-                      "key": "id",
-                      "value": "<integer>"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:47:51.000Z",
+              "updatedAt": "2026-10-21T20:47:51.000Z",
+              "uid": "35240-e681ecc2-ee07-4c9f-974a-e84e6b480aec"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "8c053973-bdf0-46d4-b521-7ee2bec491ac",
+          "createdAt": "2026-10-21T20:47:51.000Z",
+          "updatedAt": "2026-10-21T20:47:51.000Z",
+          "uid": "35240-8c053973-bdf0-46d4-b521-7ee2bec491ac"
         },
         {
-          "id": "85bfc1c3-b92b-435e-8675-40283073c27f",
-          "name": "Get campaign cost",
-          "request": {
-            "name": "Get campaign cost",
-            "description": {
-              "content": "Calculate the cost of a campaign including recipient breakdown and VAT.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "campaigns",
-                "cost"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "id",
-                  "value": "<integer>",
-                  "description": "(Required) Campaign ID"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "cost",
+          "item": [
             {
-              "id": "af3d4c6a-60b9-4511-9dfa-f7f28295ec5c",
-              "name": "Campaign cost calculated",
-              "originalRequest": {
+              "name": "Get campaign cost",
+              "id": "ac6484e9-6ccd-4400-a7cd-0446643cca0e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Campaign ID",
+                      "key": "id",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/campaigns/cost",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "campaigns",
                     "cost"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Campaign ID",
-                        "type": "text/plain"
-                      },
-                      "key": "id",
-                      "value": "<integer>"
-                    }
                   ]
-                }
+                },
+                "description": "Calculate the cost of a campaign including recipient breakdown and VAT."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "a789a548-abbe-46c0-b9d9-361f229e2af7",
+                  "name": "Campaign cost calculated",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Campaign ID",
+                          "key": "id",
+                          "value": "<integer>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/campaigns/cost",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "campaigns",
+                        "cost"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"rate\": \"<string>\",\n    \"valid\": \"<integer>\",\n    \"invalid\": \"<integer>\",\n    \"total\": \"<string>\",\n    \"total_with_vat\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-a789a548-abbe-46c0-b9d9-361f229e2af7"
+                },
+                {
+                  "id": "5252ece1-26a3-4f4f-9678-f8e814b23dd3",
+                  "name": "Authentication required or API key invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Campaign ID",
+                          "key": "id",
+                          "value": "<integer>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/campaigns/cost",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "campaigns",
+                        "cost"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-5252ece1-26a3-4f4f-9678-f8e814b23dd3"
                 }
               ],
-              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"rate\": \"string\",\n    \"valid\": 5425,\n    \"invalid\": 8428,\n    \"total\": \"string\",\n    \"total_with_vat\": \"string\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4b2b7226-d24d-4364-a745-5e7a695bfc7f",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "campaigns",
-                    "cost"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Campaign ID",
-                        "type": "text/plain"
-                      },
-                      "key": "id",
-                      "value": "<integer>"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:47:51.000Z",
+              "updatedAt": "2026-10-21T20:47:51.000Z",
+              "uid": "35240-ac6484e9-6ccd-4400-a7cd-0446643cca0e"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "74aeef98-c0ae-4b4a-ae7e-42292f850fed",
+          "createdAt": "2026-10-21T20:47:51.000Z",
+          "updatedAt": "2026-10-21T20:47:51.000Z",
+          "uid": "35240-74aeef98-c0ae-4b4a-ae7e-42292f850fed"
         },
         {
-          "id": "c5b6ff5b-e414-409c-a2be-2083ceddaa80",
-          "name": "Get available booking dates",
-          "request": {
-            "name": "Get available booking dates",
-            "description": {
-              "content": "Retrieve available dates on which a campaign can be dispatched.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "campaigns",
-                "availableDates"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "start",
-                  "value": "<date>",
-                  "description": "Start of date range (YYYY-MM-DD)"
-                },
-                {
-                  "disabled": false,
-                  "key": "end",
-                  "value": "<date>",
-                  "description": "End of date range (YYYY-MM-DD)"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "availableDates",
+          "item": [
             {
-              "id": "55b873bf-128c-456e-8d41-4a8c3c0f47ea",
-              "name": "Available dates retrieved",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "campaigns",
-                    "availableDates"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Get available booking dates",
+              "id": "79c56adf-9ede-4309-92c9-8bb627ba0089",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "urlencoded",
                   "urlencoded": [
                     {
-                      "disabled": false,
-                      "description": {
-                        "content": "Start of date range (YYYY-MM-DD)",
-                        "type": "text/plain"
-                      },
+                      "description": "Start of date range (YYYY-MM-DD)",
                       "key": "start",
                       "value": "<date>"
                     },
                     {
-                      "disabled": false,
-                      "description": {
-                        "content": "End of date range (YYYY-MM-DD)",
-                        "type": "text/plain"
-                      },
+                      "description": "End of date range (YYYY-MM-DD)",
                       "key": "end",
                       "value": "<date>"
                     }
                   ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"data\": [\n    \"1967-05-06\",\n    \"1991-07-07\"\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "66473e33-14aa-4307-a31a-082c75177d7d",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/campaigns/availableDates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "campaigns",
                     "availableDates"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Start of date range (YYYY-MM-DD)",
-                        "type": "text/plain"
-                      },
-                      "key": "start",
-                      "value": "<date>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "End of date range (YYYY-MM-DD)",
-                        "type": "text/plain"
-                      },
-                      "key": "end",
-                      "value": "<date>"
-                    }
                   ]
-                }
+                },
+                "description": "Retrieve available dates on which a campaign can be dispatched."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "0eb72f85-1481-46ad-9fb7-82c3d5cbac7a",
+                  "name": "Available dates retrieved",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "Start of date range (YYYY-MM-DD)",
+                          "key": "start",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "End of date range (YYYY-MM-DD)",
+                          "key": "end",
+                          "value": "<date>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/campaigns/availableDates",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "campaigns",
+                        "availableDates"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    \"<date>\",\n    \"<date>\"\n  ]\n}",
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-0eb72f85-1481-46ad-9fb7-82c3d5cbac7a"
+                },
+                {
+                  "id": "e91a62a2-ef9c-477c-ab70-9934277ba477",
+                  "name": "Authentication required or API key invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "Start of date range (YYYY-MM-DD)",
+                          "key": "start",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "End of date range (YYYY-MM-DD)",
+                          "key": "end",
+                          "value": "<date>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/campaigns/availableDates",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "campaigns",
+                        "availableDates"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-e91a62a2-ef9c-477c-ab70-9934277ba477"
                 }
               ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:47:51.000Z",
+              "updatedAt": "2026-10-21T20:47:51.000Z",
+              "uid": "35240-79c56adf-9ede-4309-92c9-8bb627ba0089"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "7986ab3a-fc34-426e-879e-06dbb872f4c3",
+          "createdAt": "2026-10-21T20:47:51.000Z",
+          "updatedAt": "2026-10-21T20:47:51.000Z",
+          "uid": "35240-7986ab3a-fc34-426e-879e-06dbb872f4c3"
         },
         {
-          "id": "4ab04bac-5337-4056-ab51-fd720ebab1fd",
-          "name": "Book a campaign",
-          "request": {
-            "name": "Book a campaign",
-            "description": {
-              "content": "Schedule a campaign for dispatch on a specific date.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "campaigns",
-                "book"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "id",
-                  "value": "<integer>",
-                  "description": "(Required) Campaign ID"
-                },
-                {
-                  "disabled": false,
-                  "key": "send_date",
-                  "value": "<date>",
-                  "description": "(Required) Dispatch date (YYYY-MM-DD)"
-                },
-                {
-                  "disabled": false,
-                  "key": "next_available_date",
-                  "value": "true",
-                  "description": "Use next available date if chosen date is unavailable"
-                },
-                {
-                  "disabled": false,
-                  "key": "use_balance",
-                  "value": "true",
-                  "description": "Pay from account balance"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "book",
+          "item": [
             {
-              "id": "d5af63c7-fc42-4af9-a58e-4af2a82d9e75",
-              "name": "Campaign booked successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "campaigns",
-                    "book"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Book a campaign",
+              "id": "3abda299-3832-468c-8b3f-07d0f106ff77",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "urlencoded",
                   "urlencoded": [
                     {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Campaign ID",
-                        "type": "text/plain"
-                      },
+                      "description": "(Required) Campaign ID",
                       "key": "id",
                       "value": "<integer>"
                     },
                     {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Dispatch date (YYYY-MM-DD)",
-                        "type": "text/plain"
-                      },
+                      "description": "(Required) Dispatch date (YYYY-MM-DD)",
                       "key": "send_date",
                       "value": "<date>"
                     },
                     {
-                      "disabled": false,
-                      "description": {
-                        "content": "Use next available date if chosen date is unavailable",
-                        "type": "text/plain"
-                      },
+                      "description": "Use next available date if chosen date is unavailable",
                       "key": "next_available_date",
                       "value": "true"
                     },
                     {
-                      "disabled": false,
-                      "description": {
-                        "content": "Pay from account balance",
-                        "type": "text/plain"
-                      },
+                      "description": "Pay from account balance",
                       "key": "use_balance",
                       "value": "true"
                     }
                   ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": true,\n  \"data\": {}\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "61343858-d9ff-4584-a6ad-b60f99c5b0ba",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/campaigns/book",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "campaigns",
                     "book"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Campaign ID",
-                        "type": "text/plain"
-                      },
-                      "key": "id",
-                      "value": "<integer>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Dispatch date (YYYY-MM-DD)",
-                        "type": "text/plain"
-                      },
-                      "key": "send_date",
-                      "value": "<date>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Use next available date if chosen date is unavailable",
-                        "type": "text/plain"
-                      },
-                      "key": "next_available_date",
-                      "value": "true"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "Pay from account balance",
-                        "type": "text/plain"
-                      },
-                      "key": "use_balance",
-                      "value": "true"
-                    }
                   ]
-                }
+                },
+                "description": "Schedule a campaign for dispatch on a specific date."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "b0dd1ea2-46a9-4fab-9e7a-8f5530723df1",
+                  "name": "Campaign booked successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Campaign ID",
+                          "key": "id",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) Dispatch date (YYYY-MM-DD)",
+                          "key": "send_date",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "Use next available date if chosen date is unavailable",
+                          "key": "next_available_date",
+                          "value": "true"
+                        },
+                        {
+                          "description": "Pay from account balance",
+                          "key": "use_balance",
+                          "value": "true"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/campaigns/book",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "campaigns",
+                        "book"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"description\": \"Result value (boolean, integer, or string depending on operation)\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-b0dd1ea2-46a9-4fab-9e7a-8f5530723df1"
+                },
+                {
+                  "id": "38531599-01cd-4cc3-b173-37c241e1ee65",
+                  "name": "Authentication required or API key invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Campaign ID",
+                          "key": "id",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) Dispatch date (YYYY-MM-DD)",
+                          "key": "send_date",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "Use next available date if chosen date is unavailable",
+                          "key": "next_available_date",
+                          "value": "true"
+                        },
+                        {
+                          "description": "Pay from account balance",
+                          "key": "use_balance",
+                          "value": "true"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/campaigns/book",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "campaigns",
+                        "book"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-38531599-01cd-4cc3-b173-37c241e1ee65"
                 }
               ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:47:51.000Z",
+              "updatedAt": "2026-10-21T20:47:51.000Z",
+              "uid": "35240-3abda299-3832-468c-8b3f-07d0f106ff77"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "8a2a30dc-6fe7-4fa1-bb04-164884af9462",
+          "createdAt": "2026-10-21T20:47:51.000Z",
+          "updatedAt": "2026-10-21T20:47:51.000Z",
+          "uid": "35240-8a2a30dc-6fe7-4fa1-bb04-164884af9462"
         },
         {
-          "id": "df4b38fd-4699-44d7-84c0-5b80082d3c1d",
-          "name": "Delete a campaign",
-          "request": {
-            "name": "Delete a campaign",
-            "description": {
-              "content": "Permanently delete a campaign.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "campaigns",
-                "delete"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "id",
-                  "value": "<integer>",
-                  "description": "(Required) Campaign ID"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "delete",
+          "item": [
             {
-              "id": "c294482a-d43d-4159-8500-e33717cebba4",
-              "name": "Campaign deleted successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "campaigns",
-                    "delete"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Delete a campaign",
+              "id": "3670a0d7-fb04-4cea-a2a1-d09ce3971fd7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "urlencoded",
                   "urlencoded": [
                     {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Campaign ID",
-                        "type": "text/plain"
-                      },
+                      "description": "(Required) Campaign ID",
                       "key": "id",
                       "value": "<integer>"
                     }
                   ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": true,\n  \"data\": {}\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "bdf96e96-57bc-49c1-9abf-8dd03f54943f",
-              "name": "Authentication required or API key invalid",
-              "originalRequest": {
+                },
                 "url": {
-                  "path": [
-                    "campaigns",
-                    "delete"
-                  ],
+                  "raw": "{{baseUrl}}/campaigns/delete",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Campaign ID",
-                        "type": "text/plain"
-                      },
-                      "key": "id",
-                      "value": "<integer>"
-                    }
+                  "path": [
+                    "campaigns",
+                    "delete"
                   ]
-                }
+                },
+                "description": "Permanently delete a campaign."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "439356f5-7895-434e-b625-c47802325db6",
+                  "name": "Campaign deleted successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Campaign ID",
+                          "key": "id",
+                          "value": "<integer>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/campaigns/delete",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "campaigns",
+                        "delete"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"description\": \"Result value (boolean, integer, or string depending on operation)\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-439356f5-7895-434e-b625-c47802325db6"
+                },
+                {
+                  "id": "96b8701a-e055-41a9-b08e-e21b9e3aa7ab",
+                  "name": "Authentication required or API key invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Campaign ID",
+                          "key": "id",
+                          "value": "<integer>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/campaigns/delete",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "campaigns",
+                        "delete"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-96b8701a-e055-41a9-b08e-e21b9e3aa7ab"
                 }
               ],
-              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:47:51.000Z",
+              "updatedAt": "2026-10-21T20:47:51.000Z",
+              "uid": "35240-3670a0d7-fb04-4cea-a2a1-d09ce3971fd7"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "5d596d73-735d-4a8f-b36e-c806329c07b1",
+          "createdAt": "2026-10-21T20:47:51.000Z",
+          "updatedAt": "2026-10-21T20:47:51.000Z",
+          "uid": "35240-5d596d73-735d-4a8f-b36e-c806329c07b1"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api-us1.stannp.com/v1",
-      "key": "baseUrl"
+      "id": "99060761-a776-444c-8612-c2edfde48e2f",
+      "createdAt": "2026-10-21T20:47:51.000Z",
+      "updatedAt": "2026-10-21T20:47:51.000Z",
+      "uid": "35240-99060761-a776-444c-8612-c2edfde48e2f"
     }
   ],
   "auth": {
@@ -1844,21 +1784,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "c9e54343-7831-4280-8fe4-13ed263256f0",
-    "name": "Stannp Direct Mail Account Campaigns API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "REST API for programmatically sending physical letters and postcards, managing recipient groups, configuring campaigns, triggering individual mail pieces, and tracking delivery status through webhooks and event callbacks. Authentication uses API key-based HTTP Basic Auth over HTTPS.\n\n\nContact Support:\n Name: Stannp Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api-us1.stannp.com/v1"
     }
-  }
+  ]
 }
