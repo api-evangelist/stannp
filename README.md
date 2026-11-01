@@ -1,4 +1,4 @@
-# Stannp (stannp)
+# Stannp
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,59 +64,208 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Stannp is a direct mail platform that enables businesses to send physical postcards and letters programmatically via a REST API. The platform lets developers create campaigns, upload recipient lists, trigger individual mail pieces in real time, and track print and delivery status through webhooks and event endpoints. Authentication uses API key-based HTTP Basic Auth over HTTPS, and the API follows a simple JSON response envelope. Stannp serves businesses across the UK, US, and Canada with per-item pricing for letters and postcards at scale, and supports no-code integrations through Zapier and Make as well as official SDKs for PHP, Go, and C#.
+Stannp is a direct mail platform that enables businesses to send physical postcards and letters programmatically via a REST API. The platform lets developers create campaigns, upload recipient lists, trigger individual mail pieces in real time, and track print and delivery status through webhooks and event endpoints. Authentication uses API key-based HTTP Basic Auth over HTTPS, and the API follows a simple JSON response envelope with success/data or success/error fields. Stannp serves businesses across the UK, US, and Canada with per-item pricing for letters and postcards at scale, and supports no-code integrations through Zapier and Make as well as official SDKs for PHP, Go, and C#.
 
-**APIs.json:** https://raw.githubusercontent.com/api-evangelist/stannp/refs/heads/main/apis.yml
+**Areas:** Direct Mail · Postcards · Letters · Print · Physical Mail · Marketing Automation · Campaigns · Address Verification · SMS · Webhook · Mailing Lists · Fulfillment
 
-**Naftiko:** https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=stannp-api-evangelist&utm_content=repo
+## Stannp on APIs.io
 
-## Tags
+Everything profiled for Stannp is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/stannp/](https://apis.io/providers/stannp/)** — or go straight to one of the APIs or properties below.
 
-- Direct Mail
-- Postcards
-- Letters
-- Print
-- Physical Mail
-- Marketing Automation
-- Campaigns
+### APIs (7)
 
-## APIs
+- [Stannp Account API](https://apis.io/apis/stannp/stannp-account-api/) — Account balance and user information
+- [Stannp Campaigns API](https://apis.io/apis/stannp/stannp-campaigns-api/) — Manage batch direct mail campaigns
+- [Stannp Events API](https://apis.io/apis/stannp/stannp-events-api/) — Record recipient engagement and conversion events
+- [Stannp Groups API](https://apis.io/apis/stannp/stannp-groups-api/) — Manage recipient groups
+- [Stannp Letters API](https://apis.io/apis/stannp/stannp-letters-api/) — Create, post, retrieve, and cancel letter mailpieces
+- [Stannp Postcards API](https://apis.io/apis/stannp/stannp-postcards-api/) — Create, retrieve, and cancel postcard mailpieces
+- [Stannp Recipients API](https://apis.io/apis/stannp/stannp-recipients-api/) — Manage individual recipients and bulk imports
 
-| Name | Description | Human URL |
-|------|-------------|-----------|
-| Stannp Direct Mail API | REST API for programmatically sending physical letters and postcards, managing recipient groups, configuring campaigns, triggering individual mail pieces, and tracking delivery status through webhooks and event callbacks. | https://www.stannp.com/us/direct-mail-api |
+### Published properties
 
-## Plans / Rate Limits / FinOps
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-| Resource | Path |
-|----------|------|
-| Plans & Pricing | [plans/stannp-plans-pricing.yml](plans/stannp-plans-pricing.yml) |
-| Rate Limits | [rate-limits/stannp-rate-limits.yml](rate-limits/stannp-rate-limits.yml) |
-| FinOps | [finops/stannp-finops.yml](finops/stannp-finops.yml) |
+#### AsyncAPI (1)
 
-**Pricing model:** Freemium — Free, Starter (£12/mo), Growth (£48/mo), Premium (£315/mo), Enterprise (custom). Annual billing saves 20%. Per-item metered charges for each letter or postcard dispatched apply on top of the subscription.
+Event-driven and webhook contracts.
 
-**Rate limits:** 300 req/min (Free/Starter), 600 req/min (Growth), 2000 req/min (Premium), 3000 req/min (Enterprise). 429 status on breach; Retry-After header provided.
+- [Stannp Webhooks](https://apis.io/asyncapis/stannp/stannp-webhooks/)
 
-## Timestamps
+#### MCP servers (1)
 
-- **Created:** 2026-06-12
-- **Modified:** 2026-06-12
+Model Context Protocol servers that expose the API to agents.
 
-## Common Properties
+- [stannp](https://apis.io/servers/stannp/stannp/)
 
-| Type | URL |
-|------|-----|
-| Website | https://www.stannp.com |
-| Documentation | https://www.stannp.com/us/direct-mail-api/guide |
-| GitHub Organization | https://github.com/Stannp |
-| LinkedIn | https://www.linkedin.com/company/stannp-com-postcard-bulk-mailer |
-| X (Twitter) | https://twitter.com/stannpdm |
-| Blog | https://go.stannp.com/blogs |
-| Pricing | https://www.stannp.com/us/pricing-tiers |
+#### Agentic access (1)
 
-## Maintainers
+Which operations an agent can call, which act, and which need a human in the loop.
 
-| Name | Email |
-|------|-------|
-| Kin Lane | kin@apievangelist.com |
+- [Stannp Agentic Access](https://apis.io/agentic-access/stannp/stannp-agentic-access/)
+
+#### JSON Schema (3)
+
+The data models the API reads and writes.
+
+- [Campaign](https://apis.io/schemas/stannp/campaign/)
+- [Mailpiece](https://apis.io/schemas/stannp/mailpiece/)
+- [Recipient](https://apis.io/schemas/stannp/recipient/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Stannp Context](https://apis.io/jsonld/stannp/stannp-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Stannp Vocabulary](https://apis.io/vocabularies/stannp/stannp-vocabulary/)
+
+#### Examples (3)
+
+Example requests and responses.
+
+- [Create Postcard Request](https://apis.io/examples/stannp/create-postcard-request/)
+- [Create Postcard Response](https://apis.io/examples/stannp/create-postcard-response/)
+- [Webhook Payload](https://apis.io/examples/stannp/webhook-payload/)
+
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [Stannp Direct Mail Account API](https://apis.io/collections/stannp/open-stannp-account-api/)
+- [Stannp Direct Mail Account Campaigns API](https://apis.io/collections/stannp/open-stannp-campaigns-api/)
+- [Stannp Direct Mail Account Events API](https://apis.io/collections/stannp/open-stannp-events-api/)
+- [Stannp Direct Mail Account Groups API](https://apis.io/collections/stannp/open-stannp-groups-api/)
+- [Stannp Direct Mail Account Letters API](https://apis.io/collections/stannp/open-stannp-letters-api/)
+- [Stannp Direct Mail Account Postcards API](https://apis.io/collections/stannp/open-stannp-postcards-api/)
+- [Stannp Direct Mail Account Recipients API](https://apis.io/collections/stannp/open-stannp-recipients-api/)
+
+#### Overlays (14)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Stannp Account Api Overlay](https://apis.io/overlays/stannp/stannp-account-api-overlay/)
+- [Stannp Account Api Phrasing Overlay](https://apis.io/overlays/stannp/stannp-account-api-phrasing-overlay/)
+- [Stannp Campaigns Api Overlay](https://apis.io/overlays/stannp/stannp-campaigns-api-overlay/)
+- [Stannp Campaigns Api Phrasing Overlay](https://apis.io/overlays/stannp/stannp-campaigns-api-phrasing-overlay/)
+- [Stannp Events Api Overlay](https://apis.io/overlays/stannp/stannp-events-api-overlay/)
+- [Stannp Events Api Phrasing Overlay](https://apis.io/overlays/stannp/stannp-events-api-phrasing-overlay/)
+- [Stannp Groups Api Overlay](https://apis.io/overlays/stannp/stannp-groups-api-overlay/)
+- [Stannp Groups Api Phrasing Overlay](https://apis.io/overlays/stannp/stannp-groups-api-phrasing-overlay/)
+- [Stannp Letters Api Overlay](https://apis.io/overlays/stannp/stannp-letters-api-overlay/)
+- [Stannp Letters Api Phrasing Overlay](https://apis.io/overlays/stannp/stannp-letters-api-phrasing-overlay/)
+- [Stannp Postcards Api Overlay](https://apis.io/overlays/stannp/stannp-postcards-api-overlay/)
+- [Stannp Postcards Api Phrasing Overlay](https://apis.io/overlays/stannp/stannp-postcards-api-phrasing-overlay/)
+- [Stannp Recipients Api Overlay](https://apis.io/overlays/stannp/stannp-recipients-api-overlay/)
+- [Stannp Recipients Api Phrasing Overlay](https://apis.io/overlays/stannp/stannp-recipients-api-phrasing-overlay/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Stannp — jsonschema rules](https://apis.io/rules/stannp/stannp-jsonschema-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Stannp Authentication](https://apis.io/security/stannp/stannp-authentication/)
+- [Stannp Domain Security](https://apis.io/security/stannp/stannp-domain-security/)
+- [Stannp Trust Center](https://apis.io/security/stannp/stannp-trust-center/)
+- [Stannp Vulnerability Disclosure](https://apis.io/security/stannp/stannp-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Stannp Plans Pricing](https://apis.io/plans/stannp/stannp-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Stannp Rate Limits](https://apis.io/rate-limits/stannp/stannp-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Stannp Finops](https://apis.io/finops/stannp/stannp-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.stannp.com)
+- [Documentation](https://www.stannp.com/us/direct-mail-api/guide)
+- [Getting started](https://www.stannp.com/us/direct-mail-api/guide#introduction)
+- [API reference](https://www.stannp.com/us/direct-mail-api/postcards)
+- [Pricing](https://www.stannp.com/us/pricing)
+- [Sign up](https://app-us1.stannp.com/register)
+- [Support](https://www.stannp.com/us/support)
+- [Blog](https://go.stannp.com/en-us/blogs)
+- [Security](https://www.stannp.com/us/trust)
+- [Compliance](https://www.stannp.com/us/accreditations)
+- [Terms of service](https://www.stannp.com/us/terms-of-service)
+- [Privacy policy](https://www.stannp.com/us/privacy-policy)
+- [GitHub](https://github.com/Stannp)
+- [Status](https://status.stannp.com/)
+
+## API Evangelist rating
+
+**Kin Score 74.7** — exemplar · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 69.5 |
+| Contract governance | 41.7 |
+| Operational transparency | 68.4 |
+| Developer ergonomics | 74.4 |
+| Access clarity | 85.5 |
+
+**Agent readiness 40.2** — agent-native
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | verified |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 34.2** — Telecommunications
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/stannp/](https://apis.io/providers/stannp/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Stannp: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/stannp/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
